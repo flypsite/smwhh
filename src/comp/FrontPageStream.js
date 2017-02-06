@@ -15,8 +15,7 @@ class FrontPageStream extends Component {
 
 		var dummy = {
 			items: [
-				{ id: "a" }, {id: "b" }, {id: "c" }, {id: "d" }, {id: "e" }, 
-				{id: "f" }
+				{ id: "a" }, {id: "b" }, {id: "c" }, {id: "d" }, {id: "e" }, {id: "f" }
 			]
 		};
 

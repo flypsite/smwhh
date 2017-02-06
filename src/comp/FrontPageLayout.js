@@ -1,5 +1,6 @@
 import React from 'react';
 import ArticleStream from './ArticleStream.js';
+import FlypImage from './FlypImage.js';
 
 export default function FrontPageLayout(props) {
 
@@ -7,7 +8,7 @@ export default function FrontPageLayout(props) {
 	var m = props.data;
 	return (
 		<div>
-			<img src="http://www.mopo.de/image/23867176/2x1/940/470/47407b07735f4df59702a0d910a2dcf5/BO/elphi.jpg" />
+			<FlypImage data={m.media}/>
 		</div>
     );
     
