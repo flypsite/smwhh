@@ -43,6 +43,7 @@ class App extends Component {
 				initial: function(json) { 
 					console.log("initial callback");
 					console.log(json.updates);
+					self.setStream(self._translateStream(json));
 				},
 				update: function(json) { 
 					console.log("update callback " + json.updates[0].message.text);

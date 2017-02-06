@@ -101,6 +101,7 @@
 
 	// user id
 	proto.uuid = "NYI";
+	proto.root = root;
 
 	proto.getUUID = function() {
 		return this.uuid;
@@ -237,9 +238,9 @@
 				self._heartbeat(23000);
 			},  7000);
 
-		if ( self.mode == "pusher" ) {
+		if ( self.mode === "pusher" ) {
 			self._pusherUpdates();
-		} else if ( self.mode == "poll" ) {
+		} else if ( self.mode === "poll" ) {
 			self.poll();
 		} else {
 			self.mode = "pusher"
@@ -268,8 +269,6 @@
 		var Pusher = this.pusherclass;
 
 		this.pusher = new Pusher(self.pusherkey);
-		console.log(this.pusher);
-		console.log(this.pusher.connection);
 
 		this.pusher.connection.bind('connected', function() {
   			self.pushersocket = self.pusher.connection.socket_id;
@@ -301,7 +300,7 @@
 		});
 		
     	var channel = this.pusher.subscribe('event' + self.eventid);
-    	self.debug("bind to " + 'event' + self.eventid);
+    	self.debug("bind to event" + self.eventid);
     	
     	channel.bind('update', function(data) {
     		// console.log("New Message: ", data);
@@ -338,7 +337,7 @@
 		if ( self.polling ) return;
 		self.polling = true;
 		
-		var r = ajax(self.carrierEndpoint + "?" + random(8) + ".r" + self.revision, {
+		ajax(self.carrierEndpoint + "?" + random(8) + ".r" + self.revision, {
 
 			processData: true,
 			dataType: 'json',
@@ -466,7 +465,7 @@
     			withCredentials: true
 			},
 	        success: function(){
-	            if(undefined != cback && cback instanceof Function){
+	            if(undefined !== cback && cback instanceof Function){
 	                cback(data.did, data.oid);
 	            }
 	        },
@@ -512,7 +511,7 @@
     			withCredentials: true
 			},
 	        success: function(json, textStatus, jqxhr){
-	            if(undefined != callback && callback instanceof Function) {
+	            if(undefined !== callback && callback instanceof Function) {
 	            	callback(json, cbdata);
 	            }
 	        },
@@ -530,7 +529,7 @@
 		var ep = endpoint + "?" + this.commit;
 
 		self.debug("_requestWithCommit", ep);
-		var r = ajax(ep, {
+	  ajax(ep, {
 
 			processData: true,
 			dataType: 'json',
@@ -561,7 +560,7 @@
 		if ( arg ) ep += "&" + arg;
 
 		self.debug("_requestWithoutCache", ep);
-		var r = ajax(ep, {
+	  ajax(ep, {
 
 			processData: true,
 			dataType: 'json',
@@ -587,9 +586,8 @@
 	 * logging function
 	 */
 	function flog() {
-		// tmp raus...
 		return;
-		if ( arguments.length == 1 ) {
+		if ( arguments.length === 1 ) {
 			console.log(arguments[0]);
 		} else {
 			console.log(arguments);
@@ -631,9 +629,11 @@
 	}
 	
 	function ajax (urlobj, setgs)  {
+	  // minimalistic replacement for jquery ajax function, uses original call syntax
 	  // no JSONP
-	  // only GET and POST
+	  // no FILE, no PUT (probably)
 	  // no xdomain-support for IE8/9 yet
+	  // error-callback not used
 	  // walkthrough: http://blog.garstasio.com/you-dont-need-jquery/ajax/
 	  
 		var xhr = new XMLHttpRequest();
@@ -650,7 +650,7 @@
 		if (cors) xhr.withCredentials = true;
 		xhr.onload = function() {
 			if (xhr.status === 200) {
-				setgs.success(JSON.parse(xhr.responseText));
+				if ( setgs && setgs.success) setgs.success(JSON.parse(xhr.responseText));
 			} else {
         console.log('Request failed.  Returned status of ' + xhr.status);
       }
