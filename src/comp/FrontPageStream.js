@@ -26,8 +26,7 @@ class FrontPageStream extends Component {
 // 			ticking = true;
 			dummy = {
 			items: [
-				{ id: "a" }, {id: "b" }, {id: "c" }, {id: "d" }, {id: "e" }, 
-				{id: "f" }
+				{ id: "a" }, {id: "b" }, {id: "c" }, {id: "d" }, {id: "e" }, {id: "f" }
 			]
 		};
 //		});

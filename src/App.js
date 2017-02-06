@@ -33,7 +33,7 @@ class App extends Component {
 	});
 */
 	
-		var v = new Vienna("h86NVhFL9roT", { 
+		var v = new Vienna("Q1IFrJLioN1C", { 
 				pusher: Pusher,
 				pusherkey: "3bd9f270de4a9ca0cc78", 
 				url: "//flypsite.appspot.com" ,
@@ -73,8 +73,11 @@ class App extends Component {
 			headline: m.headline,
 			text: m.text,
 			info: m.info,
-			signature: false
+			signature: false,
+			media: m.media
 		}
+
+
 
 		return nm;
 	}
