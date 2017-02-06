@@ -585,6 +585,7 @@
 	 * logging function
 	 */
 	function flog() {
+		return;
 		if ( arguments.length === 1 ) {
 			console.log(arguments[0]);
 		} else {
