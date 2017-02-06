@@ -265,9 +265,12 @@
 		var self = this;
 		self.debug("_pusherUpdates");
 
+		var Pusher = this.pusherclass;
 
-		this.pusher = new this.pusherclass(self.pusherkey);
-		
+		this.pusher = new Pusher(self.pusherkey);
+		console.log(this.pusher);
+		console.log(this.pusher.connection);
+
 		this.pusher.connection.bind('connected', function() {
   			self.pushersocket = self.pusher.connection.socket_id;
   			self._sendSocketId();
