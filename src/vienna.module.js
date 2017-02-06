@@ -19,9 +19,6 @@
 
 	var API_VERSION = "v1";
 
- 	var $_ = root.jQuery;
-
-
   // ### Vienna class constructor
   function Vienna (token, opts) {
 		var self = this;
@@ -88,10 +85,9 @@
 		self.pollEndpoint = urlbase + "/poll.json"
 
 		// CORS stuff, see end of this file
-		$_.support.cors = true;  //FIXMEJQ
+		// $_.support.cors = true;  //FIXMEJQ
   }
   
- 	root.Vienna = Vienna;
 
 
 	// ========================================================
@@ -337,7 +333,7 @@
 		if ( self.polling ) return;
 		self.polling = true;
 		
-		var r = $_.ajax(self.carrierEndpoint + "?" + random(8) + ".r" + self.revision, {
+		var r = ajax(self.carrierEndpoint + "?" + random(8) + ".r" + self.revision, {
 
 			processData: true,
 			dataType: 'json',
@@ -385,7 +381,7 @@
 
 		flog("get update " + endpoint);
 
-		$_.ajax(endpoint, {
+		ajax(endpoint, {
 			success: function(json) {
 				flog("got revision: " + nextRevision);
 				if ( self.updateCallback ) self.updateCallback(json);
@@ -455,7 +451,7 @@
 
 		var sendData = data;
 	    sendData.userkey = this.user;//Rio.UUID;
-	    $_.ajax({
+	    ajax({
 	    	processData: true,
 	        type: 'POST',
 	        url: this.pollEndpoint,
@@ -500,7 +496,7 @@
 
 		var self = this;
 
-	    $_.ajax({
+	    ajax({
 
 	    	processData: true,
 	        type: 'POST',
@@ -529,7 +525,7 @@
 		var ep = endpoint + "?" + this.commit;
 
 		self.debug("_requestWithCommit", ep);
-		var r = $_.ajax(ep, {
+		var r = ajax(ep, {
 
 			processData: true,
 			dataType: 'json',
@@ -560,7 +556,7 @@
 		if ( arg ) ep += "&" + arg;
 
 		self.debug("_requestWithoutCache", ep);
-		var r = $_.ajax(ep, {
+		var r = ajax(ep, {
 
 			processData: true,
 			dataType: 'json',
@@ -627,6 +623,34 @@
 		}
 
 		return sb;
+	}
+	
+	function ajax (urlobj, setgs)  {
+	  // no JSONP
+	  // only GET and POST
+	  // no xdomain-support for IE8/9 yet
+	  // walkthrough: http://blog.garstasio.com/you-dont-need-jquery/ajax/
+	  
+		var xhr = new XMLHttpRequest();
+		var type = "GET", url = urlobj, cors = false, data;
+		
+		if (typeof urlobj === "object") {
+		  type = urlobj.type;
+		  url  = urlobj.url;
+		  data = urlobj.data;
+		  cors = typeof urlobj.xhrFields === "object";
+		}
+		xhr.open(type, url);
+		if (type === "POST") xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+		if (cors) xhr.withCredentials = true;
+		xhr.onload = function() {
+			if (xhr.status === 200) {
+				setgs.success(JSON.parse(xhr.responseText));
+			} else {
+        console.log('Request failed.  Returned status of ' + xhr.status);
+      }
+    };
+    xhr.send(data);
 	}
 
 
