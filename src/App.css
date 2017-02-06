@@ -1,42 +1,48 @@
-
-#flypjournal, .App, .FrontPageStream {
+#flypjournal, #flypjournal > *, #flypjournal .FrontPageStream {
   text-align: center;
   width : 320px;
   position: relative;
   height: 100%;
 }
 
-.App {
+#flypjournal .App {
 	overflow-x: scroll;
 	overflow-y: hidden;
 }
-.FrontPageStream {
+
+#flypjournal .FrontPageStream {
 	width: 10000px;
 	text-align: left;
 }
 
 
-.flyp-message {
+#flypjournal .FrontPageStream > * {
+	margin-top: 40px;
 	display: inline-block;
 	position: relative;
 	width:320px;
-	height:100%;
+	height:calc(100% - 40px);
 	background:#cccc33;
 	border: 2px solid #3333cc;
+	box-sizing: border-box;
+	overflow-x: hidden;
+	overflow-y: scroll;
 }	
 
-.App-logo {
+#flypjournal .App-logo {
   animation: App-logo-spin infinite 20s linear;
-  height: 80px;
+  height: 40px;
 }
 
-.App-header {
+#flypjournal .App-header {
+	position:fixed;
   background-color: #222;
   height: 40px;
+  width: 320px;
   color: white;
 }
 
-.App-intro {
+#flypjournal .App-intro {
   font-size: large;
 }
 

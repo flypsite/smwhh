@@ -10,7 +10,8 @@ class Message extends Component {
   	var mobj = LayoutMap[modename];
   	if ( ! mobj ) mobj = LayoutMap['generic'];
 
- 	var layoutFunc = mobj.layouts[loname];
+		var layoutFunc = null;
+		if ( loname ) layoutFunc = mobj.layouts[loname];
     if ( layoutFunc == null ) layoutFunc = mobj.fallback;
     if ( layoutFunc == null ) return null;
     return layoutFunc;

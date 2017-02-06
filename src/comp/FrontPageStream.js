@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import Message from './Message.js'
+import Message from './Message.js';
+import ArticleStream from './ArticleStream.js';
 
 class FrontPageStream extends Component {
 
@@ -12,9 +13,19 @@ class FrontPageStream extends Component {
       return <div>loading...</div>
     }
 
+		var dummy = {
+			items: [
+				{ id: "a" }, {id: "b" }, {id: "c" }, {id: "d" }, {id: "e" }, 
+				{id: "f" }
+			]
+		};
+
 
     const listItems = stream.items.map( (item) =>
-      <Message key={item.id} mode="frontpages" data={ item }/>
+    	<div>
+	      <Message key={item.id} mode="frontpages" data={ item }/>
+	      <ArticleStream data={dummy} />
+	    </div>
     );
 
 
