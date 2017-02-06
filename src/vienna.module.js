@@ -265,8 +265,6 @@
 
 		var self = this;
 		self.debug("_pusherUpdates");
-
-
 		this.pusher = new this.pusherclass(self.pusherkey);
 		
 		this.pusher.connection.bind('connected', function() {
@@ -628,9 +626,11 @@
 	}
 	
 	function ajax (urlobj, setgs)  {
+	  // minimalistic replacement for jquery ajax function, uses original call syntax
 	  // no JSONP
-	  // only GET and POST
+	  // no FILE, no PUT (probably)
 	  // no xdomain-support for IE8/9 yet
+	  // error-callback not used
 	  // walkthrough: http://blog.garstasio.com/you-dont-need-jquery/ajax/
 	  
 		var xhr = new XMLHttpRequest();

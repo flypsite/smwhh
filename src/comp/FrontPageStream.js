@@ -9,7 +9,7 @@ class FrontPageStream extends Component {
     var stream = this.props.data;
 
     if ( ! stream ) {
-      return <div>no stream</div>
+      return <div>loading...</div>
     }
 
 
@@ -20,7 +20,6 @@ class FrontPageStream extends Component {
 
     return (
       <div className="FrontPageStream">
-        My FrontPageStream { stream ? stream.stream : "nix" }
         { listItems }
       </div>
     );

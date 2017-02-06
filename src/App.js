@@ -16,11 +16,10 @@ class App extends Component {
 	// init everything here
 
 	var self = this;
-
 		var v = new Vienna("h86NVhFL9roT", { 
 			pusher: Pusher,
 			pusherkey: "3bd9f270de4a9ca0cc78", 
-			url: "//flypsite.appspot.com" 
+			url: "//flypsite.appspot.com"
 		});
 		v.connect({
       initial: function(json) { 
@@ -32,7 +31,8 @@ class App extends Component {
 				self.setStream(self._translateStream(json));
 			},
 			command: function(json) {
-			  console.log("command callback"); 
+			  console.log("command callback");
+			  console.log("command not handled yet: " + json);
 			}
 		});
 
