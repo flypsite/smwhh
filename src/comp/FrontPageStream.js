@@ -21,7 +21,7 @@ class FrontPageStream extends Component {
 
 
     const listItems = stream.items.map( (item) =>
-    	<div>
+    	<div onScroll={ () => { console.log('scroll') }  }>
 	      <Message key={item.id} mode="frontpages" data={ item }/>
 	      <ArticleStream data={dummy} />
 	    </div>

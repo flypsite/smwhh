@@ -9,9 +9,7 @@ export default function FlypImage(props) {
 	if ( ! image ) return <img/>;
 
 	return (
-		<div>
-			<img src={ image.url } />
-		</div>
+		<img src={ image.url } />
     );
     
 }
