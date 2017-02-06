@@ -29,6 +29,16 @@
 	overflow-y: scroll;
 }	
 
+#flypjournal .FrontPageStream > * > .flyp-message {
+	height: 100%;
+}
+#flypjournal .FrontPageStream > * > .flyp-message > div {
+	height: 100%;
+}
+#flypjournal .FrontPageStream > * > .flyp-message > div > img {
+	height: 100%;
+}
+
 #flypjournal .App-logo {
   animation: App-logo-spin infinite 20s linear;
   height: 40px;
