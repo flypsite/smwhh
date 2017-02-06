@@ -17,7 +17,11 @@ class App extends Component {
 
 	var self = this;
 
-		var v = new Vienna("h86NVhFL9roT", { pusherkey: "3bd9f270de4a9ca0cc78", url: "//flypsite.appspot.com" });
+		var v = new Vienna("h86NVhFL9roT", { 
+			pusher: Pusher,
+			pusherkey: "3bd9f270de4a9ca0cc78", 
+			url: "//flypsite.appspot.com" 
+		});
 		v.connect({
       initial: function(json) { 
         console.log("initial callback");

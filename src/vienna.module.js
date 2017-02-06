@@ -51,6 +51,8 @@
 		// key for pusher app
 		self.pusherkey = opts.pusherkey ? opts.pusherkey : null;
 
+		self.pusherclass = opts.pusher;
+
 		// base for all endpoints
 		var urlbase = self.url + "/" + API_VERSION + "/" + self.token;
 
@@ -265,7 +267,7 @@
 		self.debug("_pusherUpdates");
 
 
-		this.pusher = new Pusher(self.pusherkey);
+		this.pusher = new this.pusherclass(self.pusherkey);
 		
 		this.pusher.connection.bind('connected', function() {
   			self.pushersocket = self.pusher.connection.socket_id;
