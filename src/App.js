@@ -4,48 +4,88 @@ import FrontPageStream from './comp/FrontPageStream.js';
 import TestStream from './teststream.js'
 import './App.css';
 import Pusher from 'pusher';
-import Vienna from './vienna.module.js';
+// import Vienna from './vienna.module.js';
 
 class App extends Component {
 
-  constructor(props) {
+	constructor(props) {
 
-    super(props);
-
-
-    // init everything here
-
-    var self = this;
-    window.setTimeout( function() {
-      TestStream.items = TestStream.updates;
-      self.setStream( TestStream );
-    }, 3000);
+		super(props);
 
 
-  }
+	// init everything here
 
-  setStream(s) {
-    this.setState(s);
-  }
+	var self = this;
+	window.setTimeout( function() {
+		TestStream.items = TestStream.updates;
+		self.setStream( self._translateStream(TestStream) );
+	}, 3000);
 
 
-  render() {
+	}
 
-    console.log("app.render()")
-    // var p = new Pusher({
 
-    // });
+	_tmsg(e) {
 
-    return (
-      <div className="App">
-        <div className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h2>Welcome to SMWHH 2017</h2>
-        </div>
-       <FrontPageStream data={this.state}/>
-      </div>
-    );
-  }
+		var m = e.message;
+		if ( ! m ) return { id: e.id, index: e.index, stream: e.stream };
+
+		var nm = {
+			id: e.id,
+			index: e.index,
+			stream: e.stream,
+			layout: m.layout,
+			style: m.style,
+			headline: m.headline,
+			text: m.text,
+			info: m.info,
+			signature: false
+		}
+
+		return nm;
+	}
+
+
+	_translateStream(s) {
+
+		var self = this;
+
+		var newitems = s.items.map( function(item) {
+			return self._tmsg(item);
+		});
+
+		return {
+			stream: s.stream,
+			items: newitems
+		};
+
+
+	}
+
+
+
+	setStream(s) {
+		this.setState(s);
+	}
+
+
+	render() {
+
+		console.log("app.render()")
+		// var p = new Pusher({
+
+		// });
+
+		return (
+			<div className="App">
+			<div className="App-header">
+			<img src={logo} className="App-logo" alt="logo" />
+			<h2>Welcome to #smwhh</h2>
+			</div>
+			<FrontPageStream data={this.state}/>
+			</div>
+			);
+	}
 }
 
 export default App;
