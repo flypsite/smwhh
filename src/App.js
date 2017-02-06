@@ -3,7 +3,7 @@ import logo from './logo.svg';
 import FrontPageStream from './comp/FrontPageStream.js';
 import TestStream from './teststream.js'
 import './App.css';
-import Pusher from 'pusher';
+import Pusher from 'pusher-js';
 import Vienna from './vienna.module.js';
 
 class App extends Component {
@@ -16,31 +16,48 @@ class App extends Component {
 	// init everything here
 
 	var self = this;
-		var v = new Vienna("h86NVhFL9roT", { 
-			pusher: Pusher,
-			pusherkey: "3bd9f270de4a9ca0cc78", 
-			url: "//flypsite.appspot.com"
-		});
-		v.connect({
-      initial: function(json) { 
-        console.log("initial callback");
-        self.setStream(self._translateStream(json));
-      },
-      update: function(json) { 
-        console.log("update callback " + json.updates[0].message.text);
-				self.setStream(self._translateStream(json));
-			},
-			command: function(json) {
-			  console.log("command callback");
-			  console.log("command not handled yet: " + json);
-			}
-		});
 
-  }
+/*
+	window.setTimeout( function() {
+		TestStream.items = TestStream.updates;
+		self.setStream( self._translateStream(TestStream) );
+	}, 3000);
+*/
+	Pusher.log = function(m) {
+		console.log("Pusher > ", m);
+	}
+/*
+	var p = new Pusher("3bd9f270de4a9ca0cc78");
+	p.connection.bind('connected', function() {
+			console.log("Pusherc")
+	});
+*/
+	
+		var v = new Vienna("h86NVhFL9roT", { 
+				pusher: Pusher,
+				pusherkey: "3bd9f270de4a9ca0cc78", 
+				url: "//flypsite.appspot.com" ,
+				mode: "poll"
+			});
+			v.connect({
+				initial: function(json) { 
+					console.log("initial callback");
+					console.log(json.updates);
+					self.setStream(self._translateStream(json));
+				},
+				update: function(json) { 
+					console.log("update callback " + json.updates[0].message.text);
+					console.log(json.updates);
+				},
+				command: function(json) {
+					console.log("command callback"); 
+				}
+			});
+	}
   
-  setStream(s) {
-    this.setState(s);
-  }
+  	setStream(s) {
+    	this.setState(s);
+  	}
 
 	_tmsg(e) {
 

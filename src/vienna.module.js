@@ -265,8 +265,11 @@
 
 		var self = this;
 		self.debug("_pusherUpdates");
-		this.pusher = new this.pusherclass(self.pusherkey);
-		
+
+		var Pusher = this.pusherclass;
+
+		this.pusher = new Pusher(self.pusherkey);
+
 		this.pusher.connection.bind('connected', function() {
   			self.pushersocket = self.pusher.connection.socket_id;
   			self._sendSocketId();
@@ -647,7 +650,7 @@
 		if (cors) xhr.withCredentials = true;
 		xhr.onload = function() {
 			if (xhr.status === 200) {
-				setgs.success(JSON.parse(xhr.responseText));
+				if ( setgs && setgs.success) setgs.success(JSON.parse(xhr.responseText));
 			} else {
         console.log('Request failed.  Returned status of ' + xhr.status);
       }
