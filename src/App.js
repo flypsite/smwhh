@@ -21,9 +21,23 @@ class App extends Component {
       self.setStream( TestStream );
     }, 3000);
 
+		var v = new Vienna("h86NVhFL9roT", { pusherkey: "3bd9f270de4a9ca0cc78", url: "//flypsite.appspot.com" });
+		v.connect({
+      initial: function(json) { 
+        console.log("initial callback");
+        console.log(json.updates);
+      },
+      update: function(json) { 
+        console.log("update callback " + json.updates[0].message.text);
+				console.log(json.updates);
+			},
+			command: function(json) {
+			  console.log("command callback"); 
+			}
+		});
 
   }
-
+  
   setStream(s) {
     this.setState(s);
   }
