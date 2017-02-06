@@ -67,7 +67,11 @@ class App extends Component {
 
 		var self = this;
 
-		var newitems = s.items.map( function(item) {
+		var itms = s.items;
+		if ( ! itms ) itms = s.updates;
+
+
+		var newitems = itms.map( function(item) {
 			return self._tmsg(item);
 		});
 
