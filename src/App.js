@@ -3,7 +3,8 @@ import logo from './logo.svg';
 import FrontPageStream from './comp/FrontPageStream.js';
 import TestStream from './teststream.js'
 import './App.css';
-// import Pusher from 'pusher'
+import Pusher from 'pusher';
+import Vienna from './vienna.module.js';
 
 class App extends Component {
 
