@@ -16,20 +16,16 @@ class App extends Component {
 	// init everything here
 
 	var self = this;
-	window.setTimeout( function() {
-		TestStream.items = TestStream.updates;
-		self.setStream( self._translateStream(TestStream) );
-	}, 3000);
 
 		var v = new Vienna("h86NVhFL9roT", { pusherkey: "3bd9f270de4a9ca0cc78", url: "//flypsite.appspot.com" });
 		v.connect({
       initial: function(json) { 
         console.log("initial callback");
-        console.log(json.updates);
+        self.setStream(self._translateStream(json));
       },
       update: function(json) { 
         console.log("update callback " + json.updates[0].message.text);
-				console.log(json.updates);
+				self.setStream(self._translateStream(json));
 			},
 			command: function(json) {
 			  console.log("command callback"); 
