@@ -88,6 +88,7 @@
 }
 .FrontPage1 .Text {
     background-color: #3b6eb1;
+    background-color:rgba(59,110,177,0.6);
 	font-size: 1.1em;
 	padding:10%;
 	width: calc(100% - 20%); 
