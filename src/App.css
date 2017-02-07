@@ -34,7 +34,6 @@
 	position: relative;
 	width:320px;
 	height:calc(100% - 40px);
-	background:#cccc33;
 	box-sizing: border-box;
 	overflow-x: hidden;
 	overflow-y: scroll;
@@ -69,7 +68,9 @@
 
 
 /*-----  Front Page Design 1 ------*/
-.FrontPage1 {}
+.FrontPage1 {
+	background-color: #c80c41;
+}
 .FrontPage1 .Image {}
 .FrontPage1 .Headline {
 	font-family: 'Josefin Slab', serif;
@@ -81,6 +82,7 @@
 	border-top-left-radius: 0;
     background-color: #3b6eb1;
     color:#fff;
+    hyphens: auto;
 }
 .FrontPage1 .Text {
     background-color: #3b6eb1;
@@ -93,18 +95,23 @@
 
 
 /*-----  Front Page Design 1 ------*/
-.FrontPage2 {}
+.FrontPage2 {
+	background-color: #c80c41;
+}
 .FrontPage2 .Image {}
 .FrontPage2 .Headline {
 	font-family: 'Barrio', cursive;
 	font-size: 3em;
 	text-align: left;
 	margin: 10%;
+	margin-top: 40px;
 	padding:2%;
     background-color: rgb(240,50,240);	
     color:#fff;
     transform:rotate(-10deg);
-    width: 100%; 	
+    width: calc(100% - 5%); 
+    hyphens: auto;	
+    
 }
 .FrontPage2 .Text {
 	background-color: rgb(240,50,240);
