@@ -34,7 +34,7 @@ class Message extends Component {
 
   	// use the layout function, luke.
     return (
-        <div key={ message.id } className="flyp-message">
+        <div key={ message.id } className="Message">
             { layoutFunc(this.props) }
         </div>
     );

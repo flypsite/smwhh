@@ -9,6 +9,8 @@ export default function FrontPageLayout(props) {
 	return (
 		<div>
 			<FlypImage data={m.media}/>
+			<div className="Headline">{m.headline}</div>
+			<div className="Text">{m.text}</div>
 		</div>
     );
     

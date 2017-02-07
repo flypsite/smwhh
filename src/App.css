@@ -1,22 +1,22 @@
-#flypjournal, #flypjournal > *, #flypjournal .FrontPageStream {
+#FlypJournal, #FlypJournal > *, #FlypJournal .FrontPageStream {
   text-align: center;
   width : 320px;
   position: relative;
   height: 100%;
 }
 
-#flypjournal .App {
+#FlypJournal .App {
 	overflow-x: scroll;
 	overflow-y: hidden;
 }
 
-#flypjournal .FrontPageStream {
+#FlypJournal .FrontPageStream {
 	width: 10000px;
 	text-align: left;
 }
 
 
-#flypjournal .FrontPageStream > * {
+#FlypJournal .FrontPageStream > * {
 	margin-top: 40px;
 	display: inline-block;
 	position: relative;
@@ -29,22 +29,34 @@
 	overflow-y: scroll;
 }	
 
-#flypjournal .FrontPageStream > * > .flyp-message {
+#FlypJournal .FrontPageStream > * > .Message {
 	height: 100%;
 }
-#flypjournal .FrontPageStream > * > .flyp-message > div {
+#FlypJournal .FrontPageStream > * > .Message > div {
 	height: 100%;
 }
-#flypjournal .FrontPageStream > * > .flyp-message > div > img {
+#FlypJournal .FrontPageStream > * > .Message > div > img {
 	height: 100%;
+	position: absolute;
+}
+#FlypJournal .FrontPageStream > * > .Message > div > div.Headline {
+	position: absolute;
+	padding: 20% 0;
+	z-index: 100;
+}
+#FlypJournal .FrontPageStream > * > .Message > div > div.Text {
+	position: absolute;
+	padding: 40% 0;
+	z-index: 100;
+	background-color: red;
 }
 
-#flypjournal .App-logo {
+#FlypJournal .App-logo {
   animation: App-logo-spin infinite 20s linear;
   height: 40px;
 }
 
-#flypjournal .App-header {
+#FlypJournal .App-header {
 	position:fixed;
   background-color: #222;
   height: 40px;
@@ -52,7 +64,7 @@
   color: white;
 }
 
-#flypjournal .App-intro {
+#FlypJournal .App-intro {
   font-size: large;
 }
 
