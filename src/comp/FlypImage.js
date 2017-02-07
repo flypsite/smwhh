@@ -1,21 +1,40 @@
-import React from 'react';
-import ImageMagic from '../util/ImageMagic.js'
+import React, { Component } from 'react';
+import ImageMagic from '../util/ImageMagic.js';
 
-export default function FlypImage(props) {
 
-	// the message
-	var media = props.data;
-	if ( ! media ) return <img/>;
-	var image = media.image;
-	if ( ! image ) return <img/>;
+class FlypImage extends Component {
+	
+	componentDidMount() {
+		console.log("did mount", this);
+	}
+	render() {  
+		// the message
+		var media = this.props.data;
+		if ( ! media ) return <img/>;
+		var image = media.image;
+		if ( ! image ) return <img/>;
+		
+		var imgValues = {
+			'container_width': this.props.width,
+			'container_height': this.props.height,
+			'center_x': image.center?image.center.x:image.width/2,
+			'center_y': image.center?image.center.y:image.height/2,
+			'detail_x' : image.detail?image.detail.x:0,
+			'detail_y' : image.detail?image.detail.y:0,
+			'detail_width' : image.detail?image.detail.width:image.width,
+			'detail_height' : image.detail?image.detail.height:image.height, 
+			'zoom_mode' : image.zoom,
+			'image_width': image.width,
+			'image_height': image.height
+		};
 
-	var whatever = { dummy: true };
-	ImageMagic(whatever);
+		var cssCalc = ImageMagic(imgValues);
+		cssCalc['backgroundImage'] = 'url('+image.url+')';
 
-	return (
-		<img src={ image.url } />
-    );
-    
+		return (
+			<div className="Image" style={ cssCalc } />
+	  );
+	}    
 }
 
-
+export default FlypImage;
