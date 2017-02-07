@@ -1,6 +1,6 @@
 
 
-export default function(imgObj) {
+export default function ImageMagic(imgObj) {
 
 		var zoomFactor = 1;
 
@@ -25,26 +25,19 @@ export default function(imgObj) {
 		var selectHeight = imgObj.detail_height;
 		var selectAr = selectWidth / selectHeight;
 
-		var zoom = imgObj.zoom_mode == 1;
+		var zoom = imgObj.zoom_mode === 1;
 
 		var refAr = zoom ? selectAr : imgAr;
 		var refWidth  = zoom ? selectWidth  : imgWidth;
-		var refHeight = zoom ? selectHeight : imgHeight;
 
 
 		var sWidth  = imgWidth;
 		var sHeight = imgHeight;
 
-		var dWidth  = containerWidth;
-		var dHeight = containerHeight;
-
 		var scaleToWidth = false;
 		var scaleToHeight = false;
 
-		var cutting = false;
-		var samear  = false;
-
-		if ( containerAr == refAr ) {
+		if ( containerAr === refAr ) {
 
 			zoomFactor = containerWidth / refWidth;
 			sHeight = zoom ? selectHeight : imgHeight; 
@@ -53,8 +46,6 @@ export default function(imgObj) {
 				scaleToWidth  = true;
 				scaleToHeight = true;
 			}
-
-			samear = true;
 
 		} else if ( containerAr > refAr ) { // wider container
 
@@ -122,7 +113,6 @@ export default function(imgObj) {
 			} else {
 				padd = (selRectWidth - containerWidth) * cutRatioX;
 				sx += padd / zoomFactor;
-				cutting = true;
 			}
 		}
 
@@ -133,19 +123,18 @@ export default function(imgObj) {
 			} else {
 				padd = (selRectHeight - containerHeight) * cutRatioY;
 				sy += padd / zoomFactor;
-				cutting = true;
 			}
 		}
 
 
+/* not used
 		var selRectX = (selectX - sx) * zoomFactor;
 		var selRectY = (selectY - sy) * zoomFactor;
 
 		var bcx = ( imgObj.detail_x - sx )  * zoomFactor;
 		var bcy = ( imgObj.detail_y - sy )  * zoomFactor;
-
+*/
 		var margin_top = Math.round(sy * zoomFactor) * -1;
-
 		var margin_left = Math.round(sx * zoomFactor) * -1;
 		var width = Math.round(imgObj.image_width*zoomFactor);
 		var height = Math.round(imgObj.image_height*zoomFactor);
