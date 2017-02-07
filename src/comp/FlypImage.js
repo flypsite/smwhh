@@ -3,7 +3,10 @@ import ImageMagic from '../util/ImageMagic.js';
 
 
 class FlypImage extends Component {
-
+	
+	componentDidMount() {
+		console.log("did mount", this);
+	}
 	render() {  
 		// the message
 		var media = this.props.data;
@@ -12,8 +15,8 @@ class FlypImage extends Component {
 		if ( ! image ) return <img/>;
 		
 		var imgValues = {
-			'container_width': 320,
-			'container_height': 800,
+			'container_width': this.props.width,
+			'container_height': this.props.height,
 			'center_x': image.center?image.center.x:image.width/2,
 			'center_y': image.center?image.center.y:image.height/2,
 			'detail_x' : image.detail?image.detail.x:0,
@@ -26,7 +29,7 @@ class FlypImage extends Component {
 		};
 
 		var cssCalc = ImageMagic(imgValues);
-		cssCalc['background-image'] = 'url('+image.url+')';
+		cssCalc['backgroundImage'] = 'url('+image.url+')';
 
 		return (
 			<div className="Image" style={ cssCalc } />
