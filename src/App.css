@@ -10,7 +10,7 @@
 #FlypJournal, 
 #FlypJournal > *, 
 #FlypJournal .FrontPageStream {
-  text-align: center;
+	text-align: left;
   width : 375px;
   position: relative;
   height: 100%;
@@ -19,7 +19,6 @@
 
 #FlypJournal .FrontPageStream {
 	width: 10000px;
-	text-align: left;
 }
 
 
@@ -34,17 +33,18 @@
 	-webkit-overflow-scrolling: touch;
 }	
 
-#FlypJournal .FrontPageStream > * > .Message {
+#FlypJournal .FrontPageStream > div > .Message {
 	height: 100%;
 }
-#FlypJournal .FrontPageStream > * > .Message > div {
+#FlypJournal .FrontPageStream > div > .Message > div {
 	height: 100%;
 }
-#FlypJournal .FrontPageStream > * > .Message > div > div.Image {
+#FlypJournal .FrontPageStream > div > .Message > div > div.Image {
 	height: 100%;
 	position: absolute;
+	overflow:hidden;
 }
-#FlypJournal .FrontPageStream > * > .Message > div > div.Headline {
+#FlypJournal .FrontPageStream > div > .Message > div > div.Headline {
 	position: absolute;
 	z-index: 100;
     box-sizing:border-box;
@@ -54,12 +54,23 @@
     xbackground-image: linear-gradient(to right, black 0%,white 100%), url(assets/img/HeadlineBgTrans.png);
     xbackground-blend-mode:screen;
 }
-#FlypJournal .FrontPageStream > * > .Message > div > div.Text {
+#FlypJournal .FrontPageStream > div > .Message > div > div.Text {
 	position: absolute;
 	z-index: 100;
 	
 }
+#FlypJournal .ArticleStream > div > .Message > div {
 
+}
+
+#FlypJournal .ArticleStream > div > .Message > div.image > div.Image {
+  overflow:hidden;
+  height: 300px;
+  width:100%;
+}
+#FlypJournal .ArticleStream > div > .Message > div.image > p {
+  text-align:right;
+}
 
 
 /*-----  Front Page Design 1 ------*/
