@@ -161,7 +161,7 @@ class App extends Component {
 	}
 	scrollStopper() {
 		var d = ReactDOM.findDOMNode(this);
-		// since width is defined in device units (100vw), we have to get the pixel width here:
+		// since width is defined in device units (vw), we have to get the pixel width here:
 		var newPos = Math.round(d.scrollLeft / d.offsetWidth)*d.offsetWidth;
 		d.scrollLeft = newPos;
 		// and use raf/caf for animation...

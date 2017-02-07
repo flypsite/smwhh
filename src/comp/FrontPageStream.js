@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import ReactDOM from 'react-dom';
 import Message from './Message.js';
 import ArticleStream from './ArticleStream.js';
 
@@ -10,6 +11,8 @@ class FrontPageStream extends Component {
     super(props);
     this.selectedPage = 0;
     this.state = { selectedPage: 0 };
+    //this.baseWidth = ReactDOM.findDOMNode(this.app).offsetWidth;
+    
   }
 
   clicked(msg, artstr) {
@@ -49,7 +52,7 @@ class FrontPageStream extends Component {
 
     });
 
-
+		// FIXME use ReactDOM.findDOMNode(this).offsetWidth instead of 320
     return (
       <div className="FrontPageStream" style={ {width: listItems.length * 320 + "px"} }>
         { listItems }
