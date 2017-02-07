@@ -3,20 +3,19 @@ import ImageMagic from '../util/ImageMagic.js';
 
 
 class FlypImage extends Component {
-	
+
+/*	
 	componentDidMount() {
-		console.log("did mount", this);
+		console.log("did mount", this.xxx);
 	}
-	render() {  
-		// the message
-		var media = this.props.data;
-		if ( ! media ) return <img/>;
-		var image = media.image;
-		if ( ! image ) return <img/>;
-		
+*/
+	calcSize(image,e) {
+
+		console.log("calcSize", e);
+
 		var imgValues = {
-			'container_width': this.props.width,
-			'container_height': this.props.height,
+			'container_width': e.parentElement.offsetWidth,
+			'container_height': e.parentElement.offsetHeight,
 			'center_x': image.center?image.center.x:image.width/2,
 			'center_y': image.center?image.center.y:image.height/2,
 			'detail_x' : image.detail?image.detail.x:0,
@@ -29,10 +28,35 @@ class FlypImage extends Component {
 		};
 
 		var cssCalc = ImageMagic(imgValues);
-		cssCalc['backgroundImage'] = 'url('+image.url+')';
+		cssCalc['background-image'] = 'url('+image.url+')';
 
+		console.log("cssCalc", cssCalc);
+
+		for ( var k in cssCalc ) {
+			console.log("key " + k + " = " + cssCalc[k]);
+			e.style[k] = cssCalc[k];
+		}
+
+
+//		e.setAttribute('style', cssCalc);
+//		e.style = cssCalc;
+
+	}
+
+	render() {  
+
+		var self = this;
+
+		// the message
+		var media = this.props.data;
+		if ( ! media ) return <img/>;
+		var image = media.image;
+		if ( ! image ) return <img/>;
+		
 		return (
-			<div className="Image" style={ cssCalc } />
+			<div className="Image">
+				<div ref={ (e) => self.calcSize(image, e) }   />
+			</div>
 	  );
 	}    
 }
