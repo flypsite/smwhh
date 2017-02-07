@@ -16,9 +16,9 @@ class App extends Component {
 		// init everything here
 
 		var self = this;
-		Pusher.log = function(m) {
-			console.log("Pusher > ", m);
-		}
+//		Pusher.log = function(m) {
+//			console.log("Pusher > ", m);
+//		}
 	/*
 		var p = new Pusher("3bd9f270de4a9ca0cc78");
 		p.connection.bind('connected', function() {

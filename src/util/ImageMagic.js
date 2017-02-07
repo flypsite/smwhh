@@ -144,12 +144,12 @@ export default function ImageMagic(imgObj) {
 		}
 
 		var result = {
-				'marginTop' : margin_top,
-				'marginLeft' : margin_left,
-				'width' : width,
-				'height' : height,
+				'margin-top' : margin_top+ "px",
+				'margin-left' : margin_left+ "px",
+				'width' : width + "px",
+				'height' : height + "px",
 				'display': 'block',
-				'backgroundSize' : "cover"
+				'background-size' : "cover"
 		};
 		return result;
 	}
