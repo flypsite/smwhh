@@ -11,7 +11,8 @@
 #FlypJournal > *, 
 #FlypJournal .FrontPageStream {
   text-align: center;
-  width : 375px;
+  width:375px;
+  width:320px;
   position: relative;
   height: 100%;
 }
@@ -27,6 +28,7 @@
 	display: inline-block;
 	position: relative;
 	width:375px;
+	width:320px;
 	height:100%;
 	box-sizing: border-box;
 	overflow-x: hidden;
@@ -71,7 +73,7 @@
 	font-family: 'Josefin Slab', serif;
 	font-size: 3em;
 	text-align: center;
-	margin: 10%;
+	margin: 5%;
 	padding:10%;
 	border-radius: 50%;
 	border-top-left-radius: 0;
@@ -83,7 +85,7 @@
     background-color: #3b6eb1;
     background-color:rgba(59,110,177,0.6);
 	font-size: 1.1em;
-	padding:10%;
+	padding:3% 10%;
 	width: calc(100% - 20%); 
 	bottom: 0;		
 	color:#fff;
