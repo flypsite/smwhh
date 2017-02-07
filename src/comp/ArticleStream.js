@@ -45,13 +45,15 @@ class ArticleStream extends Component {
 
 
     const listItems = stream.items.map( (item) =>
-      <Message key={item.id} mode="article" data={ item }/>
+      <div key={item.id}>
+        <Message mode="article" data={ item }/>
+      </div>
     );
 
 
     return (
       <div className="ArticleStream">
-        { listItems }
+          { listItems }
       </div>
     );
   }
