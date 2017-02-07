@@ -4,9 +4,16 @@ import Message from './Message.js'
 class ArticleStream extends Component {
 
 
+
+
+  setStream(s) {
+      this.setState(s);
+  }
+
+
   render() {
 
-    var stream = this.props.data;
+    var stream = this.state;
 
     if ( ! stream ) {
       return <div>loading...</div>
