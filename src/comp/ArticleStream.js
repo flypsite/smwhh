@@ -3,7 +3,7 @@ import Message from './Message.js'
 
 class ArticleStream extends Component {
 
-
+  static contextTypes = { app: React.PropTypes.object }
 
 
   setStream(s) {
@@ -11,7 +11,31 @@ class ArticleStream extends Component {
   }
 
 
+  load(substream) {
+
+    if ( this.loading ) return;
+    this.loading = true;
+
+    var self = this;
+    console.log('load ');
+    this.context.app.loadStreamFull(substream.key, function(stream) { 
+      self.setStream(stream);
+    });
+  }
+
+
   render() {
+
+    if ( this.props.mustLoad ) {
+      this.load(this.props.data);
+    }
+
+
+    var subinfo = this.props.data;
+    if ( ! subinfo ) {
+      return <div>no substream...</div>
+    }
+
 
     var stream = this.state;
 

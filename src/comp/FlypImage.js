@@ -11,7 +11,9 @@ class FlypImage extends Component {
 */
 	calcSize(image,e) {
 
-		console.log("calcSize", e);
+		// console.log("calcSize", e);
+		if ( ! e ) return;
+		if ( ! e.parentElement ) return;
 
 		var imgValues = {
 			'container_width': e.parentElement.offsetWidth,
@@ -30,10 +32,10 @@ class FlypImage extends Component {
 		var cssCalc = ImageMagic(imgValues);
 		cssCalc['background-image'] = 'url('+image.url+')';
 
-		console.log("cssCalc", cssCalc);
+		// console.log("cssCalc", cssCalc);
 
 		for ( var k in cssCalc ) {
-			console.log("key " + k + " = " + cssCalc[k]);
+			// console.log("key " + k + " = " + cssCalc[k]);
 			e.style[k] = cssCalc[k];
 		}
 

@@ -13,15 +13,14 @@ class FrontPageStream extends Component {
   }
 
   clicked(msg, artstr) {
-    console.log('click ' , msg.id, msg.substream,);
+    console.log('click ' , msg.id, artstr);
     this.selectedPage = msg.id;
     this.setState({ selectedPage: msg.id });
-    this.context.app.loadStreamFull(msg.substream.key, function(stream) { 
-      console.log("loaded ", stream);
-      // artstr.setStream(stream);
-    });
   }
 
+  registerArticle(e) {
+    console.log('register ' , e);
+  }
 
   render() {
 
@@ -33,40 +32,17 @@ class FrontPageStream extends Component {
     }
 
 
-		var dummy;
-//		window.addEventListener('scroll', function(e) {
-// 			last_known_scroll_position = window.scrollY;
-// 			if (!ticking) {
-// 				window.requestAnimationFrame(function() {
-// 					doSomething(last_known_scroll_position);
-// 					ticking = false;
-// 				});
-// 			}
-// 			ticking = true;
-			dummy = {
-			items: [
-				{ id: "a" }, {id: "b" }, {id: "c" }, {id: "d" }, {id: "e" }, {id: "f" }
-			]
-		};
-//		});
-
-    
-    // if ( this.selectedPage == item.id ) {
-    //  artstr = <ArticleStream data={dummy} />
-    // }
 
 
     const listItems = stream.items.map( function(item) {
 
-      var artstr = <div>empty</div>;
-      if ( self.selectedPage == item.id ) {
-        artstr = <ArticleStream />
-      }
+    	return (
+        <div key={item.id} onClick={ () => self.clicked(item) }>
+  	      <Message key={item.id} mode="frontpages" data={ item } />
+          <ArticleStream data={ item.substream } mustLoad={ item.id == self.selectedPage }/>
+  	    </div> 
+      )
 
-    	return <div onClick={ () => self.clicked(item, artstr) }>
-	      <Message key={item.id} mode="frontpages" data={ item } />
-        {artstr}
-	    </div>
     });
 
 
