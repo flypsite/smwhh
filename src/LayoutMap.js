@@ -1,4 +1,5 @@
 import FrontPageLayout from './comp/FrontPageLayout.js';
+import DummyMessageLayout from './comp/DummyMessageLayout.js';
 
 
 
@@ -6,6 +7,8 @@ export default {
 
 
 	generic: {
+
+
 
 		layouts: {
 
@@ -24,7 +27,12 @@ export default {
 
 	article: {
 
+		fallback: DummyMessageLayout,
+		
+		layouts: {
 
+
+		}
 
 	}
 

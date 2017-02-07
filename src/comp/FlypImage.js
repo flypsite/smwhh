@@ -5,7 +5,9 @@ import ImageMagic from '../util/ImageMagic.js';
 class FlypImage extends Component {
 	calcSize(image,e) {
 
-		console.log("calcSize", e);
+		// console.log("calcSize", e);
+		if ( ! e ) return;
+		if ( ! e.parentElement ) return;
 
 		var imgValues = {
 			'container_width': e.parentElement.offsetWidth,
