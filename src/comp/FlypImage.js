@@ -3,12 +3,6 @@ import ImageMagic from '../util/ImageMagic.js';
 
 
 class FlypImage extends Component {
-
-/*	
-	componentDidMount() {
-		console.log("did mount", this.xxx);
-	}
-*/
 	calcSize(image,e) {
 
 		console.log("calcSize", e);
@@ -29,18 +23,9 @@ class FlypImage extends Component {
 
 		var cssCalc = ImageMagic(imgValues);
 		cssCalc['background-image'] = 'url('+image.url+')';
-
-		console.log("cssCalc", cssCalc);
-
 		for ( var k in cssCalc ) {
-			console.log("key " + k + " = " + cssCalc[k]);
 			e.style[k] = cssCalc[k];
 		}
-
-
-//		e.setAttribute('style', cssCalc);
-//		e.style = cssCalc;
-
 	}
 
 	render() {  

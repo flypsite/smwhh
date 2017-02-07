@@ -10,6 +10,7 @@
 	overflow-x: scroll;
 	overflow-y: hidden;
 	font-family: 'Source Sans Pro', sans-serif;
+	-webkit-overflow-scrolling: touch;
 }
 
 #FlypJournal, 
@@ -37,6 +38,7 @@
 	box-sizing: border-box;
 	overflow-x: hidden;
 	overflow-y: scroll;
+	-webkit-overflow-scrolling: touch;
 }	
 
 #FlypJournal .FrontPageStream > * > .Message {
