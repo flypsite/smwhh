@@ -5,6 +5,7 @@
 	overflow-y: hidden;
 	font-family: 'Source Sans Pro', sans-serif;
 	-webkit-overflow-scrolling: touch;
+	
 }
 
 #FlypJournal, 
@@ -51,20 +52,28 @@
 	position: absolute;
 	z-index: 100;
     box-sizing:border-box;
-    xfont-family: 'Barrio', cursive;
-    xfont-family: 'Lobster Two', cursive;
-    xfont-family: 'Poiret One', cursive;
-    xbackground-image: linear-gradient(to right, black 0%,white 100%), url(assets/img/HeadlineBgTrans.png);
-    xbackground-blend-mode:screen;
+    /*background-image: linear-gradient(to right, black 0%,white 100%), url(assets/img/HeadlineBgTrans.png);
+    background-blend-mode:screen;*/
 }
 #FlypJournal .FrontPageStream > div > .Message > div > div.Text {
 	position: absolute;
 	z-index: 100;
-	
 }
-#FlypJournal .ArticleStream > div > .Message > div {
 
+
+
+#FlypJournal .ArticleStream > div > .Message > .paragraph,
+#FlypJournal .ArticleStream > div > .Message > .image {
+	padding: 0 5%;
+	box-sizing: border-box;
 }
+
+#FlypJournal .ArticleStream > div > .Message > .paragraph > h3 {
+	font-size: 2em;
+	font-weight:400;
+	text-transform: uppercase;
+}
+
 
 #FlypJournal .ArticleStream > div > .Message > div.image > div.Image {
   overflow:hidden;
@@ -74,6 +83,8 @@
 #FlypJournal .ArticleStream > div > .Message > div.image > p {
   text-align:right;
 }
+
+
 
 
 /*-----  Front Page Design 1 ------*/
@@ -97,10 +108,11 @@
     background-color: #3b6eb1;
     background-color:rgba(59,110,177,0.6);
 	font-size: 1.1em;
-	padding:3% 10%;
-	width: calc(100% - 20%); 
+	padding:3% 5%;
+	width: 100%; 
 	bottom: 0;		
 	color:#fff;
+	box-sizing: border-box;
 }
 
 
