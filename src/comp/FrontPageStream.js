@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import ReactDOM from 'react-dom';
 import Message from './Message.js';
 import ArticleStream from './ArticleStream.js';
 
@@ -52,9 +51,8 @@ class FrontPageStream extends Component {
 
     });
 
-		// FIXME use ReactDOM.findDOMNode(this).offsetWidth instead of 320
     return (
-      <div className="FrontPageStream" style={ {width: listItems.length * 320 + "px"} }>
+      <div className="FrontPageStream" style={ {width: listItems.length * document.documentElement.offsetWidth + "px"} }>
         { listItems }
       </div>
     );

@@ -131,23 +131,6 @@ class App extends Component {
 
 	}
 	
-
-	// get the scrollEnd
-/*  
-  delayedExec = function(after, fn) {
-    var timer;
-    return function() {
-        timer && clearTimeout(timer);
-        timer = setTimeout(fn, after);
-    };
-	};
-
-  scrollStopper = this.delayedExec(200, function() {
-    // fired @ end of scroll
-    console.log("fired, but where is my DOM element?", this);
-	});
-*/
-
 	handleScroll(e) {
 		var self = this;
 		self.timer && clearTimeout(self.timer);
@@ -166,6 +149,8 @@ class App extends Component {
 		d.scrollLeft = newPos;
 		// and use raf/caf for animation...
 	}
+	
+	
 	
 	render() {
 		return (
