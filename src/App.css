@@ -1,22 +1,17 @@
 @import url('https://fonts.googleapis.com/css?family=Barrio|Josefin+Slab:700|Lobster+Two|Poiret+One|Source+Sans+Pro:300,300i,400,400i,900,900i');
 
-
-
-    
-    
-
-
 #FlypJournal .App {
 	overflow-x: scroll;
 	overflow-y: hidden;
 	font-family: 'Source Sans Pro', sans-serif;
+	-webkit-overflow-scrolling: touch;
 }
 
 #FlypJournal, 
 #FlypJournal > *, 
 #FlypJournal .FrontPageStream {
   text-align: center;
-  width : 320px;
+  width : 375px;
   position: relative;
   height: 100%;
 }
@@ -32,11 +27,12 @@
 	margin-top: 40px;
 	display: inline-block;
 	position: relative;
-	width:320px;
+	width:375px;
 	height:calc(100% - 40px);
 	box-sizing: border-box;
 	overflow-x: hidden;
 	overflow-y: scroll;
+	-webkit-overflow-scrolling: touch;
 }	
 
 #FlypJournal .FrontPageStream > * > .Message {
@@ -86,6 +82,7 @@
 }
 .FrontPage1 .Text {
     background-color: #3b6eb1;
+    background-color:rgba(59,110,177,0.6);
 	font-size: 1.1em;
 	padding:10%;
 	width: calc(100% - 20%); 
@@ -160,7 +157,7 @@
 	position:fixed;
   background-color: #222;
   height: 40px;
-  width: 320px;
+  width: 375px;
   color: white;
 }
 
