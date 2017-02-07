@@ -32,6 +32,9 @@ class App extends Component {
 			url: "//flypsite.appspot.com" ,
 			mode: "poll"
 		});
+
+		this.vienna = v;
+
 		v.connect({
 			initial: function(json) { 
 				console.log("initial callback");
@@ -46,11 +49,41 @@ class App extends Component {
 				console.log("command callback"); 
 			}
 		});
+
+
+
 	}
-  
+
+		// magic: make the app avail in every child... (not in stable!)
+	// https://www.ctheu.com/2015/02/12/how-to-communicate-between-react-components/
+	getChildContext() {
+    	// it exposes one property "xy", any of the components that are
+    	// rendered inside it will be able to access it
+    	return { app: this };
+  	}
+
+	// we declare the context
+  	static childContextTypes = {
+    	app: React.PropTypes.object
+  	}
+
+  	propTypes: {
+		t: React.PropTypes.func.isRequired,
+	}
+
 	setStream(s) {
 		this.setState(s);
 	}
+
+
+	loadStreamFull(sname, cb) {
+		var self = this;
+		this.vienna.requestStreamAscending(sname, 0, 1024, function(json) {
+			cb(self._translateStream(json));
+		});
+	}
+
+
 
 	_tmsg(e) {
 
@@ -67,7 +100,8 @@ class App extends Component {
 			text: m.text,
 			info: m.info,
 			signature: false,
-			media: m.media
+			media: m.media,
+			substream: m.substream
 		}
 
 

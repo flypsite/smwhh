@@ -4,6 +4,7 @@ import ArticleStream from './ArticleStream.js';
 
 class FrontPageStream extends Component {
 
+  static contextTypes = { app: React.PropTypes.object }
 
   constructor(props) {
     super(props);
@@ -11,12 +12,14 @@ class FrontPageStream extends Component {
     this.state = { selectedPage: 0 };
   }
 
-  clicked(id) {
-    console.log('click ' + id + " " + new Date());
-    this.selectedPage = id;
-    this.setState({ selectedPage: id })
-
-
+  clicked(msg, artstr) {
+    console.log('click ' , msg.id, msg.substream,);
+    this.selectedPage = msg.id;
+    this.setState({ selectedPage: msg.id });
+    this.context.app.loadStreamFull(msg.substream.key, function(stream) { 
+      console.log("loaded ", stream);
+      // artstr.setStream(stream);
+    });
   }
 
 
@@ -57,12 +60,12 @@ class FrontPageStream extends Component {
 
       var artstr = <div>empty</div>;
       if ( self.selectedPage == item.id ) {
-        artstr = <ArticleStream data={dummy} />
+        artstr = <ArticleStream />
       }
 
-    	return <div onClick={ () => self.clicked(item.id) }>
+    	return <div onClick={ () => self.clicked(item, artstr) }>
 	      <Message key={item.id} mode="frontpages" data={ item } />
-        { artstr }
+        {artstr}
 	    </div>
     });
 
