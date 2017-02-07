@@ -10,7 +10,7 @@
 #FlypJournal, 
 #FlypJournal > *, 
 #FlypJournal .FrontPageStream {
-  text-align: center;
+  text-align: left;
   width:375px;
   position: relative;
   height: 100%;
