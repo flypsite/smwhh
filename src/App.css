@@ -24,11 +24,10 @@
 
 
 #FlypJournal .FrontPageStream > * {
-	margin-top: 40px;
 	display: inline-block;
 	position: relative;
 	width:375px;
-	height:calc(100% - 40px);
+	height:100%;
 	box-sizing: border-box;
 	overflow-x: hidden;
 	overflow-y: scroll;
@@ -142,30 +141,4 @@
 }
 .OrangeBG {
 	background-color: rgba(255,143,40,0.8);
-}
-
-
-
-
-
-#FlypJournal .App-logo {
-  animation: App-logo-spin infinite 20s linear;
-  height: 40px;
-}
-
-#FlypJournal .App-header {
-	position:fixed;
-  background-color: #222;
-  height: 40px;
-  width: 375px;
-  color: white;
-}
-
-#FlypJournal .App-intro {
-  font-size: large;
-}
-
-@keyframes App-logo-spin {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
 }
