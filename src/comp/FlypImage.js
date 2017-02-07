@@ -9,7 +9,11 @@ export default function FlypImage(props) {
 	if ( ! image ) return <img/>;
 
 	return (
+<<<<<<< HEAD
 			<img src={ image.url } />
+=======
+		<img src={ image.url } />
+>>>>>>> 6ce3df57ac35a9158dfc633cd6ed13669a7d7db0
     );
     
 }
