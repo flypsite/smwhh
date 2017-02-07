@@ -1,11 +1,5 @@
 @import url('https://fonts.googleapis.com/css?family=Barrio|Josefin+Slab:700|Lobster+Two|Poiret+One|Source+Sans+Pro:300,300i,400,400i,900,900i');
 
-
-
-    
-    
-
-
 #FlypJournal .App {
 	overflow-x: scroll;
 	overflow-y: hidden;
@@ -17,7 +11,7 @@
 #FlypJournal > *, 
 #FlypJournal .FrontPageStream {
   text-align: center;
-  width : 320px;
+  width : 375px;
   position: relative;
   height: 100%;
 }
@@ -33,7 +27,7 @@
 	margin-top: 40px;
 	display: inline-block;
 	position: relative;
-	width:320px;
+	width:375px;
 	height:calc(100% - 40px);
 	box-sizing: border-box;
 	overflow-x: hidden;
@@ -163,7 +157,7 @@
 	position:fixed;
   background-color: #222;
   height: 40px;
-  width: 320px;
+  width: 375px;
   color: white;
 }
 
