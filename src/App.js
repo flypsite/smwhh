@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import ReactDOM from 'react-dom';
 import logo from './logo.svg';
 import FrontPageStream from './comp/FrontPageStream.js';
 import TestStream from './teststream.js'
@@ -39,7 +40,7 @@ class App extends Component {
 			initial: function(json) { 
 				console.log("initial callback");
 				console.log(json.updates);
-				self.setStream(self._translateStream(json));
+				self.setStream(self._translateStream(json));  // FIXME: nur Nachrichten von einem Stream anzeigen!
 			},
 			update: function(json) { 
 				console.log("update callback " + json.updates[0].message.text);
@@ -130,19 +131,45 @@ class App extends Component {
 
 	}
 	
-	scrollHandler(e) {
-		console.log(e);
+
+	// get the scrollEnd
+/*  
+  delayedExec = function(after, fn) {
+    var timer;
+    return function() {
+        timer && clearTimeout(timer);
+        timer = setTimeout(fn, after);
+    };
+	};
+
+  scrollStopper = this.delayedExec(200, function() {
+    // fired @ end of scroll
+    console.log("fired, but where is my DOM element?", this);
+	});
+*/
+
+	handleScroll(e) {
+		var self = this;
+		self.timer && clearTimeout(self.timer);
+		self.timer = window.setTimeout(
+			(function(self1) {						//Self-executing func which takes 'this' as self
+				return function() {					//Return a function in the context of 'self'
+					self1.scrollStopper(); 		//Thing you wanted to run as non-window 'this'
+				}
+			}
+		)(self), 100);
+	}
+	scrollStopper() {
+		var d = ReactDOM.findDOMNode(this);
+		// since width is defined in device units (100vw), we have to get the pixel width here:
+		var newPos = Math.round(d.scrollLeft / d.offsetWidth)*d.offsetWidth;
+		d.scrollLeft = newPos;
+		// and use raf/caf for animation...
 	}
 	
 	render() {
-		var self = this;
-		console.log("app.render()")
-		// var p = new Pusher({
-
-		// });
-
 		return (
-			<div className="App" onScroll= { self.scrollHandler } >
+			<div className="App" onScroll={ this.handleScroll.bind(this) } >
 			<FrontPageStream data={this.state} ref={(fpstream) => { this.fpstream = fpstream; }}/>
 			</div>
 			);

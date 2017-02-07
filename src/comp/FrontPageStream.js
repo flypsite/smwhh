@@ -16,6 +16,11 @@ class FrontPageStream extends Component {
     this.selectedPage = msg.id;
     this.setState({ selectedPage: msg.id });
   }
+  
+  scrolled(msg) {
+  	this.selectedPage = msg.id;
+    this.setState({ selectedPage: msg.id });
+  }
 
   registerArticle(e) {
     console.log('register ' , e);
@@ -36,7 +41,7 @@ class FrontPageStream extends Component {
     const listItems = stream.items.map( function(item) {
 
     	return (
-        <div key={item.id} onClick={ () => self.clicked(item) }>
+        <div key={item.id} onScroll={ () => self.scrolled (item) } className={item.style}>
   	      <Message key={item.id} mode="frontpages" data={ item } />
           <ArticleStream data={ item.substream } mustLoad={ item.id == self.selectedPage }/>
   	    </div> 
@@ -46,7 +51,7 @@ class FrontPageStream extends Component {
 
 
     return (
-      <div className="FrontPageStream">
+      <div className="FrontPageStream" style={ {width: listItems.length * 320 + "px"} }>
         { listItems }
       </div>
     );

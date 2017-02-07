@@ -12,21 +12,18 @@
 #FlypJournal > *, 
 #FlypJournal .FrontPageStream {
   text-align: left;
-  width:320px;
+  width:100vw;
   position: relative;
   height: 100%;
 }
 
 
-#FlypJournal .FrontPageStream {
-	width: 10000px;
-}
 
 
 #FlypJournal .FrontPageStream > * {
 	display: inline-block;
 	position: relative;
-	width:320px;
+	width:100vw;
 	height:100%;
 	box-sizing: border-box;
 	overflow-x: hidden;
@@ -61,7 +58,9 @@
 }
 
 
-
+#FlypJournal .ArticleStream {
+	min-height:100%;
+}
 #FlypJournal .ArticleStream > div > .Message > .paragraph,
 #FlypJournal .ArticleStream > div > .Message > .image {
 	padding: 0 5%;
@@ -87,12 +86,12 @@
 
 
 
-/*-----  Front Page Design 1 ------*/
-.FrontPage1 {
+/*-----  Front Page Designs ------*/
+.Style1 {
 	background-color: #c80c41;
 }
-.FrontPage1 .Image {}
-.FrontPage1 .Headline {
+.Style1 .Image {}
+.Style1 .Headline {
 	font-family: 'Josefin Slab', serif;
 	font-size: 3em;
 	text-align: center;
@@ -104,7 +103,7 @@
     color:#fff;
     hyphens: auto;
 }
-.FrontPage1 .Text {
+.Style1 .Text {
     background-color: #3b6eb1;
     background-color:rgba(59,110,177,0.6);
 	font-size: 1.1em;
@@ -116,12 +115,11 @@
 }
 
 
-/*-----  Front Page Design 1 ------*/
-.FrontPage2 {
+.Style2 {
 	background-color: #c80c41;
 }
-.FrontPage2 .Image {}
-.FrontPage2 .Headline {
+.Style2 .Image {}
+.Style2 .Headline {
 	font-family: 'Barrio', cursive;
 	font-size: 3em;
 	text-align: left;
@@ -135,7 +133,7 @@
     hyphens: auto;	
     
 }
-.FrontPage2 .Text {
+.Style2 .Text {
 	background-color: rgb(240,50,240);
 	font-size: 1.1em;
 	padding:2%;
