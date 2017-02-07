@@ -35,7 +35,7 @@
 #FlypJournal .FrontPageStream > * > .Message > div {
 	height: 100%;
 }
-#FlypJournal .FrontPageStream > * > .Message > div > img {
+#FlypJournal .FrontPageStream > * > .Message > div > div.Image {
 	height: 100%;
 	position: absolute;
 }
