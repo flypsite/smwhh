@@ -7,7 +7,7 @@ export default function FrontPageLayout(props) {
 	// the message
 	var m = props.data;
 	return (
-		<div>
+		<div className={m.layout}>
 			<FlypImage data={m.media}/>
 			<div className="Headline">{m.headline}</div>
 			<div className="Text">{m.text}</div>

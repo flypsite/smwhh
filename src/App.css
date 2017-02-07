@@ -1,14 +1,26 @@
-#FlypJournal, #FlypJournal > *, #FlypJournal .FrontPageStream {
+@import url('https://fonts.googleapis.com/css?family=Barrio|Josefin+Slab:700|Lobster+Two|Poiret+One|Source+Sans+Pro:300,300i,400,400i,900,900i');
+
+
+
+    
+    
+
+
+#FlypJournal .App {
+	overflow-x: scroll;
+	overflow-y: hidden;
+	font-family: 'Source Sans Pro', sans-serif;
+}
+
+#FlypJournal, 
+#FlypJournal > *, 
+#FlypJournal .FrontPageStream {
   text-align: center;
   width : 320px;
   position: relative;
   height: 100%;
 }
 
-#FlypJournal .App {
-	overflow-x: scroll;
-	overflow-y: hidden;
-}
 
 #FlypJournal .FrontPageStream {
 	width: 10000px;
@@ -23,7 +35,6 @@
 	width:320px;
 	height:calc(100% - 40px);
 	background:#cccc33;
-	border: 2px solid #3333cc;
 	box-sizing: border-box;
 	overflow-x: hidden;
 	overflow-y: scroll;
@@ -41,14 +52,59 @@
 }
 #FlypJournal .FrontPageStream > * > .Message > div > div.Headline {
 	position: absolute;
-	padding: 20% 0;
+	padding: 10% 5%;
+	width: 100%;
 	z-index: 100;
+	font-size: 3em;
+	text-align: center;	
+    box-sizing:border-box;
+    xfont-family: 'Josefin Slab', serif;
+    xfont-family: 'Barrio', cursive;
+    xfont-family: 'Lobster Two', cursive;
+    xfont-family: 'Poiret One', cursive;
+    xbackground-image: linear-gradient(to right, black 0%,white 100%), url(assets/img/HeadlineBgTrans.png);
+     xbackground-image: linear-gradient(to right, black 0%,white 100%), url(https://www.ich-bin-dann-mal-schlank.de/blog/wp-content/uploads/2011/08/IBDMS-Kirschen-450x301.jpg);
+    transform: rotate(-10deg);
+    xbackground-blend-mode:screen;
+    background-color: rgba(255,255,255,0.8);
+    border-radius: 50%;
+/*    
+		
+	
+	
+ */
 }
+
+.JosefinSlab {
+	font-family: 'Josefin Slab', serif;
+}
+.Barrio {
+	font-family: 'Barrio', cursive;
+}
+.LobsterTwo {
+	font-family: 'Lobster Two', cursive;
+}
+.PoiretOne {
+	font-family: 'Poiret One', cursive;
+}
+.Orange {
+	color:#ff5100;
+}
+.OrangeBG {
+	background-color: rgba(255,143,40,0.8);
+}
+
+
+
 #FlypJournal .FrontPageStream > * > .Message > div > div.Text {
 	position: absolute;
-	padding: 40% 0;
+	padding:5%;
+	margin: 5%;
 	z-index: 100;
-	background-color: red;
+	font-size: 1.1em;
+	bottom: 0;
+	background-color: rgba(255,255,255,0.7);
+	font-weight: 300;
 }
 
 #FlypJournal .App-logo {
