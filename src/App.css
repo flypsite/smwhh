@@ -52,28 +52,74 @@
 }
 #FlypJournal .FrontPageStream > * > .Message > div > div.Headline {
 	position: absolute;
-	padding: 10% 5%;
-	width: 100%;
 	z-index: 100;
-	font-size: 3em;
-	text-align: center;	
     box-sizing:border-box;
-    xfont-family: 'Josefin Slab', serif;
     xfont-family: 'Barrio', cursive;
     xfont-family: 'Lobster Two', cursive;
     xfont-family: 'Poiret One', cursive;
     xbackground-image: linear-gradient(to right, black 0%,white 100%), url(assets/img/HeadlineBgTrans.png);
-     xbackground-image: linear-gradient(to right, black 0%,white 100%), url(https://www.ich-bin-dann-mal-schlank.de/blog/wp-content/uploads/2011/08/IBDMS-Kirschen-450x301.jpg);
-    transform: rotate(-10deg);
     xbackground-blend-mode:screen;
-    background-color: rgba(255,255,255,0.8);
-    border-radius: 50%;
-/*    
-		
-	
-	
- */
 }
+#FlypJournal .FrontPageStream > * > .Message > div > div.Text {
+	position: absolute;
+	z-index: 100;
+	
+}
+
+
+
+/*-----  Front Page Design 1 ------*/
+.FrontPage1 {}
+.FrontPage1 .Image {}
+.FrontPage1 .Headline {
+	font-family: 'Josefin Slab', serif;
+	font-size: 3em;
+	text-align: center;
+	margin: 10%;
+	padding:10%;
+	border-radius: 50%;
+	border-top-left-radius: 0;
+    background-color: #3b6eb1;
+    color:#fff;
+}
+.FrontPage1 .Text {
+    background-color: #3b6eb1;
+	font-size: 1.1em;
+	padding:10%;
+	width: calc(100% - 20%); 
+	bottom: 0;		
+	color:#fff;
+}
+
+
+/*-----  Front Page Design 1 ------*/
+.FrontPage2 {}
+.FrontPage2 .Image {}
+.FrontPage2 .Headline {
+	font-family: 'Barrio', cursive;
+	font-size: 3em;
+	text-align: left;
+	margin: 10%;
+	padding:2%;
+    background-color: rgb(240,50,240);	
+    color:#fff;
+    transform:rotate(-10deg);
+    width: 100%; 	
+}
+.FrontPage2 .Text {
+	background-color: rgb(240,50,240);
+	font-size: 1.1em;
+	padding:2%;
+	margin: 10%;
+	color:#fff;
+	width: 100%;
+	padding-right: 10%; 	
+	transform:rotate(-10deg);
+	bottom: 2%;
+	box-sizing: border-box;
+}
+
+
 
 .JosefinSlab {
 	font-family: 'Josefin Slab', serif;
@@ -96,16 +142,7 @@
 
 
 
-#FlypJournal .FrontPageStream > * > .Message > div > div.Text {
-	position: absolute;
-	padding:5%;
-	margin: 5%;
-	z-index: 100;
-	font-size: 1.1em;
-	bottom: 0;
-	background-color: rgba(255,255,255,0.7);
-	font-weight: 300;
-}
+
 
 #FlypJournal .App-logo {
   animation: App-logo-spin infinite 20s linear;
