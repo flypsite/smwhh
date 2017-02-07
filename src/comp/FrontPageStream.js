@@ -13,7 +13,6 @@ class FrontPageStream extends Component {
   }
 
   clicked(msg, artstr) {
-    console.log('click ' , msg.id, artstr);
     this.selectedPage = msg.id;
     this.setState({ selectedPage: msg.id });
   }

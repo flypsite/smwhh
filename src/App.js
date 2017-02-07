@@ -129,16 +129,20 @@ class App extends Component {
 
 
 	}
-
+	
+	scrollHandler(e) {
+		console.log(e);
+	}
+	
 	render() {
-
+		var self = this;
 		console.log("app.render()")
 		// var p = new Pusher({
 
 		// });
 
 		return (
-			<div className="App">
+			<div className="App" onScroll= { self.scrollHandler } >
 			<FrontPageStream data={this.state} ref={(fpstream) => { this.fpstream = fpstream; }}/>
 			</div>
 			);

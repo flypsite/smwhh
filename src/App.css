@@ -11,7 +11,7 @@
 #FlypJournal > *, 
 #FlypJournal .FrontPageStream {
   text-align: left;
-  width:375px;
+  width:320px;
   position: relative;
   height: 100%;
 }
@@ -25,7 +25,7 @@
 #FlypJournal .FrontPageStream > * {
 	display: inline-block;
 	position: relative;
-	width:375px;
+	width:320px;
 	height:100%;
 	box-sizing: border-box;
 	overflow-x: hidden;
@@ -35,12 +35,15 @@
 
 #FlypJournal .FrontPageStream > div > .Message {
 	height: 100%;
+	width:100%;
 }
 #FlypJournal .FrontPageStream > div > .Message > div {
 	height: 100%;
+	width:100%;
 }
 #FlypJournal .FrontPageStream > div > .Message > div > div.Image {
 	height: 100%;
+	width:100%;
 	position: absolute;
 	overflow:hidden;
 }
