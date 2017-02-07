@@ -109,7 +109,7 @@ class App extends Component {
 			<img src={logo} className="App-logo" alt="logo" />
 			<h2>Welcome to #smwhh</h2>
 			</div>
-			<FrontPageStream data={this.state}/>
+			<FrontPageStream data={this.state} ref={(fpstream) => { this.fpstream = fpstream; }}/>
 			</div>
 			);
 	}
