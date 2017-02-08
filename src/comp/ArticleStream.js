@@ -13,38 +13,45 @@ class ArticleStream extends Component {
 
 	load(substream) {
 
-		if ( this.loading ) return;
-		this.loading = true;
+		if ( substream.loading ) return;
+		substream.loading = true;
 
 		var self = this;
-		console.log('load ');
-		this.context.app.loadStreamFull(substream.key, function(stream) { 
-			self.setStream(stream);
+		console.log('loading ' + substream.key);
+		this.context.app.loadStreamFull(substream.key, function(stream) {
+			
+			substream.items = stream.items;
+			console.log('success ' + substream.key + " " + substream.items.length);
+
+			var nstate = {
+				substream: substream,
+				fullstream: stream
+			};
+
+			substream.loading = false;
+			self.setState(nstate);
+
 		});
 	}
 
 
 	render() {
 
-		if ( this.props.mustLoad ) {
-			this.load(this.props.data);
+		var substream = this.props.data;
+		if ( ! substream ) return null; 
+
+
+		if ( substream.loading ) {
+			return <div className="ArticleStream">loading...</div>
+		}
+
+		if ( ! substream.items ) {
+			this.load(substream);
+			return <div className="ArticleStream">loading...</div>
 		}
 
 
-    var subinfo = this.props.data;
-    if ( ! subinfo ) {
-      return null;
-    }
-
-
-		var stream = this.state;
-
-    if ( ! stream ) {
-      return <div className="ArticleStream">loading...</div>
-    }
-
-
-		const listItems = stream.items.map( (item) =>
+		const listItems = substream.items.map( (item) =>
 			<div key={item.id}>
 			<Message mode="article" data={ item }/>
 			</div>
