@@ -21,7 +21,7 @@ h1,h2,h3,h4,p {
   height: 100%;
 }
 
-#Hans {
+#FrontPageStreamScrollContainer {
 	overflow-x: scroll;
 	overflow-y: hidden;
 	-webkit-overflow-scrolling: touch;
