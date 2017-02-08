@@ -10,24 +10,13 @@ class FrontPageStream extends Component {
 
 	constructor(props) {
 		super(props);
-		this.selectedPage = 0;
-		this.state = { selectedPage: 0 };
-		//this.baseWidth = ReactDOM.findDOMNode(this.app).offsetWidth;
-		
+		this.state = { selectedPage: -1 };
 	}
 
-	clicked(msg, artstr) {
-		this.selectedPage = msg.id;
-		this.setState({ selectedPage: msg.id });
-	}
-	
 	scrolled(idx) {
-		this.selectedPage = idx;
+		var sp = this.state.selectedPage;
+		if ( sp == idx ) return;
 		this.setState({ selectedPage: idx });
-	}
-
-	registerArticle(e) {
-		console.log('register ' , e);
 	}
 
 
@@ -52,9 +41,9 @@ class FrontPageStream extends Component {
 		// since width is defined in device units (vw), we have to get the pixel width here:
 		var newPos = Math.round(d.scrollLeft / d.offsetWidth)*d.offsetWidth;
 		
-		console.log("selectedPage? ", this.selectedPage, Math.round(d.scrollLeft / d.offsetWidth) );		
+		console.log("selectedPage? ", this.state.selectedPage, Math.round(d.scrollLeft / d.offsetWidth) );		
 	
-		if(this.selectedPage != Math.round(d.scrollLeft / d.offsetWidth) ) {
+		if(this.state.selectedPage != Math.round(d.scrollLeft / d.offsetWidth) ) {
 			this.scrolled(Math.round(d.scrollLeft / d.offsetWidth));
 		}
 		
@@ -76,12 +65,12 @@ class FrontPageStream extends Component {
 
 
 
-		const listItems = stream.items.map( function(item) {
+		const listItems = stream.items.map( function(item, index) {
 
 			return (
-				<div id={item.id} key={item.id} onScroll={ () => self.scrolled (item) } className={item.style}>
+				<div id={item.id} key={item.id} className={item.style}>
 					<Message key={item.id} mode="frontpages" data={ item } />
-					<ArticleStream data={ item.substream } showArticle={ item.id == self.selectedPage }/>
+					<ArticleStream data={ item.substream } showArticle={ index == self.state.selectedPage }/>
 				</div> 
 			)
 

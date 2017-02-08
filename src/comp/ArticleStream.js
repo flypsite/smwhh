@@ -37,8 +37,12 @@ class ArticleStream extends Component {
 
 	render() {
 
+		console.log('render article ' + this.props.showArticle);
+
+		if ( ! this.props.showArticle ) return null;
+
 		var substream = this.props.data;
-		if ( ! substream ) return null; 
+		if ( !substream ) return null; 
 
 
 		if ( substream.loading ) {
