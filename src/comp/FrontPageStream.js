@@ -6,29 +6,29 @@ import TweenMax from 'gsap'
 
 class FrontPageStream extends Component {
 
-  static contextTypes = { app: React.PropTypes.object }
+	static contextTypes = { app: React.PropTypes.object }
 
-  constructor(props) {
-    super(props);
-    this.selectedPage = 0;
-    this.state = { selectedPage: 0 };
-    //this.baseWidth = ReactDOM.findDOMNode(this.app).offsetWidth;
-    
-  }
+	constructor(props) {
+		super(props);
+		this.selectedPage = 0;
+		this.state = { selectedPage: 0 };
+		//this.baseWidth = ReactDOM.findDOMNode(this.app).offsetWidth;
+		
+	}
 
-  clicked(msg, artstr) {
-    this.selectedPage = msg.id;
-    this.setState({ selectedPage: msg.id });
-  }
-  
-  scrolled(idx) {
-  	this.selectedPage = idx;
-    this.setState({ selectedPage: idx });
-  }
+	clicked(msg, artstr) {
+		this.selectedPage = msg.id;
+		this.setState({ selectedPage: msg.id });
+	}
+	
+	scrolled(idx) {
+		this.selectedPage = idx;
+		this.setState({ selectedPage: idx });
+	}
 
-  registerArticle(e) {
-    console.log('register ' , e);
-  }
+	registerArticle(e) {
+		console.log('register ' , e);
+	}
 
 
 	handleScroll(e) {
@@ -64,37 +64,37 @@ class FrontPageStream extends Component {
 	
 
 
-  render() {
+	render() {
 
-    var self = this;
-    var stream = this.props.data;
+		var self = this;
+		var stream = this.props.data;
 
-    if ( ! stream ) {
-      return <div>loading...</div>
-    }
-
-
+		if ( ! stream ) {
+			return <div>loading...</div>
+		}
 
 
-    const listItems = stream.items.map( function(item) {
 
-    	return (
-        <div id={item.id} key={item.id} onScroll={ () => self.scrolled (item) } className={item.style}>
-  	      <Message key={item.id} mode="frontpages" data={ item } />
-          <ArticleStream data={ item.substream } showArticle={ item.id == self.selectedPage }/>
-  	    </div> 
-      )
 
-    });
+		const listItems = stream.items.map( function(item) {
 
-    return (
-    	<div id="Hans" onScroll={ this.handleScroll.bind(this) } ref={(elem) => { this.DOMNode = elem; }}>
-      		<div className="FrontPageStream" style={ {width: listItems.length * document.documentElement.offsetWidth + "px"} } >
-        		{ listItems }
-      		</div>
-      	</div>
-    );
-  }
+			return (
+				<div id={item.id} key={item.id} onScroll={ () => self.scrolled (item) } className={item.style}>
+					<Message key={item.id} mode="frontpages" data={ item } />
+					<ArticleStream data={ item.substream } showArticle={ item.id == self.selectedPage }/>
+				</div> 
+			)
+
+		});
+
+		return (
+			<div id="Hans" onScroll={ this.handleScroll.bind(this) } ref={(elem) => { this.DOMNode = elem; }}>
+					<div className="FrontPageStream" style={ {width: listItems.length * document.documentElement.offsetWidth + "px"} } >
+						{ listItems }
+					</div>
+				</div>
+		);
+	}
 
 }
 
