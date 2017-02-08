@@ -10,6 +10,7 @@ class FrontPageStream extends Component {
 
 	constructor(props) {
 		super(props);
+		this.lastPage = null;
 		this.selectedPage = 0;
 		this.state = { selectedPage: 0 };
 		//this.baseWidth = ReactDOM.findDOMNode(this.app).offsetWidth;
@@ -22,6 +23,7 @@ class FrontPageStream extends Component {
 	}
 	
 	scrolled(idx) {
+		this.lastPage = this.selectedPage;
 		this.selectedPage = idx;
 		this.setState({ selectedPage: idx });
 	}
@@ -32,7 +34,6 @@ class FrontPageStream extends Component {
 
 
 	handleScroll(e) {
-		console.log("handleScroll");		
 		var self = this;
 		self.timer && clearTimeout(self.timer);
 
@@ -47,21 +48,23 @@ class FrontPageStream extends Component {
 	
 	
 	scrollStopper() {
-	
+		var self = this;
 		var d = this.DOMNode;
 		// since width is defined in device units (vw), we have to get the pixel width here:
 		var newPos = Math.round(d.scrollLeft / d.offsetWidth)*d.offsetWidth;
-		
-		console.log("selectedPage? ", this.selectedPage, Math.round(d.scrollLeft / d.offsetWidth) );		
-	
+			
 		if(this.selectedPage != Math.round(d.scrollLeft / d.offsetWidth) ) {
 			this.scrolled(Math.round(d.scrollLeft / d.offsetWidth));
 		}
 		
-		//d.scrollLeft = newPos;
-		TweenMax.to(d, 0.2, { scrollLeft: newPos });
+		TweenMax.to(d, 0.2, { scrollLeft: newPos, onComplete:self.resetOldScroll() });
+		
 	}
 	
+	resetOldScroll() {
+		var d = this.DOMNode;
+		if(d.children[0].children[this.lastPage]) d.children[0].children[this.lastPage].scrollTop = 0;
+	}
 
 
 	render() {
@@ -89,10 +92,10 @@ class FrontPageStream extends Component {
 
 		return (
 			<div id="Hans" onScroll={ this.handleScroll.bind(this) } ref={(elem) => { this.DOMNode = elem; }}>
-					<div className="FrontPageStream" style={ {width: listItems.length * document.documentElement.offsetWidth + "px"} } >
-						{ listItems }
-					</div>
+				<div className="FrontPageStream" style={ {width: listItems.length * document.documentElement.offsetWidth + "px"} } >
+					{ listItems }
 				</div>
+			</div>
 		);
 	}
 

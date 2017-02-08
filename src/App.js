@@ -131,14 +131,11 @@ class App extends Component {
 
 	}
 
-	peter() {
-		console.log("peter");
-	}
-		
+
 	render() {
 	
 		return (
-			<div className="App" onScroll={this.peter()}>
+			<div className="App">
 			<FrontPageStream data={this.state} />
 			</div>
 			);
