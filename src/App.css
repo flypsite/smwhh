@@ -1,5 +1,10 @@
 @import url('https://fonts.googleapis.com/css?family=Barrio|Josefin+Slab:700|Lobster+Two|Poiret+One|Source+Sans+Pro:300,300i,400,400i,900,900i');
 
+h1,h2,h3,h4,p {
+	margin: 0;
+	padding: 0;
+}
+
 #FlypJournal .App {
 	overflow-x: scroll;
 	overflow-y: hidden;
@@ -43,12 +48,12 @@
 	position: absolute;
 	overflow:hidden;
 }
-#FlypJournal .FrontPageStream > div > .Message > div > div.Headline {
+#FlypJournal .FrontPageStream > div > .Message > div > h2 {
 	position: absolute;
 	z-index: 100;
 	box-sizing:border-box;
 }
-#FlypJournal .FrontPageStream > div > .Message > div > div.Text {
+#FlypJournal .FrontPageStream > div > .Message > div > p {
 	position: absolute;
 	z-index: 100;
 }
@@ -59,8 +64,7 @@
 #FlypJournal .ArticleStream {
 	min-height:100%;
 }
-#FlypJournal .ArticleStream > div > .Message > .ArticleParagraphLayout,
-#FlypJournal .ArticleStream > div > .Message > .ArticleImageLayout {
+#FlypJournal .ArticleStream  {
 	padding: 0 5%;
 	box-sizing: border-box;
 }
@@ -93,12 +97,12 @@
 
 
 
-/*-----  Front Page Designs ------*/
-#FlypJournal .FrontPageStream > .Style1 {
+/*-----  Style1 - Design ------*/
+#FlypJournal .Style1 .FrontPageLayout  {
 	background-color: #c80c41;
 }
-#FlypJournal .FrontPageStream > .Style1 .FlypImage {}
-#FlypJournal .FrontPageStream > .Style1 .Headline {
+#FlypJournal .Style1 .FrontPageLayout .FlypImage {}
+#FlypJournal .Style1 .FrontPageLayout  h2 {
 	font-family: 'Josefin Slab', serif;
 	font-size: 3em;
 	text-align: center;
@@ -110,7 +114,7 @@
   color:#fff;
   hyphens: auto;
 }
-#FlypJournal .FrontPageStream > .Style1 .Text {
+#FlypJournal .Style1 .FrontPageLayout  p {
   background-color: #3b6eb1;
   background-color:rgba(59,110,177,0.6);
   font-size: 1.1em;
@@ -121,11 +125,14 @@
 	box-sizing: border-box;
 }
 
-.Style2 {
+
+
+/*-----  Style2 - Design ------*/
+#FlypJournal .Style2 .FrontPageLayout {
 	background-color: #c80c41;
 }
-.Style2 .FlypImage {}
-.Style2 .Headline {
+#FlypJournal .Style2 .FrontPageLayout .FlypImage {}
+#FlypJournal .Style2 .FrontPageLayout h2 {
 	font-family: 'Barrio', cursive;
 	font-size: 3em;
 	text-align: left;
@@ -137,9 +144,8 @@
     transform:rotate(-10deg);
     width: calc(100% - 5%); 
     hyphens: auto;	
-    
 }
-.Style2 .Text {
+#FlypJournal .Style2 .FrontPageLayout p {
 	background-color: rgb(240,50,240);
 	font-size: 1.1em;
 	padding:2%;
@@ -148,7 +154,7 @@
 	width: 100%;
 	padding-right: 10%; 	
 	transform:rotate(-10deg);
-	bottom: 2%;
+	bottom: 8%;
 	box-sizing: border-box;
 }
 
