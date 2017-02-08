@@ -41,7 +41,7 @@ class FlypImage extends Component {
 		if ( ! image ) return <img/>;
 		
 		return (
-			<div className="Image">
+			<div className="FlypImage">
 				<div ref={ (e) => self.calcSize(image, e) }   />
 			</div>
 	  );
