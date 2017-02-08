@@ -31,17 +31,17 @@ class ArticleStream extends Component {
 		}
 
 
-		var subinfo = this.props.data;
-		if ( ! subinfo ) {
-			return <div>no substream...</div>
-		}
+    var subinfo = this.props.data;
+    if ( ! subinfo ) {
+      return null;
+    }
 
 
 		var stream = this.state;
 
-		if ( ! stream ) {
-			return <div>loading...</div>
-		}
+    if ( ! stream ) {
+      return <div className="ArticleStream">loading...</div>
+    }
 
 
 		const listItems = stream.items.map( (item) =>

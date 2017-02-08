@@ -5,7 +5,7 @@ export default function ArticleParagraphLayout(props) {
 	var m = props.data;
 
 	return (
-		<div className={m.layout}>
+		<div className="ArticleParagraphLayout">
 			{ m.headline && <h3>{m.headline}</h3> }
 			{ m.text && <p>{m.text}</p> }
 		</div>
