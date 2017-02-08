@@ -81,15 +81,24 @@
   text-align:right;
 }
 
+#FlypJournal .ArticleStream  {
+	background-color:#fff;
+	padding:5%;
+}
+#FlypJournal .ArticleStream h3  {
+	font-size: 2em;
+	font-weight:400;
+	text-transform: uppercase;
+}
 
 
 
 /*-----  Front Page Designs ------*/
-.Style1 {
+#FlypJournal .FrontPageStream > .Style1 {
 	background-color: #c80c41;
 }
-.Style1 .FlypImage {}
-.Style1 .Headline {
+#FlypJournal .FrontPageStream > .Style1 .FlypImage {}
+#FlypJournal .FrontPageStream > .Style1 .Headline {
 	font-family: 'Josefin Slab', serif;
 	font-size: 3em;
 	text-align: center;
@@ -101,7 +110,7 @@
   color:#fff;
   hyphens: auto;
 }
-.Style1 .Text {
+#FlypJournal .FrontPageStream > .Style1 .Text {
   background-color: #3b6eb1;
   background-color:rgba(59,110,177,0.6);
   font-size: 1.1em;
@@ -111,17 +120,6 @@
 	color:#fff;
 	box-sizing: border-box;
 }
-.ArticleStream  {
-	background-color:#fff;
-	padding:5%;
-}
-.ArticleStream h3  {
-	font-size: 2em;
-	font-weight:400;
-	text-transform: uppercase;
-}
-
-
 
 .Style2 {
 	background-color: #c80c41;
