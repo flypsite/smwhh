@@ -6,10 +6,10 @@ h1,h2,h3,h4,p {
 }
 
 #FlypJournal .App {
-	overflow-x: scroll;
+/*	overflow-x: scroll;
 	overflow-y: hidden;
+	-webkit-overflow-scrolling: touch;*/
 	font-family: 'Source Sans Pro', sans-serif;
-	-webkit-overflow-scrolling: touch;
 }
 
 #FlypJournal, 
@@ -21,7 +21,12 @@ h1,h2,h3,h4,p {
   height: 100%;
 }
 
-
+#Hans {
+	overflow-x: scroll;
+	overflow-y: hidden;
+	-webkit-overflow-scrolling: touch;
+	height:100%;
+}
 
 /*-----  Globale Styles für FrontPageStream------*/
 #FlypJournal .FrontPageStream > * {

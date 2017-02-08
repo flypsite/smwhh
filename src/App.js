@@ -7,9 +7,6 @@ import './App.css';
 import Pusher from 'pusher-js';
 import Vienna from './vienna.module.js';
 
-import TweenMax from 'gsap'
-//import 'gsap';
-//import GSAP from 'gsap-react-plugin';
 
 class App extends Component {
 
@@ -59,7 +56,7 @@ class App extends Component {
 
 	}
 
-		// magic: make the app avail in every child... (not in stable!)
+	// magic: make the app avail in every child... (not in stable!)
 	// https://www.ctheu.com/2015/02/12/how-to-communicate-between-react-components/
 	getChildContext() {
     	// it exposes one property "xy", any of the components that are
@@ -132,45 +129,17 @@ class App extends Component {
 			items: newitems
 		};
 
-
 	}
-	
-	handleScroll(e) {
-		
-		var self = this;
-		self.timer && clearTimeout(self.timer);
 
-		self.timer = window.setTimeout(
-			(function(self1) {					//Self-executing func which takes 'this' as self
-				return function() {				//Return a function in the context of 'self'
-					self1.scrollStopper(); 		//Thing you wanted to run as non-window 'this'
-				}
-			}
-		)(self), 100);
+	peter() {
+		console.log("peter");
 	}
-	
-	
-	scrollStopper() {
-	
-		console.log("scrollStopper!", this);
-	
-		if(this.md) return;
-
-		console.log("scrollStopper2 !");
-
-		var d = ReactDOM.findDOMNode(this);
-		// since width is defined in device units (vw), we have to get the pixel width here:
-		var newPos = Math.round(d.scrollLeft / d.offsetWidth)*d.offsetWidth;
-		//d.scrollLeft = newPos;
-		TweenMax.to(d, 0.2, { scrollLeft: newPos });
-	}
-	
 		
 	render() {
 	
 		return (
-			<div className="App" onScroll={ this.handleScroll.bind(this) } >
-			<FrontPageStream data={this.state} ref={(fpstream) => { this.fpstream = fpstream; }}/>
+			<div className="App" onScroll={this.peter()}>
+			<FrontPageStream data={this.state} />
 			</div>
 			);
 	}
