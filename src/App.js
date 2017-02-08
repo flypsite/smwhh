@@ -7,6 +7,10 @@ import './App.css';
 import Pusher from 'pusher-js';
 import Vienna from './vienna.module.js';
 
+import TweenMax from 'gsap'
+//import 'gsap';
+//import GSAP from 'gsap-react-plugin';
+
 class App extends Component {
 
 	constructor(props) {
@@ -51,7 +55,7 @@ class App extends Component {
 			}
 		});
 
-
+		var md = false;
 
 	}
 
@@ -132,27 +136,38 @@ class App extends Component {
 	}
 	
 	handleScroll(e) {
+		
 		var self = this;
 		self.timer && clearTimeout(self.timer);
+
 		self.timer = window.setTimeout(
-			(function(self1) {						//Self-executing func which takes 'this' as self
-				return function() {					//Return a function in the context of 'self'
+			(function(self1) {					//Self-executing func which takes 'this' as self
+				return function() {				//Return a function in the context of 'self'
 					self1.scrollStopper(); 		//Thing you wanted to run as non-window 'this'
 				}
 			}
 		)(self), 100);
 	}
+	
+	
 	scrollStopper() {
+	
+		console.log("scrollStopper!", this);
+	
+		if(this.md) return;
+
+		console.log("scrollStopper2 !");
+
 		var d = ReactDOM.findDOMNode(this);
 		// since width is defined in device units (vw), we have to get the pixel width here:
 		var newPos = Math.round(d.scrollLeft / d.offsetWidth)*d.offsetWidth;
-		d.scrollLeft = newPos;
-		// and use raf/caf for animation...
+		//d.scrollLeft = newPos;
+		TweenMax.to(d, 0.2, { scrollLeft: newPos });
 	}
 	
-	
-	
+		
 	render() {
+	
 		return (
 			<div className="App" onScroll={ this.handleScroll.bind(this) } >
 			<FrontPageStream data={this.state} ref={(fpstream) => { this.fpstream = fpstream; }}/>
