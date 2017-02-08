@@ -5,7 +5,6 @@
 	overflow-y: hidden;
 	font-family: 'Source Sans Pro', sans-serif;
 	-webkit-overflow-scrolling: touch;
-	
 }
 
 #FlypJournal, 
@@ -48,9 +47,7 @@
 #FlypJournal .FrontPageStream > div > .Message > div > div.Headline {
 	position: absolute;
 	z-index: 100;
-    box-sizing:border-box;
-    /*background-image: linear-gradient(to right, black 0%,white 100%), url(assets/img/HeadlineBgTrans.png);
-    background-blend-mode:screen;*/
+	box-sizing:border-box;
 }
 #FlypJournal .FrontPageStream > div > .Message > div > div.Text {
 	position: absolute;
@@ -58,6 +55,8 @@
 }
 
 
+
+/*-----  Article Stream ------*/
 #FlypJournal .ArticleStream {
 	min-height:100%;
 }
@@ -68,9 +67,9 @@
 }
 
 #FlypJournal .ArticleStream > div > .Message > .paragraph > h3 {
-	font-size: 2em;
+	/*font-size: 2em;
 	font-weight:400;
-	text-transform: uppercase;
+	text-transform: uppercase;*/
 }
 
 
@@ -99,20 +98,30 @@
 	padding:10%;
 	border-radius: 50%;
 	border-top-left-radius: 0;
-    background-color: #3b6eb1;
-    color:#fff;
-    hyphens: auto;
+	background-color: #3b6eb1;
+  color:#fff;
+  hyphens: auto;
 }
 .Style1 .Text {
-    background-color: #3b6eb1;
-    background-color:rgba(59,110,177,0.6);
-	font-size: 1.1em;
+  background-color: #3b6eb1;
+  background-color:rgba(59,110,177,0.6);
+  font-size: 1.1em;
 	padding:3% 5%;
 	width: 100%; 
 	bottom: 0;		
 	color:#fff;
 	box-sizing: border-box;
 }
+.ArticleStream  {
+	background-color:#fff;
+	padding:5%;
+}
+.ArticleStream h3  {
+	font-size: 2em;
+	font-weight:400;
+	text-transform: uppercase;
+}
+
 
 
 .Style2 {
