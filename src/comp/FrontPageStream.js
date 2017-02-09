@@ -68,7 +68,9 @@ class FrontPageStream extends Component {
 	}
 	
 	handleScroll(e) {
-		//console.log("handleTouchMove", this.DOMNode);	
+		e.preventDefault();
+		e.stopPropagation();
+		return false;
 	}
 
 
