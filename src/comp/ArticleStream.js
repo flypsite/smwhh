@@ -37,7 +37,7 @@ class ArticleStream extends Component {
 
 	render() {
 
-		console.log('render article ' + this.props.showArticle);
+		// console.log('render article ' + this.props.showArticle);
 
 		if ( ! this.props.showArticle ) return null;
 

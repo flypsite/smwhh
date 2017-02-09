@@ -12,7 +12,7 @@ export default {
 
 	generic: {
 
-
+		fallback: DummyMessageLayout,
 
 		layouts: {
 
