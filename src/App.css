@@ -150,12 +150,11 @@ h1,h2,h3,h4,p {
 	margin-top: -2%;
 	margin-bottom: 5%;
 }
-/*-----  Globales css für den Article Video Layout ------*/
+#FlypJournal .ArticleStream > div > .Message > .SocialMessageLayout {
+		padding: 10%;
+		border: 2px solid gray;
 
-
-
-
-
+}
 
 
 /*-----  FrontPageDesign - Style2 ------*/
