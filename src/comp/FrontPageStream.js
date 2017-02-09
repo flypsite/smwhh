@@ -22,6 +22,7 @@ class FrontPageStream extends Component {
 
 
 	scrolled(idx) {
+		console.log("scrolled called.");
 		var sp = this.state.selectedPage;
 		if ( sp === idx ) return;
 
@@ -47,10 +48,11 @@ class FrontPageStream extends Component {
 		
 	}
 	
-	resetOldScrollAndAnimation() {
-		this.setState({animating: false})
+	resetOldScroll() {
+		console.log("resetOldScroll")
 		var d = this.DOMNode;
 		var self = this;
+		
 		if(d.children[0].children[this.state.lastIDX]) d.children[0].children[self.state.lastIDX].scrollTop = 0;
 	}
 
@@ -103,7 +105,8 @@ class FrontPageStream extends Component {
 			this.scrolled(Math.round(d.scrollLeft / d.offsetWidth));
 		}
 		
-		TweenMax.to(d, 0.2, { scrollLeft: newPos, onComplete:self.resetOldScrollAndAnimation() });
+		TweenMax.to(d, 0.2, { scrollLeft: newPos, onComplete:self.resetOldScroll.bind(self) });
+		//TweenMax.to(d, 3, { scrollLeft: newPos, onComplete:self.resetOldScroll.bind(self) });
 		
 	}
 	
@@ -134,7 +137,7 @@ class FrontPageStream extends Component {
 		// onScroll={ this.handleScroll.bind(this) }
 
 		return (
-			<div className="FrontPageStream" 					
+				<div className="FrontPageStream" 					
 					onTouchStart={this.handleTouchStart.bind(this)} 
 					onTouchMove={this.handleTouchMove.bind(this)} 
 					onTouchEnd={this.handleTouchEnd.bind(this)} 
@@ -145,7 +148,6 @@ class FrontPageStream extends Component {
 					ref={(elem) => { this.DOMNode = elem; }}>
 				
 				<div className="FrontPageStreamItems" 
-				
 					style={ {width: listItems.length * document.documentElement.offsetWidth + "px"} } >
 					
 					{ listItems }
