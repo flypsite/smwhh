@@ -146,10 +146,17 @@ class App extends Component {
 		this.vienna.requestStreamAscending(sname, 0, 1024, function(json) {
 
 			console.log("loaded stream ", json);
-			var tstream = self._translateStream(json);
-			this.streams[json.stream] = tstream;
+			
+			json.items.map(function(item) {
+				self.updateEnvelope(item);
+			});
 
-			cb(tstream);
+			cb(self.getStream(sname));
+			// console.log("loaded stream ", json);
+			// var tstream = self._translateStream(json);
+			// this.streams[json.stream] = tstream;
+
+			// cb(tstream);
 		});
 	}
 
