@@ -498,8 +498,6 @@
 
 	proto._postData = function(endpoint, data, callback, errorcb, cbdata) {
 
-		var self = this;
-
 	    ajax({
 
 	    	processData: true,
@@ -587,12 +585,13 @@
 	 */
 	function flog() {
 		return;
+		/*
 		if ( arguments.length === 1 ) {
 			console.log(arguments[0]);
 		} else {
 			console.log(arguments);
 		}
-		
+		*/
 	}
 
 	/*
