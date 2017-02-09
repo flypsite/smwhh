@@ -156,6 +156,13 @@ class App extends Component {
 
 	loadStreamFull(sname, cb) {
 		var self = this;
+
+		if ( this.streams[sname] ) {
+			cb(self.getStream(sname));
+			return;
+		}
+
+
 		this.vienna.requestStreamAscending(sname, 0, 1024, function(json) {
 
 			console.log("loaded stream ", json);
