@@ -22,7 +22,7 @@ class FrontPageStream extends Component {
 
 
 	scrolled(idx) {
-		console.log("scrolled called.");
+		//console.log("scrolled called.");
 		var sp = this.state.selectedPage;
 		if ( sp === idx ) return;
 
@@ -49,9 +49,14 @@ class FrontPageStream extends Component {
 	}
 	
 	resetOldScroll() {
-		console.log("resetOldScroll")
+		//console.log("resetOldScroll")
 		var d = this.DOMNode;
 		var self = this;
+		
+		if(this.state.selectedPage !== Math.round(d.scrollLeft / d.offsetWidth) ) {
+			this.scrolled(Math.round(d.scrollLeft / d.offsetWidth));
+		}
+		
 		
 		if(d.children[0].children[this.state.lastIDX]) d.children[0].children[self.state.lastIDX].scrollTop = 0;
 	}
@@ -101,9 +106,12 @@ class FrontPageStream extends Component {
 		var newPos = Math.round(d.scrollLeft / d.offsetWidth)*d.offsetWidth;
 		//console.log("handleTouchEnd newPos", newPos);
 		
+		/*
+		// jetzt im callback...
 		if(this.state.selectedPage !== Math.round(d.scrollLeft / d.offsetWidth) ) {
 			this.scrolled(Math.round(d.scrollLeft / d.offsetWidth));
 		}
+		*/
 		
 		TweenMax.to(d, 0.2, { scrollLeft: newPos, onComplete:self.resetOldScroll.bind(self) });
 		//TweenMax.to(d, 3, { scrollLeft: newPos, onComplete:self.resetOldScroll.bind(self) });

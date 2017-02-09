@@ -28,10 +28,10 @@ class App extends Component {
 	*/
 	
 		// LIVE, geht	
-		var v = new Vienna("Q1IFrJLioN1C", { 
+		var v = new Vienna("2wqFJd7vV3oY", { 
+			url: "//aerobic-polygon-88015.appspot.com" ,
 			pusher: Pusher,
-			pusherkey: "3bd9f270de4a9ca0cc78", 
-			url: "//flypsite.appspot.com" ,
+			pusherkey: "0708e5675118ddb0be11", 
 			mode: "poll"
 		});
 
