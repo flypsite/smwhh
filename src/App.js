@@ -105,7 +105,7 @@ class App extends Component {
 
 	getStream(name) {
 
-		var sitems = this.streams['out1'];
+		var sitems = this.streams[name];
 		var ns = [ ];
 
 		for ( var k in sitems ) {
