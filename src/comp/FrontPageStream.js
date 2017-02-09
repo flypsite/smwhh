@@ -24,6 +24,8 @@ class FrontPageStream extends Component {
 	scrolled(idx) {
 		var sp = this.state.selectedPage;
 		if ( sp === idx ) return;
+
+		console.log("scrolled to " + idx);
 		this.setState({ selectedPage: idx, lastIDX: sp });
 	}
 	

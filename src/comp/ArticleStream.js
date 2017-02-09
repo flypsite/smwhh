@@ -13,6 +13,8 @@ class ArticleStream extends Component {
 
 	load(substream) {
 
+		console.log('load ' + substream.key);
+
 		if ( substream.loading ) return;
 		substream.loading = true;
 
