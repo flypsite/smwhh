@@ -95,9 +95,9 @@ class FrontPageStream extends Component {
 
 		var d = this.DOMNode;
 		var newPos = Math.round(d.scrollLeft / d.offsetWidth)*d.offsetWidth;
-		console.log("handleTouchEnd newPos", newPos);
+		//console.log("handleTouchEnd newPos", newPos);
 		
-		if(this.state.selectedPage != Math.round(d.scrollLeft / d.offsetWidth) ) {
+		if(this.state.selectedPage !== Math.round(d.scrollLeft / d.offsetWidth) ) {
 			this.scrolled(Math.round(d.scrollLeft / d.offsetWidth));
 		}
 		
@@ -123,7 +123,7 @@ class FrontPageStream extends Component {
 			return (
 				<div id={item.id} key={item.id} className={item.message.style}>
 					<Message key={item.id} mode="frontpages" data={ item } />
-					<ArticleStream data={ item.message.substream } showArticle={ index == self.state.selectedPage }/>
+					<ArticleStream data={ item.message.substream } showArticle={ index === self.state.selectedPage }/>
 				</div> 
 			)
 

@@ -120,7 +120,9 @@ class App extends Component {
 		var ns = [ ];
 
 		for ( var k in sitems ) {
-			ns.push(sitems[k]);
+			if(sitems.hasOwnProperty(k)) {
+				ns.push(sitems[k]);
+			}
 		}
 
 		ns.sort(function(a,b) {
@@ -159,7 +161,7 @@ class App extends Component {
 			console.log("loaded stream ", json);
 			
 			json.items.map(function(item) {
-				self.updateEnvelope(item);
+				return self.updateEnvelope(item);
 			});
 
 			cb(self.getStream(sname));

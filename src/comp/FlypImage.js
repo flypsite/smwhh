@@ -26,7 +26,9 @@ class FlypImage extends Component {
 		var cssCalc = ImageMagic(imgValues);
 		cssCalc['background-image'] = 'url('+image.url+')';
 		for ( var k in cssCalc ) {
-			e.style[k] = cssCalc[k];
+			if(cssCalc.hasOwnProperty(k)) {
+				e.style[k] = cssCalc[k];
+			}
 		}
 	}
 

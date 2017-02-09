@@ -1,6 +1,8 @@
 import React from 'react';
-import ArticleStream from './ArticleStream.js';
 import FlypImage from './FlypImage.js';
+
+// not used?
+//import ArticleStream from './ArticleStream.js';
 
 export default function FrontPageLayout(props) {
 
