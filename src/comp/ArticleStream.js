@@ -42,7 +42,7 @@ class ArticleStream extends Component {
 		if ( ! this.props.showArticle ) return null;
 
 		var substream = this.props.data;
-		if ( !substream ) return null; 
+		if ( !substream ) return <div className="ArticleStream">no substream</div>; 
 
 
 		if ( substream.loading ) {

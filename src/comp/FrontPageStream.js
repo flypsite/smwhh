@@ -11,7 +11,7 @@ class FrontPageStream extends Component {
 	constructor(props) {
 		super(props);
 		this.state = { 
-			selectedPage: -1, 
+			selectedPage: 0, 
 			lastIDX: 0, 
 			lastFucktor: null, 
 			animating: false,
@@ -124,6 +124,8 @@ class FrontPageStream extends Component {
 
 
 		const listItems = stream.items.map( function(item, index) {
+
+			console.log("render page " + index + " showArticle=" + (index === self.state.selectedPage) + " sub=" + item.message.substream );
 
 			return (
 				<div id={item.id} key={item.id} className={item.message.style}>
