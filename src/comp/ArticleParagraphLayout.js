@@ -1,4 +1,5 @@
 import React from 'react';
+import FlypImage from './FlypImage.js';
 
 export default function ArticleParagraphLayout(props) {
 
@@ -8,6 +9,7 @@ export default function ArticleParagraphLayout(props) {
 		<div className="ArticleParagraphLayout">
 			{ m.headline && <h3>{m.headline}</h3> }
 			{ m.text && <p>{m.text}</p> }
+			{ m.media && m.media.image && <FlypImage data={m.media} /> }
 		</div>
     );
     
