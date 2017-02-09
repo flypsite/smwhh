@@ -36,9 +36,9 @@ class FlypImage extends Component {
 
 		// the message
 		var media = this.props.data;
-		if ( ! media ) return <img/>;
+		if ( ! media ) return null;
 		var image = media.image;
-		if ( ! image ) return <img/>;
+		if ( ! image ) return null;
 		
 		return (
 			<div className="FlypImage">

@@ -7,7 +7,7 @@ export default function FlypUser(props) {
 
 	return (
 		<div className="FlypUser">
-			{ u.name }{ u.handle } {u.service} {u.link}
+			{ u.name }{ u.handle } {u.service} {u.link} {m.created}
 			<img src={u.icon} />
 		</div>
     );

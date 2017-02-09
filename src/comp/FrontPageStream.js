@@ -29,11 +29,8 @@ class FrontPageStream extends Component {
 	
 	
 	scrollStopper() {
-	
-		//if(this.state.animating === true) return;
-	
-		var self = this;
-		
+
+		/*	
 		var d = this.DOMNode;
 		var newPos = Math.round(d.scrollLeft / d.offsetWidth)*d.offsetWidth;
 	
@@ -44,6 +41,7 @@ class FrontPageStream extends Component {
 		//TweenMax.to(d, 0.2, { scrollLeft: newPos, onComplete:self.resetOldScrollAndAnimation() });
 
 		this.setState({animating: true});
+		*/
 		
 	}
 	
