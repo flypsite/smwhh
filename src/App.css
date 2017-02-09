@@ -7,7 +7,6 @@ h1,h2,h3,h4,p {
 
 #FlypJournal .App {
 	font-family: 'Source Sans Pro', sans-serif;
-	overflow: auto;
 }
 
 #FlypJournal, 
@@ -21,7 +20,7 @@ h1,h2,h3,h4,p {
 
 /*-----  Globale Styles für FrontPageLayout------*/
 #FlypJournal .FrontPageStream {
-	overflow-x: scroll;
+	overflow-x: auto;
 	overflow-y: hidden;
 	-webkit-overflow-scrolling: touch;
 	height:100%;

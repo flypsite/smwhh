@@ -70,7 +70,6 @@ class FrontPageStream extends Component {
 	handleScroll(e) {
 		e.preventDefault();
 		e.stopPropagation();
-		return false;
 	}
 
 
