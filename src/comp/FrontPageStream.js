@@ -2,22 +2,11 @@ import React, { Component } from 'react';
 import Message from './Message.js';
 import ArticleStream from './ArticleStream.js';
 
-//import TweenMax from 'gsap'
-
-//import GSAP from 'react-gsap-enhancer'
 var TweenMax = require("gsap");
-
-
-function moveAnimation(utils) {
-	console.log(utils);
-	//return TweenMax.to(utils.target, 1, {x: '+=123'})
-}
-
 
 class FrontPageStream extends Component {
 
 	static contextTypes = { app: React.PropTypes.object }
-
 
 	constructor(props) {
 		super(props);
@@ -73,16 +62,11 @@ class FrontPageStream extends Component {
 	
 	handleScroll(e) {
 		//console.log("handleTouchMove", this.DOMNode);	
-		e.stopPropagation();	
-		e.preventDefault();			
 	}
 
 
 	handleMouseDown() {
 		//console.log("handleMouseDown", this);
-		//var controller = this.addAnimation(moveAnimation);
-		//var controller = this.addAnimation(moveAnimation);
-		//controller.
 	}
 
 	handleMove() {
@@ -90,50 +74,39 @@ class FrontPageStream extends Component {
 	}
 	
 	handleTouchStart(e) {
-		//console.log("handleTouchStart", e.touches[0].clientX);	
-		this.dragStartX = e.touches[0].clientX;
-		e.stopPropagation();
+		/*
+		console.log(e.touches[0].screenX);
+		this.dragStartX = e.touches[0].screenX;
+		this.dx = this.DOMNode.scrollLeft;
+		console.log("handleTouchStart", this.dragStartX, this.dx);	
+
+		var c = e.currentTarget.children[0];
+		console.log("c", c.offsetLeft);
+		*/
 	}
 	
 	handleTouchMove(e) {
-		//console.log("handleTouchMove", e.touches[0].clientX);	
-		this.DOMNode.style = {left:e.touches[0].clientX};
-		this.left = e.touches[0].clientX;		
+		//console.log("handleTouchMove", e.touches[0].screenX, this.DOMNode.scrollLeft);	
+		//this.DOMNode.style = {left:e.touches[0].clientX};
+		//this.lastClientX = e.touches[0].screenX;		
 	}
 
-	handleTouchEnd(e) {
-		//e.preventDefault();
-		//e.stopPropagation();	
-		
+
+	handleTouchEnd(e) {	
 		var self = this;
 
 		var d = this.DOMNode;
-		//console.log("handleTouchEnd",this.left, d.offsetWidth / d.children[0].children.length);	
-
-		
-
-
-
-		//var newPos = Math.round(d.scrollLeft / d.offsetWidth)*d.offsetWidth;
-		
-		var newPos = Math.round(d.style.left / d.offsetWidth)*d.offsetWidth;
-
-		
-		//console.log("handleTouchEnd newPos", newPos, Math.round(d.style.left / d.offsetWidth));
-		
+		var newPos = Math.round(d.scrollLeft / d.offsetWidth)*d.offsetWidth;
+		console.log("handleTouchEnd newPos", newPos);
 		
 		if(this.state.selectedPage != Math.round(d.scrollLeft / d.offsetWidth) ) {
 			this.scrolled(Math.round(d.scrollLeft / d.offsetWidth));
 		}
 		
-		//var newPos = this.left;
-		
-		TweenMax.to(d, 0.2, { left: newPos, onComplete:self.resetOldScrollAndAnimation() });
+		TweenMax.to(d, 0.2, { scrollLeft: newPos, onComplete:self.resetOldScrollAndAnimation() });
 		
 	}
 	
-
-
 
 
 	render() {
@@ -161,17 +134,20 @@ class FrontPageStream extends Component {
 		// onScroll={ this.handleScroll.bind(this) }
 
 		return (
-			<div className="FrontPageStream" 
-				onTouchStart={this.handleTouchStart.bind(this)} 
-				onTouchMove={this.handleTouchMove.bind(this)} 
-				onTouchEnd={this.handleTouchEnd.bind(this)} 
-				onMouseMove={this.handleMove.bind(this)} 
-				onMouseDown={this.handleMouseDown.bind(this)} 
-				onClick={this.handleClick.bind(this)} 
-				onScroll={this.handleScroll.bind(this)}
-				ref={(elem) => { this.DOMNode = elem; }}>
+			<div className="FrontPageStream" 					
+					onTouchStart={this.handleTouchStart.bind(this)} 
+					onTouchMove={this.handleTouchMove.bind(this)} 
+					onTouchEnd={this.handleTouchEnd.bind(this)} 
+					onMouseMove={this.handleMove.bind(this)} 
+					onMouseDown={this.handleMouseDown.bind(this)} 
+					onClick={this.handleClick.bind(this)} 
+					onScroll={this.handleScroll.bind(this)}
+					ref={(elem) => { this.DOMNode = elem; }}>
 				
-				<div className="FrontPageStreamItems" style={ {width: listItems.length * document.documentElement.offsetWidth + "px"} } >
+				<div className="FrontPageStreamItems" 
+				
+					style={ {width: listItems.length * document.documentElement.offsetWidth + "px"} } >
+					
 					{ listItems }
 				</div>
 			</div>
@@ -181,4 +157,3 @@ class FrontPageStream extends Component {
 }
 
 export default FrontPageStream;
-//export default GSAP()(FrontPageStream);
