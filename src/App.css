@@ -14,14 +14,14 @@ h1,h2,h3,h4,p {
 
 #FlypJournal, 
 #FlypJournal > *, 
-#FlypJournal .FrontPageStream {
+#FlypJournal .FrontPageStreamItems {
 	/* text-align: left; */
   width:100vw;
   position: relative;
   height: 100%;
 }
 
-#FrontPageStreamScrollContainer {
+.FrontPageStream {
 	overflow-x: scroll;
 	overflow-y: hidden;
 	-webkit-overflow-scrolling: touch;
@@ -29,7 +29,7 @@ h1,h2,h3,h4,p {
 }
 
 /*-----  Globale Styles für FrontPageStream------*/
-#FlypJournal .FrontPageStream > * {
+#FlypJournal .FrontPageStreamItems > * {
 	display: inline-block;
 	position: relative;
 	width:100vw;
@@ -39,26 +39,26 @@ h1,h2,h3,h4,p {
 	overflow-y: scroll;
 	-webkit-overflow-scrolling: touch;
 }	
-#FlypJournal .FrontPageStream > div > .Message {
+#FlypJournal .FrontPageStreamItems > div > .Message {
 	height: 100%;
 	width:100%;
 }
-#FlypJournal .FrontPageStream > div > .Message > div {
+#FlypJournal .FrontPageStreamItems > div > .Message > div {
 	height: 100%;
 	width:100%;
 }
-#FlypJournal .FrontPageStream > div > .Message > div > div.FlypImage {
+#FlypJournal .FrontPageStreamItems > div > .Message > div > div.FlypImage {
 	height: 100%;
 	width:100%;
 	position: absolute;
 	overflow:hidden;
 }
-#FlypJournal .FrontPageStream > div > .Message > div > h2 {
+#FlypJournal .FrontPageStreamItems > div > .Message > div > h2 {
 	position: absolute;
 	z-index: 100;
 	box-sizing:border-box;
 }
-#FlypJournal .FrontPageStream > div > .Message > div > p {
+#FlypJournal .FrontPageStreamItems > div > .Message > div > p {
 	position: absolute;
 	z-index: 100;
 }
