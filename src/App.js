@@ -50,8 +50,6 @@ class App extends Component {
 			initial: function(json) { 
 				console.log("initial callback with", json);
 				self.processInitial(json);
-//				console.log(json.updates);
-//				self.setStream(self._translateStream(json));  // FIXME: nur Nachrichten von einem Stream anzeigen!
 			},
 			update: function(json) { 
 				console.log("update callback with ", json);
