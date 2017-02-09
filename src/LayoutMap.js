@@ -3,6 +3,7 @@ import DummyMessageLayout from './comp/DummyMessageLayout.js';
 import ArticleParagraphLayout from './comp/ArticleParagraphLayout.js';
 import ArticleImageLayout from './comp/ArticleImageLayout.js';
 import ArticleVideoLayout from './comp/ArticleVideoLayout.js';
+import SocialMessageLayout from './comp/SocialMessageLayout.js';
 
 
 
@@ -11,7 +12,7 @@ export default {
 
 	generic: {
 
-
+		fallback: DummyMessageLayout,
 
 		layouts: {
 
@@ -30,12 +31,15 @@ export default {
 
 	article: {
 
-		fallback: DummyMessageLayout,
+		fallback: ArticleParagraphLayout,
 
 		layouts: {
 			"paragraph": ArticleParagraphLayout,
-			"image": ArticleImageLayout,
-			"video": ArticleVideoLayout
+			"image":     ArticleImageLayout,
+			"video":     ArticleVideoLayout,
+			"message":   SocialMessageLayout,
+			"postcardtext":   SocialMessageLayout
+			
 		}
 
 	}
