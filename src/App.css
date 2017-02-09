@@ -20,11 +20,11 @@ h1,h2,h3,h4,p {
 
 /*-----  Globale Styles für FrontPageLayout------*/
 #FlypJournal .FrontPageStream {
-	overflow-x: scroll;
+	overflow-x: hidden;
 	overflow-y: hidden;
 	-webkit-overflow-scrolling: touch;
 	height:100%;
-	width: 100%;
+	position:absolute;
 }
 
 #FlypJournal .FrontPageStream > .FrontPageStreamItems {
