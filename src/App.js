@@ -27,23 +27,22 @@ class App extends Component {
 		});
 	*/
 	
-		// LIVE, geht	
+		// LIVE
+		/*
+		var v = new Vienna("Q1IFrJLioN1C", { 
+			pusher: Pusher,
+			pusherkey: "3bd9f270de4a9ca0cc78", 
+			url: "//flypsite.appspot.com" ,
+			mode: "poll"
+		});		*/
+		
+		// DEV
 		var v = new Vienna("2wqFJd7vV3oY", { 
 			url: "//aerobic-polygon-88015.appspot.com" ,
 			pusher: Pusher,
 			pusherkey: "0708e5675118ddb0be11", 
 			mode: "poll"
 		});
-
-		// DEV, kaputt
-		/*
-		var v = new Vienna("fPX3FxMI2oay", { 
-			pusher: Pusher,
-			pusherkey: "0708e5675118ddb0be11", 
-			url: "//aerobic-polygon-88015.appspot.com" ,
-			mode: "poll"
-		});
-		*/
 		
 		this.vienna = v;
 
