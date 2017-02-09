@@ -68,7 +68,7 @@ class App extends Component {
 	updateEnvelope(e) {
 		
 		var sn = e.stream; // stream-name
-		if ( ! this.streams[sn] ) this.streams[sn] = {};
+		if ( ! this.streams[sn] ) return; // this.streams[sn] = {};
 
 		var so = this.streams[sn];
 		if ( so[e.id] ) { // evelope exists
@@ -82,6 +82,8 @@ class App extends Component {
 
 
 	processInitial(json) {
+
+		this.streams['out1'] = { };
 
 		var items = json.items;
 		for ( var i = 0; i < items.length; i++ ) {
@@ -152,7 +154,17 @@ class App extends Component {
 
 
 	loadStreamFull(sname, cb) {
+
 		var self = this;
+
+		if ( this.streams[sname] ) {
+			cb(self.getStream(sname));
+			return;
+		}
+
+		this.streams[sname] = { };
+
+
 		this.vienna.requestStreamAscending(sname, 0, 1024, function(json) {
 
 			console.log("loaded stream ", json);
