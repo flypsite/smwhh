@@ -10,45 +10,50 @@ h1,h2,h3,h4,p {
 }
 
 #FlypJournal, 
-#FlypJournal > *, 
-#FlypJournal .FrontPageStream .FrontPageStreamItems {
+#FlypJournal > .App {
 	width:100vw;
 	position: relative;
 	height: 100%;
 }
 
+
+
+/*-----  Globale Styles für FrontPageLayout------*/
 #FlypJournal .FrontPageStream {
 	overflow-x: scroll;
 	overflow-y: hidden;
 	-webkit-overflow-scrolling: touch;
 	height:100%;
+	width: 100%;
 }
 
-
-/*-----  Globale Styles für FrontPageLayout------*/
-#FlypJournal .FrontPageStream .FrontPageStreamItems > * {
-	display: inline-block;
-	position: relative;
-	width:100vw;
+#FlypJournal .FrontPageStream > .FrontPageStreamItems {
 	height:100%;
+}
+
+#FlypJournal .FrontPageStream > .FrontPageStreamItems > div {
 	box-sizing: border-box;
+	display: inline-block;
+	height:100%;
 	overflow-x: hidden;
 	overflow-y: scroll;
+	position: relative;
+	width:100vw;
 	-webkit-overflow-scrolling: touch;
 }
-#FlypJournal .FrontPageStream .FrontPageStreamItems > div > .Message,
-#FlypJournal .FrontPageStream .FrontPageStreamItems > div > .Message > .FrontPageLayout {
+#FlypJournal .FrontPageStream > .FrontPageStreamItems > div > .Message,
+#FlypJournal .FrontPageStream > .FrontPageStreamItems > div > .Message > .FrontPageLayout {
 	height: 100%;
 	width:100%;
 }
-#FlypJournal .FrontPageStream .FrontPageStreamItems > div > .Message > .FrontPageLayout > .FlypImage {
+#FlypJournal .FrontPageStream > .FrontPageStreamItems > div > .Message > .FrontPageLayout > .FlypImage {
 	height: 100%;
 	width:100%;
 	position: absolute;
 	overflow:hidden;
 }
-#FlypJournal .FrontPageStream .FrontPageStreamItems > div > .Message > .FrontPageLayout > h2,
-#FlypJournal .FrontPageStream .FrontPageStreamItems > div > .Message > .FrontPageLayout > p {
+#FlypJournal .FrontPageStream > .FrontPageStreamItems > div > .Message > .FrontPageLayout > h2,
+#FlypJournal .FrontPageStream > .FrontPageStreamItems > div > .Message > .FrontPageLayout > p {
 	position: absolute;
 	z-index: 100;
 	box-sizing:border-box;
@@ -57,11 +62,11 @@ h1,h2,h3,h4,p {
 
 
 /*-----  FrontPageDesign - Style1 -------*/
-#FlypJournal .FrontPageStream .FrontPageStreamItems > div.Style1 > .Message > .FrontPageLayout  {
+#FlypJournal .FrontPageStream > .FrontPageStreamItems > div.Style1 > .Message > .FrontPageLayout  {
 	background-color: #c80c41;
 	color:#fff;
 }
-#FlypJournal .FrontPageStream .FrontPageStreamItems > div.Style1 > .Message > .FrontPageLayout  h2 {	
+#FlypJournal .FrontPageStream > .FrontPageStreamItems > div.Style1 > .Message > .FrontPageLayout > h2 {	
 	background-color: #3b6eb1;
 	border-radius: 50%;
 	border-top-left-radius: 0;	
@@ -71,7 +76,7 @@ h1,h2,h3,h4,p {
 	padding:10%;
 	text-align: center;
 }
-#FlypJournal .FrontPageStream .FrontPageStreamItems > div.Style1 > .Message > .FrontPageLayout  p {
+#FlypJournal .FrontPageStream > .FrontPageStreamItems > div.Style1 > .Message > .FrontPageLayout > p {
 	background-color: #3b6eb1;
 	background-color:rgba(59,110,177,0.6);
 	bottom: 0;
@@ -84,10 +89,10 @@ h1,h2,h3,h4,p {
 
 
 /*-----  FrontPageDesign - Style2 ------*/
-#FlypJournal .FrontPageStream .FrontPageStreamItems > div.Style2 > .Message > .FrontPageLayout {
+#FlypJournal .FrontPageStream > .FrontPageStreamItems > div.Style2 > .Message > .FrontPageLayout {
 	background-color: #c80c41;
 }
-#FlypJournal .FrontPageStream .FrontPageStreamItems > div.Style2 > .Message > .FrontPageLayout h2 {
+#FlypJournal .FrontPageStream > .FrontPageStreamItems > div.Style2 > .Message > .FrontPageLayout > h2 {
 	background-color: #f032f0;	/* rgb(240,50,240) */
 	color:#fff;
 	font-family: 'Barrio', cursive;
@@ -98,7 +103,7 @@ h1,h2,h3,h4,p {
 	transform:rotate(-10deg);
 	width: calc(100% - 5%); 
 }
-#FlypJournal .FrontPageStream .FrontPageStreamItems > div.Style2 > .Message > .FrontPageLayout p {
+#FlypJournal .FrontPageStream > .FrontPageStreamItems > div.Style2 > .Message > .FrontPageLayout > p {
 	background-color: #f032f0;	/* rgb(240,50,240) */
 	bottom: 8%;
 	color:#fff;
