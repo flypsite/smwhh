@@ -17,11 +17,11 @@ class ArticleStream extends Component {
 		substream.loading = true;
 
 		var self = this;
-		console.log('loading ' + substream.key);
+		//console.log('loading ' + substream.key);
 		this.context.app.loadStreamFull(substream.key, function(stream) {
 			
 			substream.items = stream.items;
-			console.log('success ' + substream.key + " " + substream.items.length);
+			//console.log('success ' + substream.key + " " + substream.items.length);
 
 			var nstate = {
 				substream: substream,
@@ -37,7 +37,7 @@ class ArticleStream extends Component {
 
 	render() {
 
-		console.log('render article ' + this.props.showArticle);
+		//console.log('render article ' + this.props.showArticle);
 
 		if ( ! this.props.showArticle ) return null;
 
