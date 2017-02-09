@@ -1,8 +1,6 @@
 import React, { Component } from 'react';
-import ReactDOM from 'react-dom';
 import logo from './logo.svg';
 import FrontPageStream from './comp/FrontPageStream.js';
-import TestStream from './teststream.js'
 import './App.css';
 import Pusher from 'pusher-js';
 import Vienna from './vienna.module.js';
@@ -14,8 +12,11 @@ class App extends Component {
 
 		super(props);
 
+		// local streams cache
+		this.streams = { };
 
-		// init everything here
+		this.messages = { };
+
 
 		var self = this;
 //		Pusher.log = function(m) {
@@ -39,9 +40,10 @@ class App extends Component {
 
 		v.connect({
 			initial: function(json) { 
-				console.log("initial callback");
-				console.log(json.updates);
-				self.setStream(self._translateStream(json));  // FIXME: nur Nachrichten von einem Stream anzeigen!
+				console.log("initial callback with", json);
+				self.processInitial(json);
+//				console.log(json.updates);
+//				self.setStream(self._translateStream(json));  // FIXME: nur Nachrichten von einem Stream anzeigen!
 			},
 			update: function(json) { 
 				console.log("update callback " + json.updates[0].message.text);
@@ -55,6 +57,23 @@ class App extends Component {
 		var md = false;
 
 	}
+
+
+	processInitial(json) {
+
+
+
+	}
+
+
+
+	processUpdates() {
+
+	}
+
+
+
+
 
 	// magic: make the app avail in every child... (not in stable!)
 	// https://www.ctheu.com/2015/02/12/how-to-communicate-between-react-components/
@@ -81,9 +100,16 @@ class App extends Component {
 	loadStreamFull(sname, cb) {
 		var self = this;
 		this.vienna.requestStreamAscending(sname, 0, 1024, function(json) {
-			cb(self._translateStream(json));
+
+			console.log("loaded stream ", json);
+			var tstream = self._translateStream(json);
+			this.streams[json.stream] = tstream;
+
+			cb(tstream);
 		});
 	}
+
+
 
 
 
