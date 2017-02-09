@@ -16,7 +16,7 @@ class FrontPageStream extends Component {
 
 	scrolled(idx) {
 		var sp = this.state.selectedPage;
-		if ( sp == idx ) return;
+		if ( sp === idx ) return;
 		this.setState({ selectedPage: idx, lastIDX: sp });
 	}
 
@@ -108,9 +108,9 @@ class FrontPageStream extends Component {
 		const listItems = stream.items.map( function(item, index) {
 
 			return (
-				<div id={item.id} key={item.id} className={item.style}>
+				<div id={item.id} key={item.id} className={item.message.style}>
 					<Message key={item.id} mode="frontpages" data={ item } />
-					<ArticleStream data={ item.substream } showArticle={ index == self.state.selectedPage }/>
+					<ArticleStream data={ item.message.substream } showArticle={ index == self.state.selectedPage }/>
 				</div> 
 			)
 

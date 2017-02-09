@@ -22,7 +22,7 @@ class Message extends Component {
   render() {
 
   	// put our message in a local variable
-  	var message = this.props.data;
+  	var message = this.props.data.message;
 
   	// find the layout function based on mode and layout properties
   	var layoutFunc = this.getLayoutFunc(this.props.mode, message.layout);
@@ -35,7 +35,7 @@ class Message extends Component {
   	// use the layout function, luke.
     return (
         <div key={ message.id } className="Message">
-            { layoutFunc(this.props) }
+            { layoutFunc( { data: message, mode: this.props.mode } ) }
         </div>
     );
 
