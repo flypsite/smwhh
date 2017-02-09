@@ -220,25 +220,6 @@ class App extends Component {
 	}
 
 
-	_translateStream(s) {
-
-		var self = this;
-
-		var itms = s.items;
-		if ( ! itms ) itms = s.updates;
-
-
-		var newitems = itms.map( function(item) {
-			return self._tmsg(item);
-		});
-
-		return {
-			stream: s.stream,
-			items: newitems
-		};
-
-	}
-
 
 	render() {
 	
