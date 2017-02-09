@@ -117,8 +117,8 @@ class FrontPageStream extends Component {
 		});
 
 		return (
-			<div id="FrontPageStreamScrollContainer" onScroll={ this.handleScroll.bind(this) } ref={(elem) => { this.DOMNode = elem; }}>
-				<div className="FrontPageStream" style={ {width: listItems.length * document.documentElement.offsetWidth + "px"} } >
+			<div className="FrontPageStream" onScroll={ this.handleScroll.bind(this) } ref={(elem) => { this.DOMNode = elem; }}>
+				<div className="FrontPageStreamItems" style={ {width: listItems.length * document.documentElement.offsetWidth + "px"} } >
 					{ listItems }
 				</div>
 			</div>
