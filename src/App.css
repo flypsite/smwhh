@@ -24,7 +24,7 @@ h1,h2,h3,h4,p {
 	overflow-y: hidden;
 	-webkit-overflow-scrolling: touch;
 	height:100%;
-  width: 100%;
+	width:100%;
 }
 
 #FlypJournal .FrontPageStream > .FrontPageStreamItems {
@@ -123,42 +123,44 @@ h1,h2,h3,h4,p {
 	box-sizing: border-box;
 	font-size: 1.1em;	
 	min-height:100%;
-	padding: 10% 5%;
+	padding:8% 5% 10%;
 }
-/*-----  Globales css für den Article Paragraph Layout ------*/
-#FlypJournal .ArticleStream > div > .Message > .ArticleParagraphLayout > h3 {
+#FlypJournal .ArticleStream > div:first-child > .Message > div > h3 {
 	font-size: 1.8em;
-	font-weight:400;
-	margin-bottom: 5%;
-	text-transform: uppercase;
+	margin-bottom: 5%;	
 }
-#FlypJournal .ArticleStream > div > .Message > .ArticleParagraphLayout > p {
-	line-height: 1.4em;
-	margin-bottom: 3%;
-}
-/*-----  Globales css für den Article Image Layout ------*/
-#FlypJournal .ArticleStream > div > .Message > .ArticleImageLayout > .FlypImage {
-	height: 40vh;
-	margin-bottom: 3%;
-	overflow:hidden;
-	width:100%;
-}
-#FlypJournal .ArticleStream > div > .Message > .ArticleImageLayout > h3 {
+#FlypJournal .ArticleStream > div > .Message > div > h3 {
 	font-size: 1.3em;
 	font-weight:400;
-	margin-bottom: 3%;
 	text-transform: uppercase;
+	margin-bottom: 3%;
+	margin-top: 2%;
+}
+#FlypJournal .ArticleStream > div > .Message > div > p {
+	margin-bottom: 4%;
+}
+
+
+/*-----  Spezifisches CSS für Einzel-Komponenten ------*/
+#FlypJournal .ArticleStream > div > .Message > .ArticleParagraphLayout > p {
+	line-height: 1.4em;
+}
+#FlypJournal .ArticleStream > div > .Message > .ArticleImageLayout > .FlypImage {
+	height: 40vh;
+	margin-bottom: 4%;
+	overflow:hidden;
+	width:100%;
 }
 #FlypJournal .ArticleStream > div > .Message > .ArticleImageLayout > p {
 	font-size: 0.9em;
 	font-style: italic;
 	margin-top: -2%;
-	margin-bottom: 5%;
 }
 #FlypJournal .ArticleStream > div > .Message > .SocialMessageLayout {
-		padding: 10%;
-		border: 2px solid gray;
-
+		border: 1px solid #ccc;
+		padding: 5%;
+		margin-bottom:2%;
+		font-size: 0.9em;
 }
 
 
