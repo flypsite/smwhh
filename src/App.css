@@ -6,30 +6,27 @@ h1,h2,h3,h4,p {
 }
 
 #FlypJournal .App {
-/*	overflow-x: scroll;
-	overflow-y: hidden;
-	-webkit-overflow-scrolling: touch;*/
 	font-family: 'Source Sans Pro', sans-serif;
 }
 
 #FlypJournal, 
 #FlypJournal > *, 
-#FlypJournal .FrontPageStreamItems {
-	/* text-align: left; */
-  width:100vw;
-  position: relative;
-  height: 100%;
+#FlypJournal .FrontPageStream .FrontPageStreamItems {
+	width:100vw;
+	position: relative;
+	height: 100%;
 }
 
-.FrontPageStream {
+#FlypJournal .FrontPageStream {
 	overflow-x: scroll;
 	overflow-y: hidden;
 	-webkit-overflow-scrolling: touch;
 	height:100%;
 }
 
-/*-----  Globale Styles für FrontPageStream------*/
-#FlypJournal .FrontPageStreamItems > * {
+
+/*-----  Globale Styles für FrontPageLayout------*/
+#FlypJournal .FrontPageStream .FrontPageStreamItems > * {
 	display: inline-block;
 	position: relative;
 	width:100vw;
@@ -38,76 +35,32 @@ h1,h2,h3,h4,p {
 	overflow-x: hidden;
 	overflow-y: scroll;
 	-webkit-overflow-scrolling: touch;
-}	
-#FlypJournal .FrontPageStreamItems > div > .Message {
+}
+#FlypJournal .FrontPageStream .FrontPageStreamItems > div > .Message,
+#FlypJournal .FrontPageStream .FrontPageStreamItems > div > .Message > .FrontPageLayout {
 	height: 100%;
 	width:100%;
 }
-#FlypJournal .FrontPageStreamItems > div > .Message > div {
-	height: 100%;
-	width:100%;
-}
-#FlypJournal .FrontPageStreamItems > div > .Message > div > div.FlypImage {
+#FlypJournal .FrontPageStream .FrontPageStreamItems > div > .Message > .FrontPageLayout > .FlypImage {
 	height: 100%;
 	width:100%;
 	position: absolute;
 	overflow:hidden;
 }
-#FlypJournal .FrontPageStreamItems > div > .Message > div > h2 {
+#FlypJournal .FrontPageStream .FrontPageStreamItems > div > .Message > .FrontPageLayout > h2,
+#FlypJournal .FrontPageStream .FrontPageStreamItems > div > .Message > .FrontPageLayout > p {
 	position: absolute;
 	z-index: 100;
 	box-sizing:border-box;
 }
-#FlypJournal .FrontPageStreamItems > div > .Message > div > p {
-	position: absolute;
-	z-index: 100;
-}
 
 
 
-/*-----  Globales css für den Article Stream ------*/
-#FlypJournal .ArticleStream {
-	min-height:100%;
-}
-#FlypJournal .ArticleStream  {
-	padding: 0 5%;
-	box-sizing: border-box;
-}
-
-#FlypJournal .ArticleStream > div > .Message > .ArticleParagraphLayout > h3 {
-	/*font-size: 2em;
-	font-weight:400;
-	text-transform: uppercase;*/
-}
-
-
-#FlypJournal .ArticleStream > div > .Message > div.ArticleImageLayout > div.FlypImage {
-  overflow:hidden;
-  height: 300px;
-  width:100%;
-}
-#FlypJournal .ArticleStream > div > .Message > div.ArticleImageLayout > p {
-  text-align:right;
-}
-
-#FlypJournal .ArticleStream  {
-	background-color:#fff;
-	padding:5%;
-}
-#FlypJournal .ArticleStream h3  {
-	font-size: 2em;
-	font-weight:400;
-	text-transform: uppercase;
-}
-
-
-
-/*-----  Style1 - Design ------*/
-#FlypJournal .Style1 .FrontPageLayout  {
+/*-----  FrontPageDesign - Style1 -------*/
+#FlypJournal .FrontPageStream .FrontPageStreamItems > div.Style1 > .Message > .FrontPageLayout  {
 	background-color: #c80c41;
 }
-#FlypJournal .Style1 .FrontPageLayout .FlypImage {}
-#FlypJournal .Style1 .FrontPageLayout  h2 {
+#FlypJournal .FrontPageStream .FrontPageStreamItems > div.Style1 > .Message > .FrontPageLayout  h2 {
 	font-family: 'Josefin Slab', serif;
 	font-size: 3em;
 	text-align: center;
@@ -116,42 +69,39 @@ h1,h2,h3,h4,p {
 	border-radius: 50%;
 	border-top-left-radius: 0;
 	background-color: #3b6eb1;
-  color:#fff;
-  hyphens: auto;
+	color:#fff;
+	hyphens: auto;
 }
-#FlypJournal .Style1 .FrontPageLayout  p {
-  background-color: #3b6eb1;
-  background-color:rgba(59,110,177,0.6);
-  font-size: 1.1em;
+#FlypJournal .FrontPageStream .FrontPageStreamItems > div.Style1 > .Message > .FrontPageLayout  p {
+	background-color: #3b6eb1;
+	background-color:rgba(59,110,177,0.6);
+	font-size: 1.1em;
 	padding:3% 5%;
 	width: 100%; 
 	bottom: 0;		
 	color:#fff;
-	box-sizing: border-box;
 }
 
 
 
-/*-----  Style2 - Design ------*/
-#FlypJournal .Style2 .FrontPageLayout {
+/*-----  FrontPageDesign - Style2 ------*/
+#FlypJournal .FrontPageStream .FrontPageStreamItems > div.Style2 > .Message > .FrontPageLayout {
 	background-color: #c80c41;
 }
-#FlypJournal .Style2 .FrontPageLayout .FlypImage {}
-#FlypJournal .Style2 .FrontPageLayout h2 {
+#FlypJournal .FrontPageStream .FrontPageStreamItems > div.Style2 > .Message > .FrontPageLayout h2 {
+	background-color: #f032f0;	/* rgb(240,50,240) */
 	font-family: 'Barrio', cursive;
 	font-size: 3em;
-	text-align: left;
 	margin: 10%;
 	margin-top: 40px;
-	padding:2%;
-    background-color: rgb(240,50,240);	
-    color:#fff;
-    transform:rotate(-10deg);
-    width: calc(100% - 5%); 
-    hyphens: auto;	
+	padding:2%;	
+	color:#fff;
+	transform:rotate(-10deg);
+	width: calc(100% - 5%); 
+	hyphens: auto;	
 }
-#FlypJournal .Style2 .FrontPageLayout p {
-	background-color: rgb(240,50,240);
+#FlypJournal .FrontPageStream .FrontPageStreamItems > div.Style2 > .Message > .FrontPageLayout p {
+	background-color: #f032f0;	/* rgb(240,50,240) */
 	font-size: 1.1em;
 	padding:2%;
 	margin: 10%;
@@ -162,6 +112,52 @@ h1,h2,h3,h4,p {
 	bottom: 8%;
 	box-sizing: border-box;
 }
+
+
+
+
+
+/*-----  Globales css für den Article Stream ------*/
+#FlypJournal .ArticleStream  {
+	min-height:100%;
+	padding: 10% 5%;
+	box-sizing: border-box;
+	background-color:#fff;
+	color:#333;
+}
+#FlypJournal .ArticleStream > div > .Message > .ArticleParagraphLayout > h3 {
+	font-size: 2em;
+	font-weight:400;
+	text-transform: uppercase;
+	margin-bottom: 5%;
+}
+#FlypJournal .ArticleStream > div > .Message > .ArticleParagraphLayout > p {
+	margin-bottom: 3%;
+	
+}
+#FlypJournal .ArticleStream > div > .Message > .ArticleImageLayout > .FlypImage {
+	overflow:hidden;
+	height: 40vh;
+	width:100%;
+	margin-bottom: 3%;
+}
+#FlypJournal .ArticleStream > div > .Message > .ArticleImageLayout > h3 {
+	font-size: 1.2em;
+	font-weight:400;
+	text-transform: uppercase;
+	margin-bottom: 3%;
+}
+#FlypJournal .ArticleStream > div > .Message > .ArticleImageLayout > p {
+	font-size: 0.85em;
+	font-weight: 300;
+	font-style: italic;
+	margin-top: -2%;
+	margin-bottom: 3%;
+}
+
+
+
+
 
 
 
