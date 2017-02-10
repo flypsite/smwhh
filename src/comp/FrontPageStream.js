@@ -71,19 +71,24 @@ class FrontPageStream extends Component {
 
 // BOTH	
 	startdrag(cx, cy, d) {
+		
 		this.dragstartX  = cx;
 		this.dragstartY  = cy;
 		this.scrollLeft = d.scrollLeft;
 		this.scrollTop = d.children[0].children[this.state.selectedPage].scrollTop;
 		this.dragdiffX = 0;
 		this.dragdiffY = 0;
-		this.dragstarttime = 1* new Date();
+		this.dragstarttime = 0;
+		if (this.tween) {
+			this.tween.kill();
+		}
+
 	}
 	
 	stopdrag(cx, cy, d) {
 		var self = this;
 		this.dragstartX = false;
-		var minmove, newPos, impetus = false, timediff = 1* new Date() - this.dragstarttime;
+		var minmove, newPos, impetus = false, timediff = new Date() - this.dragstarttime;
 
 		// MAINLY a vertical movement
 		if ( Math.abs(this.dragdiffX) < Math.abs(this.dragdiffY) ) {
@@ -97,7 +102,7 @@ class FrontPageStream extends Component {
 				impetus = self.dragdiffY * 9/1000;
 				newPos  = self.scrollTop - impetus * d.offsetHeight;
 			}
-			if (impetus) TweenMax.to(d.children[0].children[self.state.selectedPage], Math.sqrt(Math.abs(impetus)), { scrollTop: newPos, ease:Power1.easeOut });
+			if (impetus) this.tween = TweenMax.to(d.children[0].children[self.state.selectedPage], Math.sqrt(Math.abs(impetus)), { scrollTop: newPos, ease:Power1.easeOut });
 
 		} else {
 		// OR MAINLY horizontal
@@ -115,6 +120,7 @@ class FrontPageStream extends Component {
 	drag(cx, cy, d) {
 		var self = this;
 		if (this.dragstartX) {
+			if (!this.dragstarttime) this.dragstarttime = new Date();
 			this.dragdiffX = cx - this.dragstartX;
 			this.dragdiffY = cy - this.dragstartY;
 			console.log(this.scrollTop, this.dragdiffY);
