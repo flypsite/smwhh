@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import Message from './Message.js';
 import ArticleStream from './ArticleStream.js';
+import TweenMax, {Power1, Power2, Sine} from 'gsap';
 
-var TweenMax = require("gsap");
 
 class FrontPageStream extends Component {
 
@@ -19,106 +19,124 @@ class FrontPageStream extends Component {
 			y: 0
 		};
 	}
-
-
-	scrolled(idx) {
-		//console.log("scrolled called.");
-		var sp = this.state.selectedPage;
-		if ( sp === idx ) return;
-
-		console.log("scrolled to " + idx);
-		this.setState({ selectedPage: idx, lastIDX: sp });
-	}
 	
-	
-	scrollStopper() {
-
-		/*	
-		var d = this.DOMNode;
-		var newPos = Math.round(d.scrollLeft / d.offsetWidth)*d.offsetWidth;
-	
-		if(this.state.selectedPage != Math.round(d.scrollLeft / d.offsetWidth) ) {
-			this.scrolled(Math.round(d.scrollLeft / d.offsetWidth));
-		}
-		
-		//TweenMax.to(d, 0.2, { scrollLeft: newPos, onComplete:self.resetOldScrollAndAnimation() });
-
-		this.setState({animating: true});
-		*/
-		
-	}
-	
-	resetOldScroll() {
-		//console.log("resetOldScroll")
+	selectPage() {
 		var d = this.DOMNode;
 		var self = this;
-		
-		if(this.state.selectedPage !== Math.round(d.scrollLeft / d.offsetWidth) ) {
-			this.scrolled(Math.round(d.scrollLeft / d.offsetWidth));
-		}
-		
-		
-		if(d.children[0].children[this.state.lastIDX]) d.children[0].children[self.state.lastIDX].scrollTop = 0;
+		var idx = Math.round(d.scrollLeft / d.offsetWidth);
+		var sp = this.state.selectedPage;
+
+		if ( sp === idx ) return;
+		// select new
+		this.setState({ selectedPage: idx, lastIDX: sp });
+
+		// reset old
+		if(d.children[0].children[self.state.lastIDX]) d.children[0].children[self.state.lastIDX].scrollTop = 0;
+
 	}
 
 
 
-	handleClick() {
-		console.log("handleClick", this.DOMNode.offsetWidth);
-	}
-	
 	handleScroll(e) {
 		e.preventDefault();
 		e.stopPropagation();
 	}
 
-
-	handleMouseDown() {
-		//console.log("handleMouseDown", this);
+// MOUSE
+	
+	handleMouseDown(e) {
+		this.startdrag(e.clientX, e.clientY, this.DOMNode);
 	}
-
-	handleMove() {
-		//console.log("handleMove");		
+	handleMouseMove(e) {
+		this.drag(e.clientX, e.clientY, this.DOMNode);
+	}
+	handleMouseUp(e) {
+		this.stopdrag(e.clientX, e.clientY, this.DOMNode);
 	}
 	
+// TOUCH
+
 	handleTouchStart(e) {
-		/*
-		console.log(e.touches[0].screenX);
-		this.dragStartX = e.touches[0].screenX;
-		this.dx = this.DOMNode.scrollLeft;
-		console.log("handleTouchStart", this.dragStartX, this.dx);	
-
-		var c = e.currentTarget.children[0];
-		console.log("c", c.offsetLeft);
-		*/
+		e.preventDefault();
+		this.startdrag(e.touches[0].clientX, e.touches[0].clientY, this.DOMNode);
 	}
-	
 	handleTouchMove(e) {
-		//console.log("handleTouchMove", e.touches[0].screenX, this.DOMNode.scrollLeft);	
-		//this.DOMNode.style = {left:e.touches[0].clientX};
-		//this.lastClientX = e.touches[0].screenX;		
+		e.preventDefault();
+		this.drag(e.touches[0].clientX, e.touches[0].clientY, this.DOMNode);
+	}
+	handleTouchEnd(e) {
+		e.preventDefault();
+		this.stopdrag(null, null, this.DOMNode);
 	}
 
-
-	handleTouchEnd(e) {	
-		var self = this;
-
-		var d = this.DOMNode;
-		var newPos = Math.round(d.scrollLeft / d.offsetWidth)*d.offsetWidth;
-		//console.log("handleTouchEnd newPos", newPos);
-		
-		/*
-		// jetzt im callback...
-		if(this.state.selectedPage !== Math.round(d.scrollLeft / d.offsetWidth) ) {
-			this.scrolled(Math.round(d.scrollLeft / d.offsetWidth));
-		}
-		*/
-		
-		TweenMax.to(d, 0.2, { scrollLeft: newPos, onComplete:self.resetOldScroll.bind(self) });
-		//TweenMax.to(d, 3, { scrollLeft: newPos, onComplete:self.resetOldScroll.bind(self) });
-		
+// BOTH	
+	startdrag(cx, cy, d) {
+		this.dragstartX  = cx;
+		this.dragstartY  = cy;
+		this.scrollLeft = d.scrollLeft;
+		this.scrollTop = d.children[0].children[this.state.selectedPage].scrollTop;
+		this.dragdiffX = 0;
+		this.dragdiffY = 0;
+		this.dragstarttime = 1* new Date();
 	}
 	
+	stopdrag(cx, cy, d) {
+		var self = this;
+		this.dragstartX = false;
+		var minmove, newPos, impetus = false, timediff = 1* new Date() - this.dragstarttime;
+
+		// MAINLY a vertical movement
+		if ( Math.abs(this.dragdiffX) < Math.abs(this.dragdiffY) ) {
+			if (this.dragdiffY < 0 && this.scrollTop === 0) {
+				impetus = 0.25;
+				newPos = d.offsetHeight;
+			} else if (this.dragdiffY > 0 && this.scrollTop <= d.offsetHeight + 50) {
+				impetus = 0.25;
+				newPos = 0;
+			} else if (timediff < 500) {
+				impetus = self.dragdiffY * 9/1000;
+				newPos  = self.scrollTop - impetus * d.offsetHeight;
+			}
+			if (impetus) TweenMax.to(d.children[0].children[self.state.selectedPage], Math.sqrt(Math.abs(impetus)), { scrollTop: newPos, ease:Power1.easeOut });
+
+		} else {
+		// OR MAINLY horizontal
+		
+			if (timediff < 200 && Math.abs(this.dragdiffY) < 20) minmove = true; // this is a short flip and will always result in the desired move
+			else minmove = (Math.abs(this.dragdiffX) > (d.offsetWidth / 3));
+
+			if (this.dragdiffX > 0 && minmove) newPos= Math.floor(d.scrollLeft / d.offsetWidth)*d.offsetWidth;
+			else if (minmove) newPos = Math.ceil(d.scrollLeft / d.offsetWidth)*d.offsetWidth;
+			else newPos = this.scrollLeft;
+			TweenMax.to(d, 0.2, { scrollLeft: newPos, onComplete:self.selectPage.bind(self) });
+		}
+	}
+
+	drag(cx, cy, d) {
+		var self = this;
+		if (this.dragstartX) {
+			this.dragdiffX = cx - this.dragstartX;
+			this.dragdiffY = cy - this.dragstartY;
+			console.log(this.scrollTop, this.dragdiffY);
+			
+			if ( Math.abs(this.dragdiffX) < Math.abs(this.dragdiffY) ) {
+				TweenMax.to(d, 0.2, { scrollLeft: self.scrollLeft });
+				d.children[0].children[self.state.selectedPage].scrollTop =  this.scrollTop - this.dragdiffY;
+			} else {
+				d.scrollLeft = this.scrollLeft - this.dragdiffX;
+			}
+		}
+	}
+	
+	handleDragStart(e) {
+		console.log("dragstart", e.target);
+	}
+	handleDrag(e) {
+		console.log("drag", e.target);
+	}
+	handleDragEnd(e) {
+		console.log("dragend", e.target);
+	}
 
 
 	render() {
@@ -139,7 +157,7 @@ class FrontPageStream extends Component {
 			return (
 				<div id={item.id} key={item.id} className={item.message.style}>
 					<Message key={item.id} mode="frontpages" data={ item } />
-					<ArticleStream data={ item.message.substream } showArticle={ index === self.state.selectedPage }/>
+					<ArticleStream data={ item.message.substream } showArticle={ index === self.state.selectedPage } />
 				</div> 
 			)
 
@@ -148,14 +166,16 @@ class FrontPageStream extends Component {
 		// onScroll={ this.handleScroll.bind(this) }
 
 		return (
-				<div className="FrontPageStream" 					
+				<div className="FrontPageStream" draggable="false"					
 					onTouchStart={this.handleTouchStart.bind(this)} 
 					onTouchMove={this.handleTouchMove.bind(this)} 
 					onTouchEnd={this.handleTouchEnd.bind(this)} 
-					onMouseMove={this.handleMove.bind(this)} 
+					onMouseMove={this.handleMouseMove.bind(this)} 
 					onMouseDown={this.handleMouseDown.bind(this)} 
-					onClick={this.handleClick.bind(this)} 
-					onScroll={this.handleScroll.bind(this)}
+					onMouseUp={this.handleMouseUp.bind(this)} 
+					/*onDragStart={this.handleDragStart.bind(this)}
+					onDrag={this.handleDrag.bind(this)}
+					onDragEnd={this.handleDragEnd.bind(this)}*/
 					ref={(elem) => { this.DOMNode = elem; }}>
 				
 				<div className="FrontPageStreamItems" 
