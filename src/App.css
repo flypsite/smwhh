@@ -162,37 +162,6 @@ h1,h2,h3,h4,p {
 		font-size: 0.9em;
 }
 
-
-/*-----  FrontPageDesign - Style2 ------*/
-#FlypJournal .FrontPageStream .FrontPageStreamItems > div.Style2 > .Message > .FrontPageLayout {
-	background-color: #c80c41;
-	color:#fff;
-}
-#FlypJournal .FrontPageStream .FrontPageStreamItems > div.Style2 > .Message > .FrontPageLayout h2 {
-	background-color: #f032f0;	/* rgb(240,50,240) */
-	font-family: 'Barrio', cursive;
-	font-size: 3em;
-	margin: 10%;
-	margin-top: 40px;
-	padding:2%;	
-	transform:rotate(-10deg);
-	width: calc(100% - 5%); 
-	hyphens: auto;	
-}
-#FlypJournal .FrontPageStream .FrontPageStreamItems > div.Style2 > .Message > .FrontPageLayout p {
-	background-color: #f032f0;	/* rgb(240,50,240) */
-	bottom: 8%;
-	font-size: 1.1em;
-	margin: 10%;
-	padding:2%;
-	padding-right: 10%; 	
-	transform:rotate(-10deg);
-	width: 100%;
-}
-
-
-
-
 .JosefinSlab {
 	font-family: 'Josefin Slab', serif;
 }
