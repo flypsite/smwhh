@@ -29,17 +29,12 @@ class FrontPageStream extends Component {
 		if ( sp === idx ) return;
 		// select new
 		this.setState({ selectedPage: idx, lastIDX: sp });
-
 		// reset old
 		if(d.children[0].children[self.state.lastIDX]) d.children[0].children[self.state.lastIDX].scrollTop = 0;
-
 	}
 
 
-
 	handleScroll(e) {
-		e.preventDefault();
-		e.stopPropagation();
 	}
 
 // MOUSE
@@ -57,15 +52,17 @@ class FrontPageStream extends Component {
 // TOUCH
 
 	handleTouchStart(e) {
-		e.preventDefault();
 		this.startdrag(e.touches[0].clientX, e.touches[0].clientY, this.DOMNode);
 	}
 	handleTouchMove(e) {
-		e.preventDefault();
+		// prevent touch events default behavior while being in the top part of the page
+		// this effectively prevents the native scroll behavior
+		var sct = this.DOMNode.children[0].children[this.state.selectedPage].scrollTop;
+		if (sct < this.DOMNode.offsetHeight) e.preventDefault();
+
 		this.drag(e.touches[0].clientX, e.touches[0].clientY, this.DOMNode);
 	}
 	handleTouchEnd(e) {
-		e.preventDefault();
 		this.stopdrag(null, null, this.DOMNode);
 	}
 
@@ -90,7 +87,7 @@ class FrontPageStream extends Component {
 		this.dragstartX = false;
 		var minmove, newPos, impetus = false, timediff = new Date() - this.dragstarttime;
 
-		// MAINLY a vertical movement
+		// a vertical movement
 		if ( Math.abs(this.dragdiffX) < Math.abs(this.dragdiffY) ) {
 			if (this.dragdiffY < 0 && this.scrollTop === 0) {
 				impetus = 0.25;
@@ -99,14 +96,15 @@ class FrontPageStream extends Component {
 				impetus = 0.25;
 				newPos = 0;
 			} else if (timediff < 500) {
-				impetus = self.dragdiffY * 9/1000;
-				newPos  = self.scrollTop - impetus * d.offsetHeight;
-			}
+				// not needed since we scroll natively
+				//impetus = self.dragdiffY * 9/1000;
+				//newPos  = self.scrollTop - impetus * d.offsetHeight;
+			} // else slow movement, leave it where it is.
 			if (impetus) this.tween = TweenMax.to(d.children[0].children[self.state.selectedPage], Math.sqrt(Math.abs(impetus)), { scrollTop: newPos, ease:Power1.easeOut });
 
 		} else {
-		// OR MAINLY horizontal
-		
+		// or a horizontal movement
+			
 			if (timediff < 200 && Math.abs(this.dragdiffY) < 20) minmove = true; // this is a short flip and will always result in the desired move
 			else minmove = (Math.abs(this.dragdiffX) > (d.offsetWidth / 3));
 
@@ -123,7 +121,6 @@ class FrontPageStream extends Component {
 			if (!this.dragstarttime) this.dragstarttime = new Date();
 			this.dragdiffX = cx - this.dragstartX;
 			this.dragdiffY = cy - this.dragstartY;
-			console.log(this.scrollTop, this.dragdiffY);
 			
 			if ( Math.abs(this.dragdiffX) < Math.abs(this.dragdiffY) ) {
 				TweenMax.to(d, 0.2, { scrollLeft: self.scrollLeft });
@@ -172,14 +169,16 @@ class FrontPageStream extends Component {
 		// onScroll={ this.handleScroll.bind(this) }
 
 		return (
-				<div className="FrontPageStream" draggable="false"					
+				<div className="FrontPageStream" draggable="false"
 					onTouchStart={this.handleTouchStart.bind(this)} 
 					onTouchMove={this.handleTouchMove.bind(this)} 
 					onTouchEnd={this.handleTouchEnd.bind(this)} 
 					onMouseMove={this.handleMouseMove.bind(this)} 
 					onMouseDown={this.handleMouseDown.bind(this)} 
 					onMouseUp={this.handleMouseUp.bind(this)} 
-					/*onDragStart={this.handleDragStart.bind(this)}
+					/*onScroll={this.handleScroll.bind(this)} 
+					onWheel={this.handleWheel.bind(this)} 
+					onDragStart={this.handleDragStart.bind(this)}
 					onDrag={this.handleDrag.bind(this)}
 					onDragEnd={this.handleDragEnd.bind(this)}*/
 					ref={(elem) => { this.DOMNode = elem; }}>
