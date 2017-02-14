@@ -14,7 +14,7 @@ class App extends Component {
 		// local streams cache
 		this.streams = { };
 
-		this.state = { frontstream: null };
+		this.state = { frontstream: null, mediaPlaying: null  };
 
 		var self = this;
 //		Pusher.log = function(m) {

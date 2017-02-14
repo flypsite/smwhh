@@ -5,16 +5,16 @@ import LayoutMap from '../LayoutMap.js';
 class Message extends Component {
 
 
-  getLayoutFunc(modename, loname) {
+	getLayoutFunc(modename, loname) {
 
-  	var mobj = LayoutMap[modename];
-  	if ( ! mobj ) mobj = LayoutMap['generic'];
+		var mobj = LayoutMap[modename];
+		if ( ! mobj ) mobj = LayoutMap['generic'];
 
 		var layoutFunc = null;
 		if ( loname ) layoutFunc = mobj.layouts[loname];
-    if ( layoutFunc == null ) layoutFunc = mobj.fallback;
-    if ( layoutFunc == null ) return null;
-    return layoutFunc;
+		if ( layoutFunc == null ) layoutFunc = mobj.fallback;
+		if ( layoutFunc == null ) return null;
+		return layoutFunc;
 
   }
 

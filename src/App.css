@@ -145,7 +145,7 @@ h1,h2,h3,h4,p {
 	line-height: 1.4em;
 }
 #FlypJournal .ArticleStream > div > .Message > div > .FlypImage {
-	height: 40vh;
+	height: 100vw;
 	margin-bottom: 4%;
 	overflow:hidden;
 	width:100%;
@@ -161,7 +161,15 @@ h1,h2,h3,h4,p {
 		margin-bottom:2%;
 		font-size: 0.9em;
 }
+#FlypJournal .ArticleStream > div > .Message > .ArticleVideoLayout > .FlypVideo{
+	margin-bottom: 20px;
+}
 
+#FlypJournal .ArticleStream > div > .Message > .ArticleVideoLayout > .FlypVideo > .FlypImage {
+	height: 100%;
+	width:100%;
+	overflow:hidden;
+}
 .JosefinSlab {
 	font-family: 'Josefin Slab', serif;
 }
