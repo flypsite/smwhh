@@ -31,7 +31,7 @@ export default class FlypVideo extends Component {
 	calcHeight(e, m) {
 		if(!e) return;
 		this.DOMNode = e;
-		let vObj = VideoMagic(e, m);
+		let vObj = VideoMagic(e, m); // let vs var: http://stackoverflow.com/questions/762011/whats-the-difference-between-using-let-and-var-to-declare-a-variable
 		let style = {width: vObj.style.width+"px", height: Math.ceil(vObj.style.height)+"px"};
 		this.setState({ style: style, vObj: vObj });
 	}
