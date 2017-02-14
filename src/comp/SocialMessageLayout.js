@@ -8,9 +8,9 @@ export default function SocialMessageLayout(props) {
 
 	return (
 		<div className="SocialMessageLayout">
+			{ m.media && m.media.image && <FlypImage data={m.media} /> }
 			{ m.headline && <h3>{m.headline}</h3> }
 			{ m.text && <p>{m.text}</p> }
-			{ m.media && m.media.image && <FlypImage data={m.media} /> }
 			<FlypUser data={m} />
 		</div>
     );
