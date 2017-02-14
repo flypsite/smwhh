@@ -203,6 +203,7 @@ class App extends Component {
 			signature: false,
 			media: m.media,
 			user: m.user,
+			created: "Tue, 14 Feb 2017 12:37:45 +0100",
 			substream: m.substream
 		}
 
