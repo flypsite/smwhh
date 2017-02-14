@@ -19,7 +19,7 @@ export default class FlypVideo extends Component {
 	static contextTypes = { app: React.PropTypes.object }	
 	 	
 	play(){
-		//console.log("play", this.props.media);
+		console.log("play", this.props.media);
 		if(this.context.app.state.mediaPlaying) {
 			this.context.app.state.mediaPlaying.setState({isPlaying: false})
 		}
@@ -51,14 +51,15 @@ export default class FlypVideo extends Component {
 			if(!this.state.isPlaying) {
 				
 				if(this.state.style === null) {
-					return( <div className="FlypVideo" onClick={this.play} ref={ (e) => this.calcHeight(e, m) } ></div> )
+					return( <div className="FlypVideo"  onClick={this.play} ref={ (e) => this.calcHeight(e, m) } ></div> )
 				} else {
 					return(
 						<div className="FlypVideo" onClick={this.play} style={this.state.style} >
-							<FlypImage data={m} alt="Click to play Video"/>
+							<FlypImage data={m}  onClick={this.play} alt="Click to play Video"/>
 							<div className="PlayButton"/>
 						</div>
 					)
+					
 				}
 
 
@@ -67,7 +68,7 @@ export default class FlypVideo extends Component {
 
 				return(
 					<div className="FlypVideo">
-						<iframe style={this.vObj.style} src={this.vObj.src} scrolling="no"/>
+						<iframe style={this.state.vObj.style} src={this.state.vObj.src} scrolling="no"/>
 					</div>
 				)
 				
