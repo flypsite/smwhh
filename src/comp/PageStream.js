@@ -32,9 +32,7 @@ class PageStream extends Component {
 	}
 	
 	gotoSlide(index) {
-		// getting the frontpagestream as component instance
-		var ref = this.context.app.maincomp;
-		ref.goToIndex(index);
+		this.context.app.maincomp.goToIndex(index);
 	}
 
 
@@ -63,7 +61,7 @@ class PageStream extends Component {
 
 
 		return (
-			<div className="PageStream" ref={(elem) => { this.DOMNode = elem; }}>
+			<div className="PageStream">
 			{ listItems }
 			</div>
 		);
