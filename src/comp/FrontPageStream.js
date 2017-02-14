@@ -155,7 +155,7 @@ class FrontPageStream extends Component {
 
 		const listItems = stream.items.map( function(item, index) {
 
-			console.log("render page " + index + " showArticle=" + (index === self.state.selectedPage) + " sub=", item.message.substream );
+			//console.log("render page " + index + " showArticle=" + (index === self.state.selectedPage) + " sub=", item.message.substream );
 
 			return (
 				<div id={item.id} key={item.id} className={item.message.style}>

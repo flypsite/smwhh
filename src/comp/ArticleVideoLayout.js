@@ -1,4 +1,5 @@
 import React from 'react';
+import FlypVideo from './FlypVideo.js';
 
 export default function ArticleVideoLayout(props) {
 
@@ -6,8 +7,7 @@ export default function ArticleVideoLayout(props) {
 
 	return (
 		<div className="ArticleVideoLayout">
-			<div className="Headline">{m.headline}</div>
-			<div className="Text">{m.text}</div>
+			<FlypVideo media={m.media} />
 		</div>
     );
     

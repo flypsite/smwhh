@@ -98,7 +98,7 @@ h1,h2,h3,h4,p {
 	font-size: 3em;
 	margin: 10%;
 	margin-top: 40px;
-	padding:2%;		
+	padding:2%;	
 	transform:rotate(-10deg);
 	width: calc(100% - 5%); 
 }
@@ -124,10 +124,6 @@ h1,h2,h3,h4,p {
 	min-height:100%;
 	padding:8% 5% 10%;
 }
-#FlypJournal .ArticleStream > div:first-child > .Message > div > h3 {
-	font-size: 1.8em;
-	margin-bottom: 5%;	
-}
 #FlypJournal .ArticleStream > div > .Message > div > h3 {
 	font-size: 1.3em;
 	font-weight:400;
@@ -138,17 +134,17 @@ h1,h2,h3,h4,p {
 #FlypJournal .ArticleStream > div > .Message > div > p {
 	margin-bottom: 4%;
 }
+#FlypJournal .ArticleStream > div > .Message > div > .FlypImage {
+	height: 100vw;
+	overflow:hidden;
+	width:100%;
+	margin-bottom: 4%;
+}
 
 
 /*-----  Spezifisches CSS für Einzel-Komponenten ------*/
 #FlypJournal .ArticleStream > div > .Message > .ArticleParagraphLayout > p {
 	line-height: 1.4em;
-}
-#FlypJournal .ArticleStream > div > .Message > div > .FlypImage {
-	height: 40vh;
-	margin-bottom: 4%;
-	overflow:hidden;
-	width:100%;
 }
 #FlypJournal .ArticleStream > div > .Message > .ArticleImageLayout > p {
 	font-size: 0.9em;
@@ -156,11 +152,80 @@ h1,h2,h3,h4,p {
 	margin-top: -2%;
 }
 #FlypJournal .ArticleStream > div > .Message > .SocialMessageLayout {
-		border: 1px solid #ccc;
-		padding: 5%;
-		margin-bottom:2%;
-		font-size: 0.9em;
+	border: 1px solid #ccc;
+	padding: 5%;
+	margin-bottom:2%;
+	font-size: 0.9em;
 }
+#FlypJournal .ArticleStream > div > .Message > .SocialMessageLayout > .FlypUser > span {
+	line-height: 1.3em;
+}
+#FlypJournal .ArticleStream > div > .Message > .SocialMessageLayout > .FlypUser > span > a {
+	text-decoration: none;
+	color: #666;
+}
+#FlypJournal .ArticleStream > div > .Message > .SocialMessageLayout > .FlypUser {
+	display:inline;
+}
+#FlypJournal .ArticleStream > div > .Message > .SocialMessageLayout > .FlypUser > .UserImage {
+	float: left;
+}
+#FlypJournal .ArticleStream > div > .Message > .SocialMessageLayout > .FlypUser > .UserImage > a > img {
+	width: 2.6em;
+	margin-right: 0.3em;
+	border-radius: 0.2em;
+
+}
+#FlypJournal .ArticleStream > div > .Message > .SocialMessageLayout > .FlypUser > .UserName {
+	display:inline;
+}
+#FlypJournal .ArticleStream > div > .Message > .SocialMessageLayout > .FlypUser > .UserHandle {
+	display:inline;
+}
+#FlypJournal .ArticleStream > div > .Message > .SocialMessageLayout > .FlypUser > .UserHandle:after {
+	content: "";
+	display: block;
+}
+#FlypJournal .ArticleStream > div > .Message > .SocialMessageLayout > .FlypUser > .Service {
+	display:inline;
+}
+#FlypJournal .ArticleStream > div > .Message > .SocialMessageLayout > .FlypUser > .Link {
+	display:inline;
+}
+#FlypJournal .ArticleStream > div > .Message > .SocialMessageLayout > .FlypUser > .Created {
+	display:inline;
+}
+
+
+
+
+
+
+
+#FlypJournal .ArticleStream > div > .Message > .ArticleVideoLayout > .FlypVideo {
+	margin-bottom: 20px;
+	position: relative;
+}
+
+#FlypJournal .ArticleStream > div > .Message > .ArticleVideoLayout > .FlypVideo > .FlypImage {
+	height: 100%;
+	width:100%;
+	overflow:hidden;
+}
+#FlypJournal .ArticleStream > div > .Message > .ArticleVideoLayout > .FlypVideo > .PlayButton {
+	width: 100%;
+	height: 100%;
+	background-image: url("assets/img/playButton.png");
+	background-position: center;
+	background-repeat: no-repeat;
+	position: absolute;
+	top: 0;
+	cursor: pointer;
+}
+
+
+
+
 
 .JosefinSlab {
 	font-family: 'Josefin Slab', serif;
