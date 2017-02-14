@@ -68,7 +68,7 @@ export default class FlypVideo extends Component {
 
 				return(
 					<div className="FlypVideo">
-						<iframe style={this.state.vObj.style} src={this.state.vObj.src} scrolling="no"/>
+						<iframe style={this.state.vObj.style} src={this.state.vObj.src} scrolling="no" webkitAllowFullscreen="webkitAllowFullScreen" mozAllowFullscreen="mozallowfullscreen" allowFullScreen="allowFullScreen"/>
 					</div>
 				)
 				
