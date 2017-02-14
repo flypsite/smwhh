@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import Message from './Message.js';
 import ArticleStream from './ArticleStream.js';
+import PageStream from './PageStream.js';
 import TweenMax, {Power1, Power2, Sine} from 'gsap';
 
 
@@ -154,13 +155,11 @@ class FrontPageStream extends Component {
 
 
 		const listItems = stream.items.map( function(item, index) {
-
-			//console.log("render page " + index + " showArticle=" + (index === self.state.selectedPage) + " sub=", item.message.substream );
-
 			return (
 				<div id={item.id} key={item.id} className={item.message.style}>
-					<Message key={item.id} mode="frontpages" data={ item } />
-					<ArticleStream data={ item.message.substream } showArticle={ index === self.state.selectedPage } />
+					<Message key={item.id} mode="fullpage" data={ item } />
+					{item.message.layout === "overview" && <PageStream    data={ item.message.substream } pkey={ item.id } /> }
+					{item.message.layout !== "overview" && <ArticleStream data={ item.message.substream } showArticle={ index === self.state.selectedPage } /> }
 				</div> 
 			)
 

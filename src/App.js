@@ -223,7 +223,7 @@ class App extends Component {
 	
 		return (
 			<div className="App">
-			<FrontPageStream data={this.state.frontstream} />
+			<FrontPageStream data={this.state.frontstream} ref={(maincomp) => {this.maincomp = maincomp}} />
 			</div>
 			);
 	}

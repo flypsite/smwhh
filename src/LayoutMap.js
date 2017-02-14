@@ -20,12 +20,11 @@ export default {
 		}
 	}, 
 	
-	frontpages: {
+	fullpage: {
 
 		fallback: FrontPageLayout,
 
 		layouts: {
-
 		}
 	},
 
@@ -41,9 +40,7 @@ export default {
 			"postcardtext":   SocialMessageLayout
 			
 		}
-
 	}
-
 
 
 }
