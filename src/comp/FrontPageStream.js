@@ -33,6 +33,14 @@ class FrontPageStream extends Component {
 		// reset old
 		if(d.children[0].children[self.state.lastIDX]) d.children[0].children[self.state.lastIDX].scrollTop = 0;
 	}
+	
+	goToIndex(i) {
+		var d = this.DOMNode;
+		var self = this;
+		var newPos = i * d.offsetWidth;
+		var diff = Math.abs(i - this.state.selectedPage);
+		TweenMax.to(d, diff*0.25, { scrollLeft: newPos, onComplete:self.selectPage.bind(self) });
+	}
 
 
 	handleScroll(e) {

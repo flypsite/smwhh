@@ -34,10 +34,7 @@ class PageStream extends Component {
 	gotoSlide(index) {
 		// getting the frontpagestream as component instance
 		var ref = this.context.app.maincomp;
-		// and as DOMNode
-		var fps = this.DOMNode.parentElement.parentElement.parentElement;
-		var newPos = index * fps.offsetWidth;
-		TweenMax.to(fps, 0.66, { scrollLeft: newPos, onComplete:ref.selectPage.bind(ref) });
+		ref.goToIndex(index);
 	}
 
 
