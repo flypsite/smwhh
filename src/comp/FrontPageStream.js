@@ -44,6 +44,12 @@ class FrontPageStream extends Component {
 
 
 	handleScroll(e) {
+		var sct = this.DOMNode.children[0].children[this.state.selectedPage].scrollTop;
+		if (sct === 0) e.preventDefault();
+	}
+	handleWheel(e) {
+		var sct = this.DOMNode.children[0].children[this.state.selectedPage].scrollTop;
+		if (sct === 0) e.preventDefault();
 	}
 
 // MOUSE
@@ -67,7 +73,7 @@ class FrontPageStream extends Component {
 		// prevent touch events default behavior while being in the top part of the page
 		// this effectively prevents the native scroll behavior
 		var sct = this.DOMNode.children[0].children[this.state.selectedPage].scrollTop;
-		if (sct < this.DOMNode.offsetHeight) e.preventDefault();
+		if (sct === 0) e.preventDefault();
 
 		this.drag(e.touches[0].clientX, e.touches[0].clientY, this.DOMNode);
 	}
@@ -183,9 +189,9 @@ class FrontPageStream extends Component {
 					onMouseMove={this.handleMouseMove.bind(this)} 
 					onMouseDown={this.handleMouseDown.bind(this)} 
 					onMouseUp={this.handleMouseUp.bind(this)} 
-					/*onScroll={this.handleScroll.bind(this)} 
+					onScroll={this.handleScroll.bind(this)} 
 					onWheel={this.handleWheel.bind(this)} 
-					onDragStart={this.handleDragStart.bind(this)}
+					/*onDragStart={this.handleDragStart.bind(this)}
 					onDrag={this.handleDrag.bind(this)}
 					onDragEnd={this.handleDragEnd.bind(this)}*/
 					ref={(elem) => { this.DOMNode = elem; }}>
