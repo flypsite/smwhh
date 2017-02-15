@@ -36,24 +36,24 @@ class ArticleStream extends Component {
 		});
 	}
 
+	componentWillMount() {
+		var substream = this.props.data;
+		if ( !substream ) return null;
+		if ( substream.loading ) {
+			return <div className="PageStream">loading...</div>
+		}
+		if ( ! substream.items ) {
+			this.load(substream);
+			return <div className="PageStream">loading...</div>
+		}	
+	}
 
 	render() {
 
 		if ( ! this.props.showArticle ) return null;
 
 		var substream = this.props.data;
-		if ( !substream ) return null; 
-
-
-		if ( substream.loading ) {
-			return <div className="ArticleStream">loading...</div>
-		}
-
-		if ( ! substream.items ) {
-			this.load(substream);
-			return <div className="ArticleStream">loading...</div>
-		}
-
+		if ( !substream ) return null;
 
 		const listItems = substream.items.map( (item) =>
 			<div key={item.id}>

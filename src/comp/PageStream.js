@@ -35,22 +35,23 @@ class PageStream extends Component {
 		this.context.app.maincomp.goToIndex(index);
 	}
 
-
-	render() {
-		var self = this;
+	componentWillMount() {
 		var substream = this.props.data;
-		this.sizes = [[1,2],[1,1],[1,1],[2,1],[2,1],[1,1],[1,1],[1,2],[1,1],[1,1],[2,1],[2,1],[1,1],[1,1],[1,2],[1,1],[1,1],[2,1],[2,1],[1,1],[1,1]];
 		if ( !substream ) return null; 
-
-
 		if ( substream.loading ) {
 			return <div className="PageStream">loading...</div>
 		}
-
 		if ( ! substream.items ) {
 			this.load(substream);
 			return <div className="PageStream">loading...</div>
-		}
+		}	
+	}
+	render() {
+		var self = this;
+		var substream = this.props.data;
+		if ( !substream ) return null; 
+
+		this.sizes = [[1,2],[1,1],[1,1],[2,1],[2,1],[1,1],[1,1],[1,2],[1,1],[1,1],[2,1],[2,1],[1,1],[1,1],[1,2],[1,1],[1,1],[2,1],[2,1],[1,1],[1,1]];
 
 		const listItems = substream.items.map( (item, index) =>
 			(self.props.pkey !== item.id) && 
