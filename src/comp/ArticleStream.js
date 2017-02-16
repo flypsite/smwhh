@@ -53,7 +53,7 @@ class ArticleStream extends Component {
 		if ( ! this.props.showArticle ) return null;
 
 		var substream = this.props.data;
-		if ( !substream ) return null;
+		if ( !substream || !substream.items ) return null;
 
 		const listItems = substream.items.map( (item) =>
 			<div key={item.id}>

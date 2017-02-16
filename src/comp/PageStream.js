@@ -49,7 +49,7 @@ class PageStream extends Component {
 	render() {
 		var self = this;
 		var substream = this.props.data;
-		if ( !substream ) return null; 
+		if ( !substream || !substream.items) return null; 
 
 		this.sizes = [[1,2],[1,1],[1,1],[2,1],[2,1],[1,1],[1,1],[1,2],[1,1],[1,1],[2,1],[2,1],[1,1],[1,1],[1,2],[1,1],[1,1],[2,1],[2,1],[1,1],[1,1]];
 
