@@ -28,14 +28,14 @@ class App extends Component {
 	*/
 	
 		// LIVE
-		/*
-		var v = new Vienna("9I2l1HbA7iWs", { 
-			pusher: Pusher,
-			pusherkey: "3bd9f270de4a9ca0cc78", 
-			url: "//flypsite.appspot.com" ,
-			mode: "poll"
-		});	
-		*/
+		
+// 		var v = new Vienna("9I2l1HbA7iWs", { 
+// 			pusher: Pusher,
+// 			pusherkey: "3bd9f270de4a9ca0cc78", 
+// 			url: "//flypsite.appspot.com" ,
+// 			mode: "poll"
+// 		});	
+		
 		// DEV
 		
 		var v = new Vienna("2wqFJd7vV3oY", { 
