@@ -19,28 +19,30 @@ class Message extends Component {
   }
 
 
-  render() {
+	render() {
 
-  	// put our message in a local variable
-  	var message = this.props.data.message;
+		// put our message in a local variable
+		var message = this.props.data.message;
 
-  	// find the layout function based on mode and layout properties
-  	var layoutFunc = this.getLayoutFunc(this.props.mode, message.layout);
+		if (!message) {
+			console.log("ERROR: got envelope without message!");
+			return null;
+		}
+		// find the layout function based on mode and layout properties
+		var layoutFunc = this.getLayoutFunc(this.props.mode, message.layout);
 
-  	// do something sane if no layoutFunction is available
-  	if ( ! layoutFunc ) {
-  		return ( <div>no layout: {message.layout}</div> );
-  	}
-
-  	// use the layout function, luke.
-    return (
-        <div key={ message.id } className="Message">
-            { layoutFunc( { data: message, mode: this.props.mode } ) }
-        </div>
-    );
-
- }
-
+		// do something sane if no layoutFunction is available
+		if ( ! layoutFunc ) {
+			return ( <div>no layout: {message.layout}</div> );
+		}
+		
+		// use the layout function, luke.
+		return (
+			<div key={ message.id } className="Message">
+				{ layoutFunc( { data: message, mode: this.props.mode } ) }
+			</div>
+		);
+	}
 }
 
 export default Message;
