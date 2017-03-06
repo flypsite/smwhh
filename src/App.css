@@ -135,8 +135,19 @@ h1,h2,h3,h4,p {
 	height:100%;
 	width:100%;
 }
-#FlypJournal .PageStream > div > .Message > .FrontPageLayout > h2,
-#FlypJournal .PageStream > div > .Message > .FrontPageLayout > p {
+
+#FlypJournal .FrontPageStream > div > div > .Message > .FullPageVideoLayout,
+#FlypJournal .FrontPageStream > div > div > .Message > .FullPageVideoLayout > .FlypImage,
+#FlypJournal .FrontPageStream > div > div > .Message > .FullPageVideoLayout > .FlypVideo{
+	position:relative;
+	height: 100vh;
+	width:100%;
+}
+#FlypJournal .PageStream > div > .Message > .FullPageVideoLayout > .FlypVideo > iframe {
+	pointer-events: none;
+}
+#FlypJournal .PageStream > div > .Message > div > h2,
+#FlypJournal .PageStream > div > .Message > div > p {
 	position: absolute;
 	z-index: 100;
 	box-sizing:border-box;
@@ -286,18 +297,17 @@ h1,h2,h3,h4,p {
 
 
 
-
 #FlypJournal .ArticleStream > div > .Message > .ArticleVideoLayout > .FlypVideo {
 	margin-bottom: 20px;
 	position: relative;
 }
 
-#FlypJournal .ArticleStream > div > .Message > .ArticleVideoLayout > .FlypVideo > .FlypImage {
+#FlypJournal .ArticleStream > div > .Message > div > .FlypVideo > .FlypImage {
 	height: 100%;
 	width:100%;
 	overflow:hidden;
 }
-#FlypJournal .ArticleStream > div > .Message > .ArticleVideoLayout > .FlypVideo > .PlayButton {
+#FlypJournal .ArticleStream > div > .Message > div > .FlypVideo > .PlayButton {
 	width: 100%;
 	height: 100%;
 	background-image: url("assets/img/playButton.png");
@@ -307,7 +317,6 @@ h1,h2,h3,h4,p {
 	top: 0;
 	cursor: pointer;
 }
-
 
 
 

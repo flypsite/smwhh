@@ -1,4 +1,4 @@
-export default function videoMagic( e, media ) {
+export default function videoMagic( e, media, sizing ) {
 	
 	var ww = media.av.width ? media.av.width : media.image.width;   
 	var hh = media.av.height ? media.av.height : media.image.height;
@@ -8,18 +8,19 @@ export default function videoMagic( e, media ) {
 
 	let zoomFactor = 1;
 	
-	if(aspectratio >= 1) { // querkant
-		zoomFactor = e.offsetWidth / ww;
-	} else {
-		zoomFactor = 1; // FIXME
-	}
+	if (sizing === "cover") {
+		zoomFactor = Math.max(e.offsetWidth / ww, e.offsetHeight / hh); // height is full screenheight
+		console.log(e.offsetWidth, ww, e.offsetHeight, hh, zoomFactor);
+	} else zoomFactor = e.offsetWidth / ww; // height is auto
 	
-	var calcWidth = ww * zoomFactor; 
+	var calcWidth  = ww * zoomFactor; 
 	var calcHeight = hh * zoomFactor; 
+	var offsetleft = Math.min(0, e.offsetWidth - calcWidth) / 2;
+	var offsettop  = Math.min(0, e.offsetHeight - calcHeight) / 2;
 
 	var padpercent = Math.round(10000/aspectratio)/100;
 
-	var uu = media.av.playerurl
+	var uu = media.av.playerurl;
 	uu = uu.replace(/^.*youtu.be\/(.+)$/i,                    	'https://www.youtube-nocookie.com/embed/$1?html5=1&amp;autoplay=1&amp;origin=http://flyp.tv');
 	uu = uu.replace(/^.*www.youtube.com\/.*\?v=([^&#]+).*$/i, 	'https://www.youtube-nocookie.com/embed/$1?html5=1&amp;autoplay=1&amp;origin=http://flyp.tv');	
 	uu = uu.replace(/^.*www.youtube.com\/embed\/(.+)$/i,        'https://www.youtube-nocookie.com/embed/$1?html5=1&amp;autoplay=1&amp;origin=http://flyp.tv');
@@ -37,11 +38,11 @@ export default function videoMagic( e, media ) {
 	
 	var vObj = {
 		src: uu,
-		width: ww,
-		height: hh,
+		width: e.offsetWidth,
+		height: e.offsetWidth/aspectratio,
 		aspectratio: aspectratio,
 		padpercent: padpercent,
-		style: { width: calcWidth, height: calcHeight, border: 0, frameborder: 0, "scrolling": "no" }
+		style: { width: calcWidth + "px", height: calcHeight + "px", border: 0, marginLeft: offsetleft + "px", marginTop: offsettop + "px" }
 	}
 
 	return vObj;

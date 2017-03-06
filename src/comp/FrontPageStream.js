@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import Message from './Message.js';
 import ArticleStream from './ArticleStream.js';
 import PageStream from './PageStream.js';
-import TweenMax, {Power1, Power2, Sine} from 'gsap';
+import TweenMax, {Power1} from 'gsap';
 
 
 class FrontPageStream extends Component {
@@ -161,12 +161,7 @@ class FrontPageStream extends Component {
 
 		var self = this;
 		var stream = this.props.data;
-
-		if ( ! stream ) {
-			return <div>loading...</div>
-		}
-
-
+		if ( !stream || !stream.items || stream.items.length === 0) return null;
 
 		const listItems = stream.items.map( function(item, index) {
 			return (
