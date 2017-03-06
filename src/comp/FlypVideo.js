@@ -40,7 +40,7 @@ export default class FlypVideo extends Component {
 		if (this.props.autoplay === true && !this.state.isPlaying) this.play();
 	}
 
-	render() {
+	render() { 
 	
 		var m = this.props.media;
 
@@ -78,7 +78,7 @@ export default class FlypVideo extends Component {
 			}		
 			
 		}
-
+		return null;
 	}
 }
 
