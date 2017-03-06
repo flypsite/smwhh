@@ -8,6 +8,7 @@ h1,h2,h3,h4,p {
 #FlypJournal .App {
 	font-family: 'Source Sans Pro', sans-serif;
 	user-select: none;
+	hyphens: auto;	
 }
 
 #FlypJournal, 
@@ -19,6 +20,12 @@ h1,h2,h3,h4,p {
 
 
 
+
+
+
+
+
+
 /*-----  Globale Styles für FrontPageLayout------*/
 #FlypJournal .FrontPageStream {
 	overflow-x: auto;
@@ -26,11 +33,9 @@ h1,h2,h3,h4,p {
 	height:100%;
 	width:100%;
 }
-
 #FlypJournal .FrontPageStream > .FrontPageStreamItems {
 	height:100%;
 }
-
 #FlypJournal .FrontPageStream > .FrontPageStreamItems > div {
 	box-sizing: border-box;
 	display: inline-block;
@@ -86,7 +91,6 @@ h1,h2,h3,h4,p {
 }
 
 
-
 /*-----  FrontPageDesign - Style2 ------*/
 #FlypJournal .FrontPageStream > .FrontPageStreamItems > div.Style2 > .Message > .FrontPageLayout {
 	background-color: #c80c41;
@@ -114,12 +118,22 @@ h1,h2,h3,h4,p {
 	width: 100%;
 }
 
+
+
+
+
+
+
+
+
+
+
+/*-----  Globale Styles für PageStream  /  Inhaltsverzeichnis------*/
 #FlypJournal .PageStream  {
 	box-sizing: border-box;
 	min-height: 100%;
 	background: #c80c41;
 }
-
 #FlypJournal .PageStream > div {
 	height: 49vw;
 	width: 50%;
@@ -127,7 +141,6 @@ h1,h2,h3,h4,p {
 	float:left;
 	overflow:hidden;
 }
-
 #FlypJournal .PageStream > div > .Message, 
 #FlypJournal .PageStream > div > .Message > .FrontPageLayout,
 #FlypJournal .PageStream > div > .Message > .FrontPageLayout > .FlypImage{
@@ -143,6 +156,8 @@ h1,h2,h3,h4,p {
 	hyphens: auto;	
 }
 
+
+/*-----  PageStream - Style1------*/
 #FlypJournal .PageStream > div.Style1 > .Message > .FrontPageLayout {
 	background-color: #c80c41;
 	color:#fff;
@@ -168,6 +183,8 @@ h1,h2,h3,h4,p {
 	width: 100%;
 }
 
+
+/*-----  PageStream - Style2------*/
 #FlypJournal .PageStream > div.Style2 > .Message > .FrontPageLayout {
 	background-color: #c80c41;
 }
@@ -198,6 +215,11 @@ h1,h2,h3,h4,p {
 
 
 
+
+
+
+
+
 /*-----  Globales css für den ArticleStream ------*/
 #FlypJournal .ArticleStream  {
 	background-color:#fff;
@@ -223,8 +245,7 @@ h1,h2,h3,h4,p {
 }
 
 
-/*-----  Spezifisches CSS für Einzel-Komponenten ------*/
-
+/*-----  Globales CSS für Einzel-Layouts ------*/
 #FlypJournal .FlypImage {
 	overflow:hidden;
 }
@@ -259,7 +280,6 @@ h1,h2,h3,h4,p {
 	width: 2.6em;
 	margin-right: 0.3em;
 	border-radius: 0.2em;
-
 }
 #FlypJournal .ArticleStream > div > .Message > .SocialMessageLayout > .FlypUser > .UserName {
 	display:inline;
@@ -280,18 +300,10 @@ h1,h2,h3,h4,p {
 #FlypJournal .ArticleStream > div > .Message > .SocialMessageLayout > .FlypUser > .Created {
 	display:inline;
 }
-
-
-
-
-
-
-
 #FlypJournal .ArticleStream > div > .Message > .ArticleVideoLayout > .FlypVideo {
 	margin-bottom: 20px;
 	position: relative;
 }
-
 #FlypJournal .ArticleStream > div > .Message > .ArticleVideoLayout > .FlypVideo > .FlypImage {
 	height: 100%;
 	width:100%;
@@ -307,6 +319,62 @@ h1,h2,h3,h4,p {
 	top: 0;
 	cursor: pointer;
 }
+
+/*-----  ArticleStream - Style1------*/
+#FlypJournal .Style1 .ArticleStream  {}
+#FlypJournal .Style1 .ArticleStream > div > .Message > div > h3 {
+	font-size: 1.5em;
+	text-transform: none;
+	color:#fff;
+	background-color: #3b6eb1;
+	border-radius:50%;
+	border-top-left-radius: 0;	
+	border-bottom-left-radius: 0;	
+	font-family: 'Josefin Slab', serif;
+	padding:5%;
+	line-height: 1.1em;
+	hyphens: auto;	
+	
+}
+#FlypJournal .Style1 .ArticleStream > div > .Message > div > p {
+	margin-bottom: 4%;
+	color:#3b6eb1;
+	transform: rotate(-2deg);
+}
+#FlypJournal .Style1 .ArticleStream > div > .Message > div > .FlypImage {
+	height: 100vw;
+	width:100%;
+	margin-bottom: 4%;
+}
+
+
+/*-----  ArticleStream - Style2------*/
+#FlypJournal .Style2 .ArticleStream  {
+	background-color:#fff;
+	box-sizing: border-box;
+	font-size: 1.1em;	
+	min-height:100%;
+	padding:8% 5% 10%;
+}
+#FlypJournal .Style2 .ArticleStream > div > .Message > div > h3 {
+	font-size: 1.3em;
+	font-weight:400;
+	text-transform: uppercase;
+	margin-bottom: 3%;
+	margin-top: 2%;
+	
+}
+#FlypJournal .Style2 .ArticleStream > div > .Message > div > p {
+	margin-bottom: 4%;
+	
+}
+#FlypJournal .Style2 .ArticleStream > div > .Message > div > .FlypImage {
+	height: 100vw;
+	width:100%;
+	margin-bottom: 4%;
+}
+
+	
 
 
 
