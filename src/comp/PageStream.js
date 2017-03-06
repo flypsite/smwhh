@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import Message from './Message.js'
-import TweenMax, {Power1, Power2, Sine} from 'gsap';
 
 class PageStream extends Component {
 
@@ -49,14 +48,14 @@ class PageStream extends Component {
 	render() {
 		var self = this;
 		var substream = this.props.data;
-		if ( !substream || !substream.items) return null; 
+		if ( !substream || !substream.items || substream.items.length === 0) return null; 
 
 		this.sizes = [[1,2],[1,1],[1,1],[2,1],[2,1],[1,1],[1,1],[1,2],[1,1],[1,1],[2,1],[2,1],[1,1],[1,1],[1,2],[1,1],[1,1],[2,1],[2,1],[1,1],[1,1]];
 
 		const listItems = substream.items.map( (item, index) =>
 			(self.props.pkey !== item.id) && 
 			<div key={item.id} className={ item.message.style } style={ function(s) {return {height: (s[1] * 100/4) + "vh", width: (s[0] * 50) + "%"}}(self.sizes.shift())} onClick={ function() {self.gotoSlide(index) } }>
-				<Message mode="fullpage" data={ item }/>
+				<Message mode="tiles" data={ item }/>
 			</div> 
 		);
 

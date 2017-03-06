@@ -5,6 +5,7 @@ import ArticleImageLayout from './comp/ArticleImageLayout.js';
 import ArticleVideoLayout from './comp/ArticleVideoLayout.js';
 import ArticleQuoteLayout from './comp/ArticleQuoteLayout.js';
 import SocialMessageLayout from './comp/SocialMessageLayout.js';
+import FullPageVideoLayout from './comp/FullPageVideoLayout.js';
 
 
 
@@ -26,6 +27,16 @@ export default {
 		fallback: FrontPageLayout,
 
 		layouts: {
+			"video":     FullPageVideoLayout
+		}
+	},
+
+	tiles: {
+
+		fallback: FrontPageLayout,
+
+		layouts: {
+			"video":     FullPageVideoLayout
 		}
 	},
 
