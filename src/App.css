@@ -272,6 +272,7 @@ h1,h2,h3,h4,p {
 }
 #FlypJournal .ArticleStream > div > .Message > div > p {
 	margin-bottom: 4%;
+	white-space: pre-wrap;
 }
 #FlypJournal .ArticleStream > div > .Message > div > .FlypImage {
 	height: 100vw;
