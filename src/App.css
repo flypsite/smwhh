@@ -119,9 +119,19 @@ h1,h2,h3,h4,p {
 
 /*-----  FrontPageDesign - StyleAMH ------*/
 #FlypJournal div.StyleAMH {
-	font-family:Open Sans;
+	font-family:'Source Sans Pro';
 }
-
+#FlypJournal .FrontPageStream > .FrontPageStreamItems > div.StyleAMH:first-child {
+	/* 
+content: "";
+	background-image: url("assets/img/handrechtsrunter.png");
+	width: 33px;
+	height: 28px;
+	position: absolute;
+	bottom: 0;
+ */
+	
+}
 #FlypJournal .FrontPageStream > .FrontPageStreamItems > div.StyleAMH > .Message > .FrontPageLayout {
 	background: #b53559;
 	background: linear-gradient(to bottom,  #b53559 0%,#901b3f 100%); 
@@ -129,7 +139,7 @@ h1,h2,h3,h4,p {
 #FlypJournal .FrontPageStream > .FrontPageStreamItems > div.StyleAMH > .Message > .FrontPageLayout > h2 {	
 	color:#fff;
 	font-weight: normal;
-	padding:15% 8%;	
+	padding:8%;	
 	width:100%; 
 	box-sizing:border-box;
 	background: linear-gradient(to bottom,  rgba(64,12,29,1) 0%,rgba(91,19,45,1) 40%,rgba(113,24,59,0.45) 73%,rgba(113,24,59,0) 100%);
@@ -138,7 +148,6 @@ h1,h2,h3,h4,p {
 	margin: 10%;
 	margin-top: 40px;
 	transform:rotate(-10deg);
-
  */
 }
 #FlypJournal .FrontPageStream > .FrontPageStreamItems > div.StyleAMH > .Message > .FrontPageLayout  > p {
