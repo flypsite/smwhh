@@ -121,44 +121,43 @@ h1,h2,h3,h4,p {
 #FlypJournal div.StyleAMH {
 	font-family:'Source Sans Pro';
 }
-#FlypJournal .FrontPageStream > .FrontPageStreamItems > div.StyleAMH:first-child {
-	/* 
-content: "";
+
+#FlypJournal .FrontPageStream > .FrontPageStreamItems > div.StyleAMH:first-child .Message > .FrontPageLayout  > p {
 	background-image: url("assets/img/handrechtsrunter.png");
-	width: 33px;
-	height: 28px;
-	position: absolute;
-	bottom: 0;
- */
-	
+	background-image: url("assets/img/unten_hand_icons.png");
+	background-position:center;
+	background-repeat: no-repeat;
+	padding:8%;	
 }
+#FlypJournal .FrontPageStream > .FrontPageStreamItems > div.StyleAMH:nth-child(4) .Message > .FrontPageLayout  > p {
+	background-image: url("assets/img/handrechtsrunter.png");
+	background-image: url("assets/img/unten_icons.png");
+	background-position:center;
+	background-repeat: no-repeat;
+	padding:8%;	
+}
+
 #FlypJournal .FrontPageStream > .FrontPageStreamItems > div.StyleAMH > .Message > .FrontPageLayout {
-	background: #b53559;
-	background: linear-gradient(to bottom,  #b53559 0%,#901b3f 100%); 
+	background: #a5224b;
 }
 #FlypJournal .FrontPageStream > .FrontPageStreamItems > div.StyleAMH > .Message > .FrontPageLayout > h2 {	
 	color:#fff;
 	font-weight: normal;
-	padding:8%;	
+	padding:4% 8% 4% 8%;	
 	width:100%; 
 	box-sizing:border-box;
-	background: linear-gradient(to bottom,  rgba(64,12,29,1) 0%,rgba(91,19,45,1) 40%,rgba(113,24,59,0.45) 73%,rgba(113,24,59,0) 100%);
-
-	/* 
-	margin: 10%;
-	margin-top: 40px;
-	transform:rotate(-10deg);
- */
+	font-size: 1.5em;
+	hyphens: none;
+	background: #a5224b;
 }
 #FlypJournal .FrontPageStream > .FrontPageStreamItems > div.StyleAMH > .Message > .FrontPageLayout  > p {
-	background: #71183b;
-	background: linear-gradient(to bottom,  #71183b 0%,#400c1d 100%);
-	background: linear-gradient(to top,  rgba(64,12,29,1) 0%,rgba(91,19,45,1) 40%,rgba(113,24,59,0.45) 73%,rgba(113,24,59,0) 100%);
 	bottom: 0;
 	color:#fff;
 	width: 100%;
 	box-sizing:border-box;
-	padding:8%;
+	padding:3% 8% 4% 8%;	
+	font-size: 1em;
+	background: #a5224b;
 }
 
 
@@ -439,11 +438,17 @@ content: "";
 }
 
 /*-----  ArticleStream - StyleAMH------*/
-#FlypJournal .StyleAMH .ArticleStream > div > .Message > .SocialMessageLayout {
-	font-size: 0.8em;
+#FlypJournal .ArticleStream > div > .Message {
+	font-size: 0.9em;
 }
+#FlypJournal .StyleAMH .ArticleStream > div > .Message > .ArticleVideoLayout > .FlypVideo {
+	margin-bottom: 4em;
+	border: 1px solid #ccc;
+	height: 49vw;
+}
+
 #FlypJournal .StyleAMH .ArticleStream > div > .Message > .SocialMessageLayout > .FlypUser{
-	font-size: 0.75em;
+	font-size: 0.8em;
 	line-height: 0.7em;
 }
 #FlypJournal .StyleAMH .ArticleStream > div > .Message > .SocialMessageLayout > .FlypUser > span.UserImage > a  {
