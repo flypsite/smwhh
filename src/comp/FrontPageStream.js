@@ -72,8 +72,9 @@ class FrontPageStream extends Component {
 	handleTouchMove(e) {
 		// prevent touch events default behavior while being in the top part of the page
 		// this effectively prevents the native scroll behavior
-		var sct = this.DOMNode.children[0].children[this.state.selectedPage].scrollTop;
-		if (sct === 0) e.preventDefault();
+		var sct = this.DOMNode.children[0].children[this.state.selectedPage].scrollTop === 0;
+		var sct2 = this.DOMNode.children[0].children[this.state.selectedPage].children[1] && this.DOMNode.children[0].children[this.state.selectedPage].children[1].scrollTop < 0;
+		if (sct) e.preventDefault();
 
 		this.drag(e.touches[0].clientX, e.touches[0].clientY, this.DOMNode);
 	}
@@ -88,6 +89,7 @@ class FrontPageStream extends Component {
 		this.dragstartY  = cy;
 		this.scrollLeft = d.scrollLeft;
 		this.scrollTop = d.children[0].children[this.state.selectedPage].scrollTop;
+		if (this.scrollTop === 1) this.scrollTop = 0;
 		this.dragdiffX = 0;
 		this.dragdiffY = 0;
 		this.dragstarttime = 0;
@@ -101,22 +103,21 @@ class FrontPageStream extends Component {
 		var self = this;
 		this.dragstartX = false;
 		var minmove, newPos, impetus = false, timediff = new Date() - this.dragstarttime;
-
+		var sct2 = this.DOMNode.children[0].children[this.state.selectedPage].children[1] && this.DOMNode.children[0].children[this.state.selectedPage].children[1].scrollTop === 0;
+	
 		// a vertical movement
 		if ( Math.abs(this.dragdiffX) < Math.abs(this.dragdiffY) ) {
 			if (this.dragdiffY < 0 && this.scrollTop === 0) {
-				impetus = 0.25;
 				newPos = d.offsetHeight;
-			} else if (this.dragdiffY > 0 && this.scrollTop <= d.offsetHeight + 50) {
-				impetus = 0.25;
-				newPos = 0;
-			} else if (timediff < 500) {
-				// not needed since we scroll natively
-				//impetus = self.dragdiffY * 9/1000;
-				//newPos  = self.scrollTop - impetus * d.offsetHeight;
-			} // else slow movement, leave it where it is.
-			if (impetus) this.tween = TweenMax.to(d.children[0].children[self.state.selectedPage], Math.sqrt(Math.abs(impetus)), { scrollTop: newPos, ease:Power1.easeOut });
-
+			} else if (this.dragdiffY > 0 && sct2 ) {
+				newPos = 1;
+			}
+			if (newPos) {
+				this.tween = TweenMax.to(d.children[0].children[self.state.selectedPage], 0.5, { scrollTop: newPos, ease:Power1.easeOut });
+				if (this.DOMNode.children[0].children[this.state.selectedPage].children[1]) {
+					this.DOMNode.children[0].children[this.state.selectedPage].children[1].scrollTop = 0;
+				}
+			}
 		} else {
 		// or a horizontal movement
 			
@@ -137,10 +138,13 @@ class FrontPageStream extends Component {
 			this.dragdiffX = cx - this.dragstartX;
 			this.dragdiffY = cy - this.dragstartY;
 			
-			if ( Math.abs(this.dragdiffX) < Math.abs(this.dragdiffY) ) {
-				TweenMax.to(d, 0.2, { scrollLeft: self.scrollLeft });
-				d.children[0].children[self.state.selectedPage].scrollTop =  this.scrollTop - this.dragdiffY;
-			} else {
+			if ( Math.abs(this.dragdiffY) > Math.abs(this.dragdiffX) && 
+				(!d.children[0].children[self.state.selectedPage].children[1] 
+				|| d.children[0].children[self.state.selectedPage].children[1].scrollTop === 0)) {
+				//TweenMax.to(d, 0.2, { scrollLeft: self.scrollLeft });
+				d.scrollLeft = self.scrollLeft;
+				d.children[0].children[self.state.selectedPage].scrollTop = this.scrollTop - this.dragdiffY;
+			} else if (Math.abs(this.dragdiffX) > Math.abs(this.dragdiffY)) {
 				d.scrollLeft = this.scrollLeft - this.dragdiffX;
 			}
 		}

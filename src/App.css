@@ -41,10 +41,9 @@ h1,h2,h3,h4,p {
 	display: inline-block;
 	height:100%;
 	overflow-x: hidden;
-	overflow-y: scroll;
+	overflow-y: hidden;
 	position: relative;
 	width:100vw;
-	-webkit-overflow-scrolling: touch;
 }
 #FlypJournal .FrontPageStream > .FrontPageStreamItems > div > .Message,
 #FlypJournal .FrontPageStream > .FrontPageStreamItems > div > .Message > .FrontPageLayout {
@@ -263,7 +262,9 @@ h1,h2,h3,h4,p {
 
 
 
-
+.Message > div > p {
+	white-space: pre-wrap;
+}
 
 
 /*-----  Globales css für den ArticleStream ------*/
@@ -271,8 +272,12 @@ h1,h2,h3,h4,p {
 	background-color:#fff;
 	box-sizing: border-box;
 	font-size: 1.1em;	
-	min-height:100%;
+	height:100vh;
+	width:100vw;
 	padding:8% 5% 10%;
+	overflow-y: scroll;
+	overflow-x:hidden;
+	-webkit-overflow-scrolling: touch;
 }
 #FlypJournal .ArticleStream > div > .Message > div > h3 {
 	font-size: 1.3em;
@@ -283,7 +288,6 @@ h1,h2,h3,h4,p {
 }
 #FlypJournal .ArticleStream > div > .Message > div > p {
 	margin-bottom: 4%;
-	white-space: pre-wrap;
 }
 #FlypJournal .ArticleStream > div > .Message > div > .FlypImage {
 	height: 100vw;
