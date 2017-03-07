@@ -43,6 +43,9 @@ export default class FlypVideo extends Component {
 	render() { 
 	
 		var m = this.props.media;
+		if (m.av && !m.av.playerurl && m.av.url) {  // incomplete data for direct mp4 urls
+			m.av.playerurl = m.av.url;
+		}
 
 		if (!(m && m.type === "video")) {
     		return null;

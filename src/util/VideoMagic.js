@@ -2,7 +2,7 @@ export default function videoMagic( e, media, sizing ) {
 	
 	var ww = media.av.width ? media.av.width : media.image.width;   
 	var hh = media.av.height ? media.av.height : media.image.height;
-	// most services w/o av.width/height
+
 	var aspectratio = ww/hh;
 	if (isNaN(aspectratio) || !aspectratio)  aspectratio = 16/9;
 
@@ -10,13 +10,14 @@ export default function videoMagic( e, media, sizing ) {
 	
 	if (sizing === "cover") {
 		zoomFactor = Math.max(e.offsetWidth / ww, e.offsetHeight / hh); // height is full screenheight
-		console.log(e.offsetWidth, ww, e.offsetHeight, hh, zoomFactor);
-	} else zoomFactor = e.offsetWidth / ww; // height is auto
+	} else {
+		zoomFactor = e.offsetWidth / ww; // height is auto
+	}
 	
 	var calcWidth  = ww * zoomFactor; 
 	var calcHeight = hh * zoomFactor; 
-	var offsetleft = Math.min(0, e.offsetWidth - calcWidth) / 2;
-	var offsettop  = Math.min(0, e.offsetHeight - calcHeight) / 2;
+	var offsetleft = 0; //Math.min(0, e.offsetWidth - calcWidth) / 2;
+	var offsettop  = 0; //Math.min(0, e.offsetHeight - calcHeight) / 2;
 
 	var padpercent = Math.round(10000/aspectratio)/100;
 
@@ -44,6 +45,5 @@ export default function videoMagic( e, media, sizing ) {
 		padpercent: padpercent,
 		style: { width: calcWidth + "px", height: calcHeight + "px", border: 0, marginLeft: offsetleft + "px", marginTop: offsettop + "px" }
 	}
-
 	return vObj;
 }
