@@ -366,6 +366,8 @@ content: "";
 #FlypJournal .ArticleStream > div > .Message > .ArticleVideoLayout > .FlypVideo {
 	margin-bottom: 20px;
 	position: relative;
+	height: 55vw;
+	width:100%;
 }
 #FlypJournal .ArticleStream > div > .Message > div > .FlypVideo > .FlypImage {
 	height: 100%;
