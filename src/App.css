@@ -121,23 +121,30 @@ h1,h2,h3,h4,p {
 #FlypJournal div.StyleAMH {
 	font-family:'Source Sans Pro';
 }
+#FlypJournal .FrontPageStream > .FrontPageStreamItems > div.StyleAMH:after {
+	content:"";
+	background-image: url("assets/img/icon_hand.png");
+	position: absolute;
+	z-index: 1000;
+	bottom: 4%;
+	left: 4%;
+    width: 33px;
+    height: 28px;
+}
 
 #FlypJournal .FrontPageStream > .FrontPageStreamItems > div.StyleAMH:first-child .Message > .FrontPageLayout  > p {
-	background-image: url("assets/img/handrechtsrunter.png");
-	background-image: url("assets/img/unten_hand_icons.png");
+	background-image: url("assets/img/unten_icons.png");
 	background-position:center;
 	background-repeat: no-repeat;
 	padding:8%;	
 }
 #FlypJournal .FrontPageStream > .FrontPageStreamItems > div.StyleAMH:nth-child(4) .Message > .FrontPageLayout  > p {
-	background-image: url("assets/img/handrechtsrunter.png");
 	background-image: url("assets/img/unten_icons_rot.png");
 	background-position:center;
 	background-repeat: no-repeat;
-	padding:8%;	
-	color:#a5224b;
-	background-color: #fff;
+	padding:8% 8% 8% 18%;	
 }
+
 
 #FlypJournal .FrontPageStream > .FrontPageStreamItems > div.StyleAMH > .Message > .FrontPageLayout {
 	background: #a5224b;
@@ -159,7 +166,7 @@ h1,h2,h3,h4,p {
 	box-sizing:border-box;
 	padding:3% 8% 4% 8%;	
 	font-size: 1em;
-	background: #a5224b;
+	color: #a5224b;
 }
 
 
