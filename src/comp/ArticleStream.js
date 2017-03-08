@@ -11,7 +11,7 @@ class ArticleStream extends Component {
 	}
 
 
-	load(substream) {
+	load(substream, info) {
 
 		console.log('load ' + substream.key);
 
@@ -19,6 +19,7 @@ class ArticleStream extends Component {
 		substream.loading = true;
 
 		var self = this;
+
 		//console.log('loading ' + substream.key);
 		this.context.app.loadStreamFull(substream.key, function(stream) {
 			
@@ -33,7 +34,8 @@ class ArticleStream extends Component {
 			substream.loading = false;
 			self.setState(nstate);
 
-		});
+		}, info);
+
 	}
 
 	componentWillMount() {
@@ -43,7 +45,7 @@ class ArticleStream extends Component {
 			return <div className="PageStream">loading...</div>
 		}
 		if ( ! substream.items ) {
-			this.load(substream);
+			this.load(substream, this.props.info);
 			return <div className="PageStream">loading...</div>
 		}	
 	}

@@ -125,7 +125,7 @@ class App extends Component {
 	}
 
 
-	getStream(name) {
+	getStream(name, desc) {
 
 		var sitems = this.streams[name];
 		var ns = [ ];
@@ -136,9 +136,15 @@ class App extends Component {
 			}
 		}
 
-		ns.sort(function(a,b) {
-			return a.index - b.index;
-		});
+		if ( desc ) {
+			ns.sort(function(a,b) {
+				return b.index - a.index;
+			});
+		} else {
+			ns.sort(function(a,b) {
+				return a.index - b.index;
+			});
+		}
 
 		return {
 			stream: name,
@@ -165,7 +171,7 @@ class App extends Component {
 	
 
 
-	loadStreamFull(sname, cb) {
+	loadStreamFull(sname, cb, info) {
 
 		var self = this;
 
@@ -176,22 +182,43 @@ class App extends Component {
 
 		this.streams[sname] = { };
 
+		if ( info == "desc" ) {
 
-		this.vienna.requestStreamAscending(sname, 0, 1024, function(json) {
+			console.log("========================== DESC ========================");
 
-			console.log("loaded stream ", json);
-			
-			json.items.map(function(item) {
-				return self.updateEnvelope(item);
+			this.vienna.requestStreamDescending(sname, 999999, 1024, function(json) {
+
+				console.log("loaded stream desc", json);
+				
+				json.items.map(function(item) {
+					return self.updateEnvelope(item);
+				});
+
+				cb(self.getStream(sname, true));
+
 			});
 
-			cb(self.getStream(sname));
-			// console.log("loaded stream ", json);
-			// var tstream = self._translateStream(json);
-			// this.streams[json.stream] = tstream;
 
-			// cb(tstream);
-		});
+		} else {
+
+			this.vienna.requestStreamAscending(sname, 0, 1024, function(json) {
+
+				console.log("loaded stream asc", json);
+				
+				json.items.map(function(item) {
+					return self.updateEnvelope(item);
+				});
+
+				cb(self.getStream(sname));
+
+			});
+
+		}
+
+
+
+
+
 	}
 
 
@@ -230,12 +257,21 @@ class App extends Component {
 
 	}
 
+	handleScroll(e) {
+		console.log("app scroll",e);
+	}
 
+	handleTouchMove(e) {
+		console.log("app tmove",e);
+	}
 
 	render() {
 	
 		return (
-			<div className="App">
+			<div className="App"
+					// onScroll={this.handleScroll.bind(this)} 
+					// onTouchMove={this.handleTouchMove.bind(this)} 
+			>
 			<FrontPageStream data={this.state.frontstream} ref={(maincomp) => {this.maincomp = maincomp}} />
 			</div>
 			);

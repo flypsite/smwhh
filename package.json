@@ -17,5 +17,5 @@
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject"
   },
-  "homepage": "http://www.viergleicheins.de/journal"
+  "homepage": "http://schaufenster.flyp.tv/journal"
 }
