@@ -131,10 +131,12 @@ h1,h2,h3,h4,p {
 }
 #FlypJournal .FrontPageStream > .FrontPageStreamItems > div.StyleAMH:nth-child(4) .Message > .FrontPageLayout  > p {
 	background-image: url("assets/img/handrechtsrunter.png");
-	background-image: url("assets/img/unten_icons.png");
+	background-image: url("assets/img/unten_icons_rot.png");
 	background-position:center;
 	background-repeat: no-repeat;
 	padding:8%;	
+	color:#a5224b;
+	background-color: #fff;
 }
 
 #FlypJournal .FrontPageStream > .FrontPageStreamItems > div.StyleAMH > .Message > .FrontPageLayout {
