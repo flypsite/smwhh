@@ -172,7 +172,7 @@ class FrontPageStream extends Component {
 				<div id={item.id} key={item.id} className={item.message.style}>
 					<Message key={item.id} mode="fullpage" data={ item } />
 					{item.message.layout === "overview" && <PageStream    data={ item.message.substream } pkey={ item.id } /> }
-					{item.message.layout !== "overview" && <ArticleStream data={ item.message.substream } showArticle={ index === self.state.selectedPage } /> }
+					{item.message.layout !== "overview" && <ArticleStream info={item.message.info} data={ item.message.substream } showArticle={ index === self.state.selectedPage } /> }
 				</div> 
 			)
 
