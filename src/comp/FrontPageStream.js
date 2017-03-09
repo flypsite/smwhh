@@ -19,6 +19,10 @@ class FrontPageStream extends Component {
 			x: 0,
 			y: 0
 		};
+		this.handleTouchStart = this.handleTouchStart.bind(this);
+		this.handleTouchMove = this.handleTouchMove.bind(this);
+		this.handleTouchEnd = this.handleTouchEnd.bind(this);
+		this.handleScroll = this.handleScroll.bind(this);
 	}
 	
 	selectPage() {
@@ -68,22 +72,25 @@ class FrontPageStream extends Component {
 
 	handleTouchStart(e) {
 		this.startdrag(e.touches[0].clientX, e.touches[0].clientY, this.DOMNode);
+		var sct = this.DOMNode.children[0].children[this.state.selectedPage].scrollTop === 0;
+		if (sct) e.preventDefault();
 	}
 	handleTouchMove(e) {
+		var prevent = this.drag(e.touches[0].clientX, e.touches[0].clientY, this.DOMNode);
 		// prevent touch events default behavior while being in the top part of the page
 		// this effectively prevents the native scroll behavior
 		var sct = this.DOMNode.children[0].children[this.state.selectedPage].scrollTop === 0;
-		if (sct) e.preventDefault();
+		if (prevent || sct) e.preventDefault();
 
-		this.drag(e.touches[0].clientX, e.touches[0].clientY, this.DOMNode);
 	}
 	handleTouchEnd(e) {
-		this.stopdrag(null, null, this.DOMNode);
+		var prevent = this.stopdrag(null, null, this.DOMNode);
+		var sct = this.DOMNode.children[0].children[this.state.selectedPage].scrollTop === 0;
 	}
 
 // BOTH	
 	startdrag(cx, cy, d) {
-		
+
 		this.dragstartX  = cx;
 		this.dragstartY  = cy;
 		this.scrollLeft = d.scrollLeft;
@@ -145,8 +152,10 @@ class FrontPageStream extends Component {
 				d.children[0].children[self.state.selectedPage].scrollTop = this.scrollTop - this.dragdiffY;
 			} else if (Math.abs(this.dragdiffX) > Math.abs(this.dragdiffY)) {
 				d.scrollLeft = this.scrollLeft - this.dragdiffX;
+				return true;
 			}
 		}
+		return false;
 	}
 	
 	handleDragStart(e) {
@@ -159,7 +168,14 @@ class FrontPageStream extends Component {
 		console.log("dragend", e.target);
 	}
 
-
+	initEvents() {
+		this.DOMNode.removeEventListener("touchstart", this.handleTouchStart, {'passive': false} );
+		this.DOMNode.removeEventListener("touchmove", this.handleTouchMove, {'passive': false} );
+		this.DOMNode.removeEventListener("touchend", this.handleTouchEnd, {'passive': false} );
+		this.DOMNode.addEventListener("touchstart", this.handleTouchStart, {'passive': false} );
+		this.DOMNode.addEventListener("touchmove", this.handleTouchMove, {'passive': false} );
+		this.DOMNode.addEventListener("touchend", this.handleTouchEnd, {'passive': false} );
+	}
 	render() {
 
 		var self = this;
@@ -177,22 +193,20 @@ class FrontPageStream extends Component {
 
 		});
 
-		// onScroll={ this.handleScroll.bind(this) }
-
 		return (
-				<div className="FrontPageStream" draggable="false"
-					onTouchStart={this.handleTouchStart.bind(this)} 
-					onTouchMove={this.handleTouchMove.bind(this)} 
-					onTouchEnd={this.handleTouchEnd.bind(this)} 
+				<div className="FrontPageStream" draggable="true"
+					//onTouchStart={this.handleTouchStart.bind(this)} // may not fire on chrome mobile: https://www.chromestatus.com/features/5093566007214080
+					//onTouchMove={this.handleTouchMove.bind(this)} 
+					//onTouchEnd={this.handleTouchEnd.bind(this)} 
+					onScroll={this.handleScroll.bind(this)} 
 					onMouseMove={this.handleMouseMove.bind(this)} 
 					onMouseDown={this.handleMouseDown.bind(this)} 
 					onMouseUp={this.handleMouseUp.bind(this)} 
-					onScroll={this.handleScroll.bind(this)} 
 					onWheel={this.handleWheel.bind(this)} 
 					/*onDragStart={this.handleDragStart.bind(this)}
 					onDrag={this.handleDrag.bind(this)}
 					onDragEnd={this.handleDragEnd.bind(this)}*/
-					ref={(elem) => { this.DOMNode = elem; }}>
+					ref={elem => { if (elem) this.DOMNode = elem; this.initEvents()}}>
 				
 				<div className="FrontPageStreamItems" 
 					style={ {width: listItems.length * document.documentElement.offsetWidth + "px"} } >
