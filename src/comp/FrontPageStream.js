@@ -73,7 +73,6 @@ class FrontPageStream extends Component {
 		// prevent touch events default behavior while being in the top part of the page
 		// this effectively prevents the native scroll behavior
 		var sct = this.DOMNode.children[0].children[this.state.selectedPage].scrollTop === 0;
-		var sct2 = this.DOMNode.children[0].children[this.state.selectedPage].children[1] && this.DOMNode.children[0].children[this.state.selectedPage].children[1].scrollTop < 0;
 		if (sct) e.preventDefault();
 
 		this.drag(e.touches[0].clientX, e.touches[0].clientY, this.DOMNode);
