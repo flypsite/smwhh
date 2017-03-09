@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import VideoMagic from '../util/VideoMagic.js';
 import FlypImage from './FlypImage.js';
-import noImageIcon from'../assets/img/IconNOIMAGE.png';
 
 export default class FlypVideo extends Component {
 	constructor(props) {

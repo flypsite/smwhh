@@ -5,8 +5,6 @@ import TextMagic from '../util/TextMagic.js';
 export default function ArticleParagraphLayout(props) {
 
 	var m = props.data;
-	var t = m.text.replace(/\|/g, "\n");
-
 	var tm = TextMagic(m.text) 
 
 	return (

@@ -84,8 +84,7 @@ class FrontPageStream extends Component {
 
 	}
 	handleTouchEnd(e) {
-		var prevent = this.stopdrag(null, null, this.DOMNode);
-		var sct = this.DOMNode.children[0].children[this.state.selectedPage].scrollTop === 0;
+		this.stopdrag(null, null, this.DOMNode);
 	}
 
 // BOTH	
@@ -108,7 +107,7 @@ class FrontPageStream extends Component {
 	stopdrag(cx, cy, d) {
 		var self = this;
 		this.dragstartX = false;
-		var minmove, newPos, impetus = false, timediff = new Date() - this.dragstarttime;
+		var minmove, newPos, timediff = new Date() - this.dragstarttime;
 		var sct2 = this.DOMNode.children[0].children[this.state.selectedPage].children[1] && this.DOMNode.children[0].children[this.state.selectedPage].children[1].scrollTop === 0;
 	
 		// a vertical movement
@@ -194,7 +193,7 @@ class FrontPageStream extends Component {
 		});
 
 		return (
-				<div className="FrontPageStream" draggable="true"
+				<div className="FrontPageStream" draggable="false"
 					//onTouchStart={this.handleTouchStart.bind(this)} // may not fire on chrome mobile: https://www.chromestatus.com/features/5093566007214080
 					//onTouchMove={this.handleTouchMove.bind(this)} 
 					//onTouchEnd={this.handleTouchEnd.bind(this)} 
