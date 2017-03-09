@@ -7,13 +7,14 @@ export default function ArticleParagraphLayout(props) {
 	var m = props.data;
 	var t = m.text.replace(/\|/g, "\n");
 
+	var tm = TextMagic(m.text) 
+
 	return (
 		<div className="ArticleParagraphLayout">
 			{ m.headline && <h3>{m.headline}</h3> }
-			{ m.text && <p>{TextMagic(m.text)}</p> }
+			{ m.text && <p dangerouslySetInnerHTML={tm}/> }
 			{ m.media && m.media.image && <FlypImage data={m.media} /> }
 		</div>
     );
-    
 }
 
