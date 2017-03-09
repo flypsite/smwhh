@@ -19,9 +19,33 @@ h1,h2,h3,h4,p {
 }
 
 
+.SharingIcons {
+	height:29px;
+	position:absolute;
+	bottom:20px;
+	right:20px;
+	color: #a71f4a;
+}
+.SharingIcons>* {
+	float: left;
+	height:100%;
+	margin: 0 8px;
+}
+.SharingIcons>span {
+	padding: 4px 0;
+}
+.SharingIcons>a {
+	width:29px;
+}
 
+#FlypJournal .FrontPageStream > .FrontPageStreamItems > div.StyleAMH:nth-child(4) .SharingIcons>a.facebook {background-image: url(assets/img/icon_facebook_rot.png)}
+#FlypJournal .FrontPageStream > .FrontPageStreamItems > div.StyleAMH:nth-child(4) .SharingIcons>a.twitter  {background-image: url(assets/img/icon_twitter_rot.png)}
+#FlypJournal .FrontPageStream > .FrontPageStreamItems > div.StyleAMH:nth-child(4) .SharingIcons>a.instagram{background-image: url(assets/img/icon_instagram_rot.png)}
 
-
+#FlypJournal .FrontPageStream > .FrontPageStreamItems > div.StyleAMH:first-child .SharingIcons {color: white;}
+#FlypJournal .FrontPageStream > .FrontPageStreamItems > div.StyleAMH:first-child .SharingIcons>a.facebook {background-image: url(assets/img/icon_facebook.png)}
+#FlypJournal .FrontPageStream > .FrontPageStreamItems > div.StyleAMH:first-child .SharingIcons>a.twitter  {background-image: url(assets/img/icon_twitter.png)}
+#FlypJournal .FrontPageStream > .FrontPageStreamItems > div.StyleAMH:first-child .SharingIcons>a.instagram{background-image: url(assets/img/icon_instagram.png)}
 
 
 
@@ -131,20 +155,6 @@ h1,h2,h3,h4,p {
     width: 33px;
     height: 28px;
 }
-
-#FlypJournal .FrontPageStream > .FrontPageStreamItems > div.StyleAMH:first-child .Message > .FrontPageLayout  > p {
-	background-image: url("assets/img/unten_icons.png");
-	background-position:center;
-	background-repeat: no-repeat;
-	padding:8%;	
-}
-#FlypJournal .FrontPageStream > .FrontPageStreamItems > div.StyleAMH:nth-child(4) .Message > .FrontPageLayout  > p {
-	background-image: url("assets/img/unten_icons_rot.png");
-	background-position:center;
-	background-repeat: no-repeat;
-	padding:8% 8% 8% 18%;	
-}
-
 
 #FlypJournal .FrontPageStream > .FrontPageStreamItems > div.StyleAMH > .Message > .FrontPageLayout {
 	background: #a5224b;
