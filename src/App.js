@@ -60,11 +60,11 @@ class App extends Component {
 
 		v.connect({
 			initial: function(json) { 
-				console.log("initial callback with", json);
+				//console.log("initial callback with", json);
 				self.processInitial(json);
 			},
 			update: function(json) { 
-				console.log("update callback with ", json);
+				//console.log("update callback with ", json);
 				self.processUpdates(json);
 			},
 			command: function(json) {
@@ -120,7 +120,7 @@ class App extends Component {
 	}
 
 	setStream(s) {
-		console.log("setstream", s);
+		//console.log("setstream", s);
 		this.setState({ frontstream: s });
 	}
 
@@ -182,14 +182,10 @@ class App extends Component {
 
 		this.streams[sname] = { };
 
-		if ( info == "desc" ) {
-
-			console.log("========================== DESC ========================");
+		if ( info === "desc" ) {
 
 			this.vienna.requestStreamDescending(sname, 999999, 1024, function(json) {
 
-				console.log("loaded stream desc", json);
-				
 				json.items.map(function(item) {
 					return self.updateEnvelope(item);
 				});
@@ -203,8 +199,6 @@ class App extends Component {
 
 			this.vienna.requestStreamAscending(sname, 0, 1024, function(json) {
 
-				console.log("loaded stream asc", json);
-				
 				json.items.map(function(item) {
 					return self.updateEnvelope(item);
 				});
