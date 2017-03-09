@@ -17,7 +17,7 @@ export default function FrontPageLayout(props) {
 		<div className="FrontPageLayout">
 			{ m.media && m.media.image && <FlypImage data={m.media} /> }
 			{ m.headline && <h2>{m.headline}</h2> }
-			{ m.text && !m.text.match(/^#[^ ]+$/) && <p dangerouslySetInnerHTML={{tm}}/> }
+			{ m.text && !m.text.match(/^#[^ ]+$/) && <p dangerouslySetInnerHTML={tm}/> }
 			{ m.text.match(/^#[^ ]+$/) && <SharingIcons data={m.text} /> }
 		</div>
     );

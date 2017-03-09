@@ -13,7 +13,7 @@ export default function SocialMessageLayout(props) {
 		<div className="SocialMessageLayout">
 			{ m.media && m.media.image && <FlypImage data={m.media} /> }
 			{ m.headline && <h3>{m.headline}</h3> }
-			{ m.text && <p dangerouslySetInnerHTML={{tm}}/> }
+			{ m.text && <p dangerouslySetInnerHTML={tm}/> }
 			<FlypUser data={m} />
 		</div>
     );
