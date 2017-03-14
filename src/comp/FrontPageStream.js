@@ -175,6 +175,7 @@ class FrontPageStream extends Component {
 		this.DOMNode.addEventListener("touchmove", this.handleTouchMove, {'passive': false} );
 		this.DOMNode.addEventListener("touchend", this.handleTouchEnd, {'passive': false} );
 	}
+	
 	render() {
 
 		var self = this;

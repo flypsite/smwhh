@@ -46,11 +46,23 @@ export default {
 
 		layouts: {
 			"paragraph": ArticleParagraphLayout,
-			"image":     ArticleImageLayout,
-			"quote":     ArticleQuoteLayout,
-			"video":     ArticleVideoLayout,
-			"message":   SocialMessageLayout,
-			"postcardtext":   SocialMessageLayout
+			"quote":     ArticleQuoteLayout,  // to be discussed, temporary
+
+			"image":          ArticleImageLayout,  // from flypsite
+			"image_text":     ArticleImageLayout,
+			"video":          ArticleVideoLayout,
+			"message":        SocialMessageLayout,
+			"postcard":       SocialMessageLayout,
+			"postcard_text":  SocialMessageLayout,
+			"slideshow":      SocialMessageLayout   // temporary
+//todo			"iframe": ???
+//todo			"slideshow": ???
+//todo			"teaser": ???
+//todo			"text_link": ???
+//todo			"image_link": ???
+//todo			"image_text_link": ???
+//todo			"text_big": ???
+//todo			"text_small": ???
 			
 		}
 	}
