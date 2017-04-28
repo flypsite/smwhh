@@ -8,9 +8,9 @@ export default function SharingIcons(props) {
 	return (
 		<div className="SharingIcons">
 			<span className="hashtag">{props.data}</span>
-			<a className="facebook"  href={fburl}> </a>
-			<a className="twitter"   href={twurl}> </a>
-			<a className="instagram" href="https://www.instagram.com"> </a>
+			<a target="_top" className="facebook"  href={fburl}> </a>
+			<a target="_top" className="twitter"   href={twurl}> </a>
+			<a target="_top" className="instagram" href="https://www.instagram.com"> </a>
 		</div>
 	);
 }
